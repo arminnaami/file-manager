@@ -1,0 +1,307 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"APP_",
+				"APP_ENV=local\t(.env)"
+			],
+			[
+				"data",
+				"$data〔variable〕"
+			],
+			[
+				"p",
+				"php\t<?php … ?>"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": ".gitattributes",
+			"settings":
+			{
+				"buffer_size": 61,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 387.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"git c",
+				"Git: Commit"
+			],
+			[
+				"git commi",
+				"Git: Commit"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git add",
+				"Git: Add All"
+			],
+			[
+				"git ",
+				"Git: Init"
+			]
+		],
+		"width": 401.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			" import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www/html/fileManager"
+	],
+	"file_history":
+	[
+		"/var/www/html/testProjcet/vendor/psr/log/Psr/Log/LogLevel.php",
+		"/var/www/html/testProjcet/testProject.sublime-project",
+		"/var/www/html/testProjcet/public/index.php",
+		"/var/www/html/testProjcet/bootstrap/autoload.php",
+		"/var/www/html/testProjcet/bootstrap/app.php",
+		"/var/www/html/testProjcet/vendor/autoload.php",
+		"/var/www/html/testProjcet/vendor/composer/autoload_real.php",
+		"/var/www/html/testProjcet/vendor/laravel/framework/src/Illuminate/Support/helpers.php",
+		"/var/www/html/testProjcet/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php",
+		"/var/www/html/testProjcet/vendor/psy/psysh/src/Psy/functions.php",
+		"/var/www/html/testProjcet/vendor/symfony/polyfill-php56/bootstrap.php",
+		"/var/www/html/testProjcet/vendor/paragonie/random_compat/lib/random.php",
+		"/var/www/html/testProjcet/vendor/swiftmailer/swiftmailer/lib/swift_required.php",
+		"/var/www/html/testProjcet/vendor/swiftmailer/swiftmailer/lib/classes/Swift.php",
+		"/var/www/html/testProjcet/vendor/hamcrest/hamcrest-php/hamcrest/Hamcrest.php",
+		"/var/www/html/testProjcet/vendor/symfony/var-dumper/Resources/functions/dump.php",
+		"/var/www/html/testProjcet/vendor/symfony/polyfill-mbstring/bootstrap.php",
+		"/var/www/html/testProjcet/vendor/composer/autoload_static.php",
+		"/var/www/html/testProjcet/vendor/composer/ClassLoader.php",
+		"/var/www/html/testProjcet/vendor/symfony/http-kernel/HttpKernelInterface.php",
+		"/var/www/html/testProjcet/vendor/laravel/framework/src/Illuminate/Contracts/Foundation/Application.php",
+		"/var/www/html/testProjcet/vendor/laravel/framework/src/Illuminate/Contracts/Container/Container.php",
+		"/var/www/html/testProjcet/vendor/laravel/framework/src/Illuminate/Container/Container.php",
+		"/var/www/html/testProjcet/vendor/laravel/framework/src/Illuminate/Foundation/Application.php",
+		"/var/www/html/index.php",
+		"/var/www/html/test.sublime-project",
+		"/var/www/html/test.sublime-workspace",
+		"/var/www/html/testProject/routes/web.php",
+		"/home/ozi/SublimeProjects/testProject.sublime-project",
+		"/var/www/html/testProject/public/index.php",
+		"/var/www/html/testProject/resources/views/welcome.blade.php",
+		"/var/www/html/testProject/vendor/monolog/monolog/tests/Monolog/Handler/MockRavenClient.php",
+		"/var/www/html/testProject/config/app.php",
+		"/var/www/html/testProject/.env",
+		"/var/www/html/testProject/vendor/symfony/routing/Route.php",
+		"/var/www/html/test/index.php",
+		"/home/ozi/.config/sublime-text-3/Packages/PHP Companion/PHP Companion.sublime-settings",
+		"/home/ozi/.config/sublime-text-3/Packages/User/PHP Companion.sublime-settings",
+		"/home/ozi/.config/sublime-text-3/Packages/Git/Git.sublime-settings",
+		"/home/ozi/.config/sublime-text-3/Packages/User/GitGutter.sublime-settings",
+		"/home/ozi/.config/sublime-text-3/Packages/GitGutter/GitGutter.sublime-settings",
+		"/home/ozi/.config/sublime-text-3/Packages/User/Git.sublime-settings"
+	],
+	"find":
+	{
+		"height": 21.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"asd"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": ".gitattributes",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 61,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"output.xdebug":
+	{
+		"height": 79.0
+	},
+	"pinned_build_system": "",
+	"project": "fileManager.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ll",
+				"vendor/psr/log/Psr/Log/LogLevel.php"
+			],
+			[
+				"route",
+				"vendor/symfony/routing/Route.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 167.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
