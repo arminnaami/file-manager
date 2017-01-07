@@ -14,6 +14,7 @@
     <link href="/css/materialize.min.css" rel="stylesheet">
     <link href="/css/materialize-icon.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="application/octet-stream" type="text/css" href="{{ URL::asset('fonts/material-icons.woff2') }}">
 
     <!-- Scripts -->
     <script>
@@ -24,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="white" role="navigation">
+        <nav class="white center" role="navigation">
             <div class="nav-wrapper container">
                 <a class="brand-logo" href="{{ url('/') }}" id="logo-container">
                         {{ config('app.name', 'FileManager') }}
@@ -35,15 +36,29 @@
                     <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
                     <li>
-                        <a href="{{ url('/logout') }}"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                            Logout
+                        <a href="#" class='dropdown-button' id="profile_dropdown_btn" data-activates='profile_dropdown'>
+                            <img src="{{URL::asset('/img/default_profile_photo.png')}}" class="circle">
                         </a>
-
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
+                        <ul id='profile_dropdown' class='dropdown-content'>
+                            <li>
+                                <div id="profile_dropdown_card">
+                                    <div id="profile_dropdown_card_img_hldr">
+                                        <img src="{{URL::asset('/img/default_profile_photo.png')}}" class="circle">
+                                    </div>
+                                    <div id="profile_dropdown_card_account">
+                                        <strong>{{ $user->name }}</strong><br>
+                                        <span>{{ $user->email }}</span><br><br>
+                                        <a href="#" class="btn" id="profile_dropdown_myacc_btm">My profile</a>
+                                        <a href="{{ url('/logout') }}"  onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();"
+                                             class="profile_dropdown_card_a">Logout</a>
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </li>
                 @endif
                 </ul>
@@ -63,11 +78,25 @@
                 </ul>
                 <a class="button-collapse" data-activates="nav-mobile" href="#">
                     <i class="material-icons">
-                            menu
-                        </i>
+                        menu
+                    </i>
                 </a>
             </div>
         </nav>
+        @if (!Auth::guest())
+            <ul id="slide-out" class="side-nav" style="transform: translateX(0px);">
+              <li>
+                    <div class="userView">
+                        <div class="background">
+                            <img src="{{URL::asset('/img/office.jpg')}}" />
+                        </div>
+                        <a href="#!user"><img class="circle" src="{{URL::asset('/img/default_profile_photo.png')}}"></a>
+                        <a href="#!name"><span class="white-text name">{{ $user->name }}</span></a>
+                        <a href="#!email"><span class="white-text email">{{ $user->email }}</span></a>
+                    </div>
+              </li>
+            </ul>
+        @endif
         @yield('content')
     </div>
     <!-- Scripts -->
@@ -78,6 +107,32 @@
     <script>
         @if (session('status'))
             Materialize.toast("{{ session('status') }}", 4000, 'green darken-4');
+        @endif
+        @if(!Auth::guest())
+            $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: false, // Does not change width of dropdown to that of the activator
+                hover: true, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: true, // Displays dropdown below the button
+                alignment: 'right' // Displays dropdown with edge aligned to the left of button
+            });
+            $( window ).resize(function() {
+              if($( window ).width() < 991){
+                $('#slide-out').hide();
+                }else{
+                    $('#slide-out').show();
+                }
+            });
+            // $(window).on('resize', function(){
+            //     console.log($(window.width()));
+            //     if($(this).width() < 932){
+            //          //$('.button-collapse').sideNav('show');
+            //           // Hide sideNav
+            //           $('#sidenavbtn').sideNav('hide');
+            //     }
+            // });
         @endif
     </script>
 </body>

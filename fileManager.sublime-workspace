@@ -4,30 +4,6 @@
 		"selected_items":
 		[
 			[
-				"scrip",
-				"scripts\t(login.blade.php)"
-			],
-			[
-				"car",
-				"Carbon\\Carbon〔class〕"
-			],
-			[
-				"Roles",
-				"RolesTableSeeder〔class〕"
-			],
-			[
-				"def",
-				"default\t(RegisterController.php)"
-			],
-			[
-				"register",
-				"register-holder\t(register.blade.php)"
-			],
-			[
-				"section",
-				"section"
-			],
-			[
 				"rem",
 				"remember"
 			],
@@ -48,74 +24,19 @@
 	"buffers":
 	[
 		{
-			"file": "resources/views/auth/login.blade.php",
-			"settings":
-			{
-				"buffer_size": 2648,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/views/auth/passwords/email.blade.php",
-			"settings":
-			{
-				"buffer_size": 1507,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/views/auth/register.blade.php",
-			"settings":
-			{
-				"buffer_size": 3690,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/views/layouts/app.blade.php",
-			"settings":
-			{
-				"buffer_size": 3109,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/views/auth/passwords/reset.blade.php",
-			"settings":
-			{
-				"buffer_size": 2826,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/Auth/ResetPasswordController.php",
-			"settings":
-			{
-				"buffer_size": 952,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": ".env",
 			"settings":
 			{
-				"buffer_size": 645,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"buffer_size": 639,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "config/mail.php",
+			"file": "app/Http/Controllers/HomeController.php",
 			"settings":
 			{
-				"buffer_size": 4093,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"buffer_size": 452,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -126,57 +47,13 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 112.0,
-		"last_filter": "",
+		"height": 173.0,
+		"last_filter": "install",
 		"selected_items":
 		[
 			[
-				"commi",
-				"Git: Commit"
-			],
-			[
-				"add",
-				"Git: Add All"
-			],
-			[
-				"status",
-				"Git: Status"
-			],
-			[
-				"mir",
-				"Laravel Artisan 5: Migrate:Refresh"
-			],
-			[
-				"seed",
-				"Laravel Artisan 5: DB:Seed"
-			],
-			[
-				"refresh",
-				"Laravel Artisan 5: Migrate:Refresh"
-			],
-			[
-				"refres",
-				"Laravel Artisan 5: Migrate:Refresh"
-			],
-			[
-				"laravel make",
-				"Laravel Artisan 5: Make:Seeder"
-			],
-			[
-				"artisan migrate",
-				"Laravel Artisan 5: Migrate"
-			],
-			[
-				"artisan roll",
-				"Laravel Artisan 5: Migrate:Rollback"
-			],
-			[
 				"install",
 				"Package Control: Install Package"
-			],
-			[
-				"Snippet: ",
-				"Snippet: html"
 			],
 			[
 				"git commi",
@@ -223,6 +100,14 @@
 				"Git: Commit"
 			],
 			[
+				"add",
+				"Git: Add All"
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
 				"migrate",
 				"Laravel Artisan 5: Migrate"
 			],
@@ -239,8 +124,16 @@
 				"Laravel Artisan 5: Make:Migration"
 			],
 			[
+				"artisan migrate",
+				"Laravel Artisan 5: Migrate"
+			],
+			[
 				"git remo",
 				"Git: Track Remote Branch"
+			],
+			[
+				"commi",
+				"Git: Commit"
 			],
 			[
 				"git init",
@@ -255,13 +148,14 @@
 				"Git: Init"
 			]
 		],
-		"width": 521.0
+		"width": 528.0
 	},
 	"console":
 	{
 		"height": 126.0,
 		"history":
 		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
 			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
 			" import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
 		]
@@ -277,75 +171,58 @@
 	},
 	"expanded_folders":
 	[
-		"/var/www/html/fileManager",
-		"/var/www/html/fileManager/app",
-		"/var/www/html/fileManager/app/Http",
-		"/var/www/html/fileManager/app/Http/Controllers",
-		"/var/www/html/fileManager/app/Http/Controllers/Auth",
-		"/var/www/html/fileManager/config",
-		"/var/www/html/fileManager/resources",
-		"/var/www/html/fileManager/resources/views",
-		"/var/www/html/fileManager/resources/views/auth",
-		"/var/www/html/fileManager/resources/views/auth/passwords"
+		"/C/xampp/htdocs/file-manager",
+		"/C/xampp/htdocs/file-manager/app",
+		"/C/xampp/htdocs/file-manager/app/Http",
+		"/C/xampp/htdocs/file-manager/app/Http/Controllers",
+		"/C/xampp/htdocs/file-manager/config"
 	],
 	"file_history":
 	[
-		"/var/www/html/fileManager/resources/views/auth/passwords/email.blade.php",
-		"/var/www/html/fileManager/public/css/app.css",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/SendsPasswordResetEmails.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Auth/Passwords/PasswordBroker.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Auth/Passwords/CanResetPassword.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Notifications/RoutesNotifications.php",
-		"/var/www/html/fileManager/config/app.php",
-		"/var/www/html/fileManager/resources/views/auth/register.blade.php",
+		"/C/Users/Yuzdzhan/AppData/Roaming/Sublime Text 3/Packages/Phpcs/phpcs.sublime-settings",
+		"/C/Users/Yuzdzhan/AppData/Roaming/Sublime Text 3/Packages/User/phpcs.sublime-settings",
+		"/C/xampp/htdocs/file-manager/config/mail.php",
+		"/C/xampp/htdocs/file-manager/.env.example",
 		"/var/www/html/fileManager/app/Http/Controllers/Auth/LoginController.php",
-		"/var/www/html/fileManager/app/Http/Controllers/Auth/RegisterController.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
-		"/var/www/html/fileManager/app/User.php",
-		"/var/www/html/fileManager/database/migrations/2014_10_12_000000_create_users_table.php",
-		"/var/www/html/fileManager/resources/views/auth/login.blade.php",
-		"/var/www/html/fileManager/database/seeds/DatabaseSeeder.php",
-		"/var/www/html/fileManager/database/migrations/2013_12_26_122732_roles.php",
-		"/var/www/html/fileManager/database/seeds/RolesTableSeeder.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php",
-		"/var/www/html/fileManager/vendor/nesbot/carbon/src/Carbon/Carbon.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php",
-		"/home/ozi/.config/sublime-text-3/Packages/Emmet/Default (Linux).sublime-keymap",
-		"/home/ozi/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
-		"/var/www/html/fileManager/.gitignore",
-		"/home/ozi/.config/sublime-text-3/Packages/Emmet/Emmet.sublime-settings",
-		"/var/www/html/fileManager/resources/views/layouts/app.blade.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Application.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Arr.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/helpers.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/AliasLoader.php",
-		"/var/www/html/fileManager/vendor/composer/ClassLoader.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Validation/ValidationServiceProvider.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Validation/ValidatesRequests.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Container/Container.php",
+		"/var/www/html/fileManager/vendor/composer/ClassLoader.php",
+		"/var/www/html/fileManager/resources/views/layouts/app.blade.php",
+		"/var/www/html/fileManager/resources/views/auth/login.blade.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/AliasLoader.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
+		"/var/www/html/fileManager/public/css/app.css",
 		"/var/www/html/fileManager/public/js/app.js",
 		"/tmp/mozilla_ozi0/index-1.html",
 		"/tmp/mozilla_ozi0/style-2.css",
 		"/tmp/mozilla_ozi0/login.html",
+		"/var/www/html/fileManager/config/app.php",
 		"/tmp/mozilla_ozi0/index.html",
 		"/tmp/mozilla_ozi0/style-1.css",
 		"/tmp/mozilla_ozi0/custom-1.js",
 		"/tmp/mozilla_ozi0/custom.js",
 		"/tmp/mozilla_ozi0/style.css",
 		"/tmp/mozilla_ozi0/app.js",
+		"/var/www/html/fileManager/app/User.php",
+		"/var/www/html/fileManager/app/Http/Controllers/Auth/RegisterController.php",
+		"/var/www/html/fileManager/database/migrations/2014_10_12_000000_create_users_table.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Config/Repository.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Arr.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/ThrottlesLogins.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/helpers.php",
 		"/var/www/html/fileManager/vendor/symfony/http-foundation/Request.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Facades/Auth.php",
 		"/var/www/html/fileManager/vendor/symfony/http-foundation/ParameterBag.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Application.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Auth/AuthManager.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Container/Container.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Http/Request.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Contracts/Auth/Guard.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Validation/ValidationServiceProvider.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php",
 		"/tmp/mozilla_ozi0/login-1.html",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Validation/ValidatesRequests.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Log/Writer.php",
 		"/var/www/html/fileManager/app/Exceptions/Handler.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
@@ -372,6 +249,8 @@
 		"/var/www/html/fileManager/app/Http/Controllers/HomeController.php",
 		"/var/www/html/fileManager/public/.htaccess",
 		"/tmp/mozilla_ozi0/ImageController.php",
+		"/var/www/html/fileManager/.gitignore",
+		"/var/www/html/fileManager/database/migrations/2013_12_26_122732_roles.php",
 		"/home/ozi/.config/sublime-text-3/Packages/Xdebug Client/Xdebug.sublime-settings",
 		"/var/www/html/fileManager/vendor/composer/autoload_static.php",
 		"/var/www/html/fileManager/fileManager.sublime-project",
@@ -420,7 +299,7 @@
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 31.0
 	},
 	"find_in_files":
 	{
@@ -436,11 +315,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"sendmail",
-			"fmr_",
-			"fmu_",
-			"form-control",
-			"fmu_password",
+			"path",
 			"min",
 			"postlogin",
 			"fmu",
@@ -461,8 +336,6 @@
 		"regex": false,
 		"replace_history":
 		[
-			"",
-			"validate"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -473,226 +346,29 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "resources/views/auth/login.blade.php",
+					"file": ".env",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2648,
+						"buffer_size": 639,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								209,
-								209
+								439,
+								439
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										209,
-										210
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/double_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										170,
-										171
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "resources/views/auth/passwords/email.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1507,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1485,
-								1485
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -702,130 +378,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "resources/views/auth/register.blade.php",
+					"buffer": 1,
+					"file": "app/Http/Controllers/HomeController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3690,
+						"buffer_size": 452,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3667,
-								3667
+								380,
+								380
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1460.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "resources/views/layouts/app.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3109,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2949,
-								2949
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
+							"auto_complete": true,
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
@@ -833,15 +404,15 @@
 								{
 									"1":
 									[
-										3085,
-										3091
+										450,
+										451
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/tag.png",
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
 										"brackethighlighter.default"
 									]
 								},
@@ -849,8 +420,8 @@
 								{
 									"1":
 									[
-										2942,
-										2948
+										110,
+										111
 									]
 								},
 								"unmatched":
@@ -859,6 +430,21 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -869,260 +455,36 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1020.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "resources/views/auth/passwords/reset.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2826,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2804,
-								2804
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1120.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/Http/Controllers/Auth/ResetPasswordController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 952,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
+								"bh_default_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
@@ -1132,242 +494,15 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": ".env",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 645,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								601,
-								601
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "config/mail.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4093,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3836,
-								3836
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										4090,
-										4091
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/square_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										14,
-										15
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				}
-			]
-		},
-		{
-			"sheets":
-			[
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 31.0
 	},
 	"input":
 	{
@@ -1382,18 +517,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.972632731253,
 			1.0
 		],
 		"rows":
@@ -1423,7 +551,7 @@
 	"project": "fileManager.sublime-project",
 	"replace":
 	{
-		"height": 66.0
+		"height": 58.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1433,52 +561,8 @@
 		"selected_items":
 		[
 			[
-				"email",
-				"resources/views/auth/passwords/email.blade.php"
-			],
-			[
-				"app.b",
-				"resources/views/layouts/app.blade.php"
-			],
-			[
-				"register",
-				"resources/views/auth/register.blade.php"
-			],
-			[
-				"sends",
-				"vendor/laravel/framework/src/Illuminate/Foundation/Auth/SendsPasswordResetEmails.php"
-			],
-			[
-				"app.php",
-				"config/app.php"
-			],
-			[
-				"app",
-				"public/css/app.css"
-			],
-			[
-				"reset",
-				"resources/views/auth/passwords/reset.blade.php"
-			],
-			[
-				"login",
-				"resources/views/auth/login.blade.php"
-			],
-			[
-				"registeruser",
-				"vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php"
-			],
-			[
-				"app.css",
-				"public/css/app.css"
-			],
-			[
-				"logincontr",
-				"app/Http/Controllers/Auth/LoginController.php"
-			],
-			[
-				"app.bla",
-				"resources/views/layouts/app.blade.php"
+				"mail",
+				"config\\mail.php"
 			],
 			[
 				"logincontroller",
@@ -1487,6 +571,10 @@
 			[
 				"authenticatesusers",
 				"vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php"
+			],
+			[
+				"login",
+				"resources/views/auth/login.blade.php"
 			],
 			[
 				"authenticateuser",
@@ -1499,6 +587,10 @@
 			[
 				"logincontrolle",
 				"app/Http/Controllers/Auth/LoginController.php"
+			],
+			[
+				"app.css",
+				"public/css/app.css"
 			],
 			[
 				"user",
@@ -1541,50 +633,10 @@
 			"hide_conflict": false,
 			"restore_index":
 			{
-				"23":
-				{
-					"group": 0,
-					"index": 3
-				},
-				"25":
-				{
-					"group": 0,
-					"index": 1
-				},
-				"29":
-				{
-					"group": 0,
-					"index": 2
-				},
-				"30":
+				"17":
 				{
 					"group": 0,
 					"index": 0
-				},
-				"31":
-				{
-					"group": 0,
-					"index": 4
-				},
-				"35":
-				{
-					"group": 2,
-					"index": 1
-				},
-				"36":
-				{
-					"group": 1,
-					"index": 0
-				},
-				"37":
-				{
-					"group": 2,
-					"index": 0
-				},
-				"38":
-				{
-					"group": 1,
-					"index": 1
 				}
 			},
 			"restore_layout":
@@ -1594,32 +646,18 @@
 					[
 						0,
 						0,
-						2,
+						1,
 						1
-					],
-					[
-						0,
-						1,
-						1,
-						2
-					],
-					[
-						1,
-						1,
-						2,
-						2
 					]
 				],
 				"cols":
 				[
 					0.0,
-					0.5,
 					1.0
 				],
 				"rows":
 				[
 					0.0,
-					0.673938223938,
 					1.0
 				]
 			}
@@ -1629,7 +667,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 260.0,
+	"side_bar_width": 221.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
