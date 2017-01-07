@@ -10,10 +10,16 @@ p {
 .button-collapse {
   color: #26a69a;
 }
-#login-holder{
-  display: inline-block; 
+#login-holder,
+#register-holder{
   padding: 32px 48px 0px 48px;
   border: 1px solid #EEE;
+}
+#login-holder{
+  display: inline-block; 
+}
+#register-holder{
+  max-width: 500px;
 }
 .loading-wrapper{
   width: 100%;

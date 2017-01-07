@@ -37,25 +37,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
-
-    public function username()
-    {
-        return 'fmu_email';
-    }
-
-    public function credentials(Request $request)
-    {
-        return $request->only($this->username(), 'fmu_password');
-    }
-
-    public function validateLogin(Request $request)
-    {
-        $this->validate($request, [
-            $this->username() => 'required', 'fmu_password' => 'required',
-        ],
-        [
-            'fmu_email.required' => 'The Email field is required',
-            'fmu_password.required' => 'The Password field is required',
-        ]);
-    }
 }

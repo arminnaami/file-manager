@@ -16,10 +16,11 @@
 
                     <input 
                         type="email" 
-                        name="fmu_email" 
+                        name="email" 
                         id="email" 
-                        value="{{ old('fmu_email') }}" 
+                        value="{{ old('email') }}" 
                         class="validate" 
+                        required 
                         autofocus>
 
                     <label for="email">Enter your email</label>
@@ -29,10 +30,10 @@
                 <div class="input-field col s12">
                     <input 
                         type="password" 
-                        name="fmu_password" 
+                        name="password" 
                         id="password" 
-                        class="validate" 
-                        >
+                        required
+                        class="validate">
                     <label for="password">Enter your password</label>
                 </div>
                 <label style="float: right;">
@@ -64,13 +65,13 @@
 @endsection
 @section('scripts')
 <script type="text/javascript">
-    @if ($errors->has('fmu_email'))
-        Materialize.toast("{{ $errors->first('fmu_email') }}", 4000, 'red darken-4');
+    @if ($errors->has('email'))
+        Materialize.toast("{{ $errors->first('email') }}", 4000, 'red darken-4');
         $('#email').addClass("invalid");
         $('#email').prop("aria-invalid", "true");
     @endif
-    @if ($errors->has('fmu_password'))
-        Materialize.toast("{{ $errors->first('fmu_password') }}", 4000, 'red darken-4');
+    @if ($errors->has('password'))
+        Materialize.toast("{{ $errors->first('password') }}", 4000, 'red darken-4');
         $('#password').addClass("invalid");
         $('#password').prop("aria-invalid", "true");
     @endif

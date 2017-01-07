@@ -10,7 +10,7 @@ class User extends Authenticatable
     use Notifiable;
 
 
-    protected $primaryKey = 'fmu_id';
+    protected $primaryKey = 'id';
 
 
     /**
@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fmu_name', 'fmu_email', 'fmu_password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -28,6 +28,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'fmu_password', 'remember_token',
+        'password', 'remember_token',
     ];
 }
