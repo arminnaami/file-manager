@@ -6,7 +6,7 @@
     <h3>Register</h3>
     <div class="section"></div>
     <div class="container">
-        <div class="z-depth-1 grey lighten-5 row" id="register-holder">
+        <div class="z-depth-1 grey lighten-5 row main-form" id="register-holder">
             <form action="{{ url('/register')}}" role="form" method="POST" class="col s12">
                 {{ csrf_field() }}
                 <div class="row">

@@ -75,5 +75,10 @@
     <script src="/js/materialize.min.js"></script>
     <script src="/js/app.js"></script>
     @yield('scripts')
+    <script>
+        @if (session('status'))
+            Materialize.toast("{{ session('status') }}", 4000, 'green darken-4');
+        @endif
+    </script>
 </body>
 </html>

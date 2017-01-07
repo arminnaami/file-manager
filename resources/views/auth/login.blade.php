@@ -4,7 +4,7 @@
 <h3 class="">Please, login into your account</h3>
 <div class="section"></div>
 <div class="container">
-    <div class="z-depth-1 grey lighten-5 row" id="login-holder">
+    <div class="z-depth-1 grey lighten-5 row main-form" id="login-holder">
         <form class="col s12" role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
             <div class="row">
@@ -13,27 +13,25 @@
             </div>
             <div class="row left-align">
                 <div class="input-field col s12">
-
-                    <input 
-                        type="email" 
-                        name="email" 
-                        id="email" 
-                        value="{{ old('email') }}" 
-                        class="validate" 
-                        required 
-                        autofocus>
-
+                    <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value="{{ old('email') }}"
+                    class="validate"
+                    required
+                    autofocus>
                     <label for="email">Enter your email</label>
                 </div>
             </div>
             <div class="row left-align">
                 <div class="input-field col s12">
-                    <input 
-                        type="password" 
-                        name="password" 
-                        id="password" 
-                        required
-                        class="validate">
+                    <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    required
+                    class="validate">
                     <label for="password">Enter your password</label>
                 </div>
                 <label style="float: right;">
@@ -42,10 +40,10 @@
                     </a>
                 </label>
                 <div class="checkbox">
-                    <input 
-                        type="checkbox" 
-                        name="remember" 
-                        id="remember">
+                    <input
+                    type="checkbox"
+                    name="remember"
+                    id="remember">
                     <label for="remember">
                         Remember Me
                     </label>
@@ -65,15 +63,15 @@
 @endsection
 @section('scripts')
 <script type="text/javascript">
-    @if ($errors->has('email'))
-        Materialize.toast("{{ $errors->first('email') }}", 4000, 'red darken-4');
-        $('#email').addClass("invalid");
-        $('#email').prop("aria-invalid", "true");
-    @endif
-    @if ($errors->has('password'))
-        Materialize.toast("{{ $errors->first('password') }}", 4000, 'red darken-4');
-        $('#password').addClass("invalid");
-        $('#password').prop("aria-invalid", "true");
-    @endif
+@if ($errors->has('email'))
+Materialize.toast("{{ $errors->first('email') }}", 4000, 'red darken-4');
+$('#email').addClass("invalid");
+$('#email').prop("aria-invalid", "true");
+@endif
+@if ($errors->has('password'))
+Materialize.toast("{{ $errors->first('password') }}", 4000, 'red darken-4');
+$('#password').addClass("invalid");
+$('#password').prop("aria-invalid", "true");
+@endif
 </script>
 @endsection

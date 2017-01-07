@@ -1,47 +1,46 @@
 @extends('layouts.app')
-
 <!-- Main Content -->
 @section('content')
+<center>
+<h3 class="">Please, login into your account</h3>
+<div class="section"></div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+    <div class="z-depth-1 grey lighten-5 row main-form" id="email-holder">
+        <form class="col s12" role="form" method="POST" action="{{ url('/password/email') }}">
+            {{ csrf_field() }}
+            <div class="row">
+                <div class="col s12">
                 </div>
             </div>
-        </div>
+            <div class="row left-align">
+                <div class="input-field col s12">
+                    <input
+                    id="email"
+                    type="email"
+                    class="validate"
+                    name="email"
+                    value="{{ old('email') }}"
+                    required>
+                    <label  for="email">E-Mail Address</label>
+                </div>
+            </div>
+            <br>
+            <center>
+            <div class="row">
+                <button type="submit" name="btn_login" class="col s12 btn btn-large waves-effect">Send Password Reset Link</button>
+            </div>
+            </center>
+        </form>
     </div>
 </div>
+</center>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    @if($errors->has('email'))
+        Materialize.toast("{{ $errors->first('email') }}", 4000, 'red darken-4');
+        $('#email').addClass("invalid");
+        $('#email').prop("aria-invalid", "true");
+    @endif
+</script>
 @endsection
