@@ -52,6 +52,10 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             $this->username() => 'required', 'fmu_password' => 'required',
+        ],
+        [
+            'fmu_email.required' => 'The Email field is required',
+            'fmu_password.required' => 'The Password field is required',
         ]);
     }
 }

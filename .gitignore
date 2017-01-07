@@ -6,6 +6,6 @@
 Homestead.json
 Homestead.yaml
 .env
-fileManager.sublime-project
-fileManager.sublime-workspace
+.sublime-project
+.sublime-workspace
 _ide_helper.php

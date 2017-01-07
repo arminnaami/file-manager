@@ -70,10 +70,10 @@
         </nav>
         @yield('content')
     </div>
-
     <!-- Scripts -->
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/materialize.min.js"></script>
     <script src="/js/app.js"></script>
+    @yield('scripts')
 </body>
 </html>

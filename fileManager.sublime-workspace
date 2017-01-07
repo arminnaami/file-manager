@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"rem",
+				"remember"
+			],
+			[
 				"APP_",
 				"APP_ENV=local\t(.env)"
 			],
@@ -20,35 +24,55 @@
 	"buffers":
 	[
 		{
-			"contents": "<?php\n\nuse Illuminate\\Support\\Facades\\Schema;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Database\\Migrations\\Migration;\n\nclass CreateUsersTable extends Migration\n{\n    /**\n     * Run the migrations.\n     *\n     * @return void\n     */\n    public function up()\n    {\n        Schema::create('users', function (Blueprint $table) {\n            $table->increments('id');\n            \n            $table->string('name');\n            $table->string('email')->unique();\n            $table->string('password');\n            $table->rememberToken();\n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     *\n     * @return void\n     */\n    public function down()\n    {\n        Schema::dropIfExists('users');\n    }\n}\n",
-			"file": "database/migrations/2014_10_12_000000_create_users_table.php",
-			"file_size": 746,
-			"file_write_time": 131272283870226023,
-			"settings":
-			{
-				"buffer_size": 759,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "<?php\n\nnamespace App\\Http\\Controllers\\Auth;\n\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Foundation\\Auth\\AuthenticatesUsers;\n\nclass LoginController extends Controller\n{\n    /*\n    |--------------------------------------------------------------------------\n    | Login Controller\n    |--------------------------------------------------------------------------\n    |\n    | This controller handles authenticating users for the application and\n    | redirecting them to your home screen. The controller uses a trait\n    | to conveniently provide its functionality to your applications.\n    |\n    */\n\n    use AuthenticatesUsers;\n\n    /**\n     * Where to redirect users after login.\n     *\n     * @var string\n     */\n    protected $redirectTo = '/home';\n\n    /**\n     * Create a new controller instance.\n     *\n     * @return void\n     */\n    public function __construct()\n    {\n        $this->middleware('guest', ['except' => 'logout']);\n    }\n}\n",
 			"file": "app/Http/Controllers/Auth/LoginController.php",
-			"file_size": 949,
-			"file_write_time": 131272260153028930,
 			"settings":
 			{
-				"buffer_size": 949,
+				"buffer_size": 1367,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": ".gitignore",
+			"contents": "$_COOKIE = array[3]\n\t$_COOKIE['XDEBUG_SESSION'] = (string) sublime.xdebug\n\t$_COOKIE['XSRF-TOKEN'] = (string) eyJpdiI6ImlCSmZMd0VxZ3loS0NVY2tpUmRQQ0E9PSIsInZhbHVlIjoiZTg5R0JnSFJENXJld1wvTDVjY1c3c1lGeXFmK0pVa3kySVRWckVDNHpUNUgzTzNzRyt4YnBFb29qWUZac0ZoQXd1NHg2dlZaTXFGbWNMNUtsTXFkbGt3PT0iLCJtYWMiOiIyNTAwYzhhMDY3N2NkYjRlZTlmZmRhZTI1YTRiZDk4N2MxZTk4YWFkMGJjYTQxNTYwODQ2NjJmNGZmNDI1YjhiIn0=\n\t$_COOKIE['laravel_session'] = (string) eyJpdiI6Ild4czN2RnZrdmszMmVRWVZBdlwvdXlBPT0iLCJ2YWx1ZSI6IkE1V0lGc2JZM3Z1WGVCZjVJVjE0Mndabk9JSG1DV2FMRFRocEtIVTY4MXg4NUZGeXVLS2RVR1ZlN1dOVkhYbGYzSitxQndcL1pXWHl4RkpDYlZlcnlXUT09IiwibWFjIjoiMjQwNTEzYjhkNWRjYjU5ZTJjNDc0YTVkYTcxNGZmNWNiYmZiMWY2NGM4N2RhMTJiNGY1ZDJiMzE5MGNiZDQ0NSJ9\n$_ENV = array[27]\n\t$_ENV['APP_ENV'] = (string) local\n\t$_ENV['APP_KEY'] = (string) base64:npi7OtmzroTK1ZfPgK+oZgmrbmm6Dx30Dj0IpSvLO8E=\n\t$_ENV['APP_DEBUG'] = (string) true\n\t$_ENV['APP_LOG_LEVEL'] = (string) debug\n\t$_ENV['APP_URL'] = (string) http://dev.filemanager.com\n\t$_ENV['DB_CONNECTION'] = (string) mysql\n\t$_ENV['DB_HOST'] = (string) 127.0.0.1\n\t$_ENV['DB_PORT'] = (string) 3306\n\t$_ENV['DB_DATABASE'] = (string) file_manager\n\t$_ENV['DB_USERNAME'] = (string) root\n\t$_ENV['DB_PASSWORD'] = (string) root\n\t$_ENV['BROADCAST_DRIVER'] = (string) log\n\t$_ENV['CACHE_DRIVER'] = (string) file\n\t$_ENV['SESSION_DRIVER'] = (string) file\n\t$_ENV['QUEUE_DRIVER'] = (string) sync\n\t$_ENV['REDIS_HOST'] = (string) 127.0.0.1\n\t$_ENV['REDIS_PASSWORD'] = (string) null\n\t$_ENV['REDIS_PORT'] = (string) 6379\n\t$_ENV['MAIL_DRIVER'] = (string) smtp\n\t$_ENV['MAIL_HOST'] = (string) mailtrap.io\n\t$_ENV['MAIL_PORT'] = (string) 2525\n\t$_ENV['MAIL_USERNAME'] = (string) null\n\t$_ENV['MAIL_PASSWORD'] = (string) null\n\t$_ENV['MAIL_ENCRYPTION'] = (string) null\n\t$_ENV['PUSHER_APP_ID'] = <string>\n\t$_ENV['PUSHER_KEY'] = <string>\n\t$_ENV['PUSHER_SECRET'] = <string>\n$_FILES = array[0]\n$_GET = array[0]\n$_POST = array[0]\n$_REQUEST = array[0]\n$_SERVER = array[61]\n\t$_SERVER['REDIRECT_STATUS'] = (string) 200\n\t$_SERVER['HTTP_HOST'] = (string) dev.filemanager.com\n\t$_SERVER['HTTP_USER_AGENT'] = (string) Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0\n\t$_SERVER['HTTP_ACCEPT'] = (string) text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n\t$_SERVER['HTTP_ACCEPT_LANGUAGE'] = (string) en-US,en;q=0.5\n\t$_SERVER['HTTP_ACCEPT_ENCODING'] = (string) gzip, deflate\n\t$_SERVER['HTTP_REFERER'] = (string) http://dev.filemanager.com/?XDEBUG_SESSION_START=sublime.xdebug\n\t$_SERVER['HTTP_COOKIE'] = (string) XDEBUG_SESSION=sublime.xdebug; XSRF-TOKEN=eyJpdiI6ImlCSmZMd0VxZ3loS0NVY2tpUmRQQ0E9PSIsInZhbHVlIjoiZTg5R0JnSFJENXJld1wvTDVjY1c3c1lGeXFmK0pVa3kySVRWckVDNHpUNUgzTzNzRyt4YnBFb29qWUZac0ZoQXd1NHg2dlZaTXFGbWNMNUtsTXFkbGt3PT0iLCJtYWMiOiIyNTAwYzhhMDY3N2NkYjRlZTlmZmRhZTI1YTRiZDk4N2MxZTk4YWFkMGJjYTQxNTYwODQ2NjJmNGZmNDI1YjhiIn0%3D; laravel_session=eyJpdiI6Ild4czN2RnZrdmszMmVRWVZBdlwvdXlBPT0iLCJ2YWx1ZSI6IkE1V0lGc2JZM3Z1WGVCZjVJVjE0Mndabk9JSG1DV2FMRFRocEtIVTY4MXg4NUZGeXVLS2RVR1ZlN1dOVkhYbGYzSitxQndcL1pXWHl4RkpDYlZlcnlXUT09IiwibWFjIjoiMjQwNTEzYjhkNWRjYjU5ZTJjNDc0YTVkYTcxNGZmNWNiYmZiMWY2NGM4N2RhMTJiNGY1ZDJiMzE5MGNiZDQ0NSJ9\n\t$_SERVER['HTTP_CONNECTION'] = (string) keep-alive\n\t$_SERVER['HTTP_UPGRADE_INSECURE_REQUESTS'] = (string) 1\n\t$_SERVER['PATH'] = (string) /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n\t$_SERVER['SERVER_SIGNATURE'] = (string) <address>Apache/2.4.18 (Ubuntu) Server at dev.filemanager.com Port 80</address> \n\t$_SERVER['SERVER_SOFTWARE'] = (string) Apache/2.4.18 (Ubuntu)\n\t$_SERVER['SERVER_NAME'] = (string) dev.filemanager.com\n\t$_SERVER['SERVER_ADDR'] = (string) 127.0.0.1\n\t$_SERVER['SERVER_PORT'] = (string) 80\n\t$_SERVER['REMOTE_ADDR'] = (string) 127.0.0.1\n\t$_SERVER['DOCUMENT_ROOT'] = (string) /var/www/html/fileManager/public\n\t$_SERVER['REQUEST_SCHEME'] = (string) http\n\t$_SERVER['CONTEXT_PREFIX'] = <string>\n\t$_SERVER['CONTEXT_DOCUMENT_ROOT'] = (string) /var/www/html/fileManager/public\n\t$_SERVER['SERVER_ADMIN'] = (string) webmaster@localhost\n\t$_SERVER['SCRIPT_FILENAME'] = (string) /var/www/html/fileManager/public/index.php\n\t$_SERVER['REMOTE_PORT'] = (string) 54900\n\t$_SERVER['REDIRECT_URL'] = (string) /login\n\t$_SERVER['GATEWAY_INTERFACE'] = (string) CGI/1.1\n\t$_SERVER['SERVER_PROTOCOL'] = (string) HTTP/1.1\n\t$_SERVER['REQUEST_METHOD'] = (string) GET\n\t$_SERVER['QUERY_STRING'] = <string>\n\t$_SERVER['REQUEST_URI'] = (string) /login\n\t$_SERVER['SCRIPT_NAME'] = (string) /index.php\n\t$_SERVER['PHP_SELF'] = (string) /index.php\n\t...\n$GLOBALS = array[14]\n\t$GLOBALS['_GET'] = array[0]\n\t$GLOBALS['_POST'] = array[0]\n\t$GLOBALS['_COOKIE'] = array[3]\n\t\t...\n\t$GLOBALS['_FILES'] = array[0]\n\t$GLOBALS['_ENV'] = array[27]\n\t\t...\n\t$GLOBALS['_REQUEST'] = array[0]\n\t$GLOBALS['_SERVER'] = array[61]\n\t\t...\n\t$GLOBALS['app'] = Illuminate\\Foundation\\Application[29]\n\t\t...\n\t$GLOBALS['kernel'] = App\\Http\\Kernel[7]\n\t\t...\n\t$GLOBALS['request'] = Illuminate\\Http\\Request[33]\n\t\t...\n\t$GLOBALS['compiledPath'] = (string) /var/www/html/fileManager/bootstrap/cache/compiled.php\n\t$GLOBALS['GLOBALS'] = <array>\n\t$GLOBALS['__composer_autoload_files'] = array[9]\n\t\t...\n\t...\n$this = App\\Http\\Controllers\\Auth\\LoginController[3]\n\t$this->redirectTo = (string) /home\n\t$this->middleware = array[0]\n\t$this->validatesRequestErrorBag = <null>\n",
 			"settings":
 			{
-				"buffer_size": 138,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"buffer_size": 5226,
+				"line_ending": "Unix",
+				"name": "Xdebug Context",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix",
+				"name": "Xdebug Watch",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "[0] file:///var/www/html/fileManager/app/Http/Controllers/Auth/LoginController.php.App\\Http\\Controllers\\Auth\\LoginController->__construct:38\n[1] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Container/Container.php.ReflectionClass->newInstanceArgs:794\n[2] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Container/Container.php.Illuminate\\Container\\Container->build:794\n[3] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Container/Container.php.Illuminate\\Container\\Container->make:644\n[4] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Application.php.Illuminate\\Foundation\\Application->make:709\n[5] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Route.php.Illuminate\\Routing\\Route->getController:203\n[6] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Route.php.Illuminate\\Routing\\Route->controllerMiddleware:316\n[7] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Route.php.Illuminate\\Routing\\Route->gatherMiddleware:278\n[8] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Router.php.Illuminate\\Routing\\Router->gatherRouteMiddleware:666\n[9] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Router.php.Illuminate\\Routing\\Router->runRouteWithinStack:646\n[10] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Router.php.Illuminate\\Routing\\Router->dispatchToRoute:629\n[11] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Router.php.Illuminate\\Routing\\Router->dispatch:607\n[12] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php.Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}:268\n[13] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php.Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}:53\n[14] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php.Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle:46\n[15] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php.Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}:137\n[16] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php.Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}:33\n[17] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php.Illuminate\\Pipeline\\Pipeline->then:104\n[18] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php.Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter:150\n[19] file:///var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php.Illuminate\\Foundation\\Http\\Kernel->handle:117\n[20] file:///var/www/html/fileManager/public/index.php.{main}:52\n",
+			"settings":
+			{
+				"buffer_size": 3111,
+				"line_ending": "Unix",
+				"name": "Xdebug Stack",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "=> /var/www/html/fileManager/app/Http/Controllers/Auth/LoginController.php\n\t|+| 38\n",
+			"settings":
+			{
+				"buffer_size": 83,
+				"line_ending": "Unix",
+				"name": "Xdebug Breakpoint",
+				"read_only": true,
+				"scratch": true
 			}
 		}
 	],
@@ -59,16 +83,56 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "",
+		"height": 192.0,
+		"last_filter": "git commi",
 		"selected_items":
 		[
 			[
-				"git remo",
-				"Git: Track Remote Branch"
+				"git commi",
+				"Git: Commit"
 			],
 			[
-				"commi",
+				"git add",
+				"Git: Add All"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git reset",
+				"Git: Reset (hard) HEAD"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"push",
+				"Git: Push Current Branch"
+			],
+			[
+				"pus",
+				"Git: Push"
+			],
+			[
+				"pull",
+				"Git: Pull"
+			],
+			[
+				"stat",
+				"Git: Status"
+			],
+			[
+				"commit",
 				"Git: Commit"
 			],
 			[
@@ -80,32 +144,40 @@
 				"Git: Status"
 			],
 			[
+				"migrate",
+				"Laravel Artisan 5: Migrate"
+			],
+			[
+				"artisan auth",
+				"Laravel Artisan 5: Make:Auth"
+			],
+			[
+				"artisan migra",
+				"Laravel Artisan 5: Migrate"
+			],
+			[
+				"artisan migration",
+				"Laravel Artisan 5: Make:Migration"
+			],
+			[
+				"artisan migrate",
+				"Laravel Artisan 5: Migrate"
+			],
+			[
+				"git remo",
+				"Git: Track Remote Branch"
+			],
+			[
+				"commi",
+				"Git: Commit"
+			],
+			[
 				"git init",
 				"Git: Init"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"git stat",
-				"Git: Status"
-			],
-			[
 				"git c",
 				"Git: Commit"
-			],
-			[
-				"git commi",
-				"Git: Commit"
-			],
-			[
-				"git status",
-				"Git: Status"
-			],
-			[
-				"git add",
-				"Git: Add All"
 			],
 			[
 				"git ",
@@ -138,21 +210,80 @@
 		"/var/www/html/fileManager/app",
 		"/var/www/html/fileManager/app/Http",
 		"/var/www/html/fileManager/app/Http/Controllers",
-		"/var/www/html/fileManager/app/Http/Controllers/Auth",
-		"/var/www/html/fileManager/database",
-		"/var/www/html/fileManager/database/migrations"
+		"/var/www/html/fileManager/app/Http/Controllers/Auth"
 	],
 	"file_history":
 	[
-		"/home/ozi/.config/sublime-text-3/Packages/Xdebug Client/Xdebug.sublime-settings",
+		"/var/www/html/fileManager/app/Http/Controllers/Auth/LoginController.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php",
 		"/var/www/html/fileManager/vendor/composer/ClassLoader.php",
-		"/var/www/html/fileManager/vendor/composer/autoload_static.php",
+		"/var/www/html/fileManager/resources/views/layouts/app.blade.php",
+		"/var/www/html/fileManager/resources/views/auth/login.blade.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/AliasLoader.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
+		"/var/www/html/fileManager/public/css/app.css",
+		"/var/www/html/fileManager/public/js/app.js",
+		"/tmp/mozilla_ozi0/index-1.html",
+		"/tmp/mozilla_ozi0/style-2.css",
+		"/tmp/mozilla_ozi0/login.html",
+		"/var/www/html/fileManager/config/app.php",
+		"/tmp/mozilla_ozi0/index.html",
+		"/tmp/mozilla_ozi0/style-1.css",
+		"/tmp/mozilla_ozi0/custom-1.js",
+		"/tmp/mozilla_ozi0/custom.js",
+		"/tmp/mozilla_ozi0/style.css",
+		"/tmp/mozilla_ozi0/app.js",
+		"/var/www/html/fileManager/app/User.php",
+		"/var/www/html/fileManager/app/Http/Controllers/Auth/RegisterController.php",
+		"/var/www/html/fileManager/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Config/Repository.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Arr.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/ThrottlesLogins.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/helpers.php",
+		"/var/www/html/fileManager/vendor/symfony/http-foundation/Request.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Facades/Auth.php",
+		"/var/www/html/fileManager/vendor/symfony/http-foundation/ParameterBag.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Application.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Auth/AuthManager.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Container/Container.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Http/Request.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Contracts/Auth/Guard.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Validation/ValidationServiceProvider.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php",
+		"/tmp/mozilla_ozi0/login-1.html",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Validation/ValidatesRequests.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Log/Writer.php",
+		"/var/www/html/fileManager/app/Exceptions/Handler.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Validation/Factory.php",
+		"/home/ozi/.config/sublime-text-3/Packages/HTMLBeautify/HTMLBeautify.sublime-settings",
+		"/tmp/mozilla_ozi0/user-login-controller.js",
+		"/home/ozi/Downloads/parallax-template/http:_demo.geekslabs.com_materialize_v2.2_layout03_user-login.html",
+		"/home/ozi/Downloads/parallax-template/index.html",
+		"/var/www/html/fileManager/resources/assets/js/app.js",
+		"/var/www/html/fileManager/public/css/materialize.min.css",
+		"/home/ozi/Downloads/parallax-template/js/init.js",
+		"/var/www/html/fileManager/resources/assets/js/bootstrap.js",
+		"/var/www/html/fileManager/resources/assets/sass/_variables.scss",
+		"/var/www/html/fileManager/resources/assets/sass/app.scss",
+		"/home/ozi/Downloads/materialize/css/materialize.css",
+		"/var/www/html/fileManager/app/Http/Controllers/Auth/ForgotPasswordController.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Contracts/Validation/Validator.php",
+		"/var/www/html/fileManager/.env",
 		"/var/www/html/fileManager/public/index.php",
+		"/var/www/html/fileManager/bootstrap/autoload.php",
 		"/var/www/html/fileManager/vendor/autoload.php",
 		"/var/www/html/fileManager/vendor/composer/autoload_real.php",
-		"/var/www/html/fileManager/bootstrap/autoload.php",
+		"/var/www/html/fileManager/app/Http/Controllers/Controller.php",
+		"/var/www/html/fileManager/app/Http/Controllers/HomeController.php",
+		"/var/www/html/fileManager/public/.htaccess",
+		"/tmp/mozilla_ozi0/ImageController.php",
 		"/var/www/html/fileManager/.gitignore",
-		"/var/www/html/fileManager/.env",
+		"/var/www/html/fileManager/database/migrations/2013_12_26_122732_roles.php",
+		"/home/ozi/.config/sublime-text-3/Packages/Xdebug Client/Xdebug.sublime-settings",
+		"/var/www/html/fileManager/vendor/composer/autoload_static.php",
 		"/var/www/html/fileManager/fileManager.sublime-project",
 		"/var/www/html/testProjcet/vendor/psr/log/Psr/Log/LogLevel.php",
 		"/var/www/html/testProjcet/testProject.sublime-project",
@@ -199,13 +330,15 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 96.0,
 		"where_history":
 		[
+			"/var/www/html/fileManager/resources",
+			"/var/www/html/fileManager/resources/views"
 		]
 	},
 	"find_state":
@@ -213,6 +346,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"min",
+			"postlogin",
+			"fmu",
+			".material-icons",
+			".brand-logo",
+			"bootstrap",
+			"font-fami",
+			"font",
+			"Http",
+			"schema",
 			"browser",
 			"}",
 			"asd"
@@ -233,29 +376,28 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "database/migrations/2014_10_12_000000_create_users_table.php",
-					"semi_transient": false,
+					"file": "app/Http/Controllers/Auth/LoginController.php",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 759,
+						"buffer_size": 1367,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								391,
-								391
+								1047,
+								1047
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
@@ -263,8 +405,8 @@
 								{
 									"1":
 									[
-										594,
-										595
+										1046,
+										1047
 									]
 								},
 								"icon":
@@ -279,8 +421,8 @@
 								{
 									"1":
 									[
-										339,
-										340
+										1012,
+										1013
 									]
 								},
 								"unmatched":
@@ -289,21 +431,11 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
@@ -314,183 +446,106 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_round_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 531.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5226,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5226,
+								5226
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 106.0,
+						"translation.y": 86.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "app/Http/Controllers/Auth/LoginController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 949,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								880,
-								880
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										945,
-										946
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										879,
-										880
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 138,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								138,
-								138
+								0,
+								0
 							]
 						],
 						"settings":
@@ -513,21 +568,11 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
@@ -538,38 +583,49 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_round_content"
 							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -579,11 +635,73 @@
 					"type": "text"
 				}
 			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3111,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3111,
+								3111
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 83,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								83,
+								83
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 21.0
+		"height": 28.0
 	},
 	"input":
 	{
@@ -596,29 +714,47 @@
 			[
 				0,
 				0,
-				1,
+				2,
 				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			],
+			[
+				1,
+				1,
+				2,
+				2
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
+			0.7,
 			1.0
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 178.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
 	"output.git":
 	{
-		"height": 100.0
+		"height": 266.0
 	},
 	"output.xdebug":
 	{
@@ -628,7 +764,7 @@
 	"project": "fileManager.sublime-project",
 	"replace":
 	{
-		"height": 38.0
+		"height": 52.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -637,6 +773,38 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"logincontroller",
+				"app/Http/Controllers/Auth/LoginController.php"
+			],
+			[
+				"authenticatesusers",
+				"vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php"
+			],
+			[
+				"login",
+				"resources/views/auth/login.blade.php"
+			],
+			[
+				"authenticateuser",
+				"vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php"
+			],
+			[
+				"authenticateusers",
+				"vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php"
+			],
+			[
+				"logincontrolle",
+				"app/Http/Controllers/Auth/LoginController.php"
+			],
+			[
+				"app.css",
+				"public/css/app.css"
+			],
+			[
+				"user",
+				"app/User.php"
+			],
 			[
 				"ll",
 				"vendor/psr/log/Psr/Log/LogLevel.php"
@@ -671,9 +839,10 @@
 	{
 		"xdebug":
 		{
+			"hide_conflict": false,
 			"restore_index":
 			{
-				"71":
+				"17":
 				{
 					"group": 0,
 					"index": 0
@@ -707,7 +876,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 239.0,
+	"side_bar_width": 221.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
