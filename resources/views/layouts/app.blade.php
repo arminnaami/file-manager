@@ -19,8 +19,8 @@
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+    'csrfToken' => csrf_token(),
+]); ?>
     </script>
 </head>
 <body>
@@ -36,7 +36,7 @@
                     <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
                     <li>
-                        <a href="#" class='dropdown-button' id="profile_dropdown_btn" data-activates='profile_dropdown'>
+                        <a href="javascript:;" class='dropdown-button' id="profile_dropdown_btn" data-activates='profile_dropdown'>
                             <img src="{{URL::asset('/img/default_profile_photo.png')}}" class="circle">
                         </a>
                         <ul id='profile_dropdown' class='dropdown-content'>
@@ -48,7 +48,7 @@
                                     <div id="profile_dropdown_card_account">
                                         <strong>{{ $user->name }}</strong><br>
                                         <span>{{ $user->email }}</span><br><br>
-                                        <a href="#" class="btn" id="profile_dropdown_myacc_btm">My profile</a>
+                                        <a href="{{ url('/profile') }}" class="btn" id="profile_dropdown_myacc_btm">My profile</a>
                                         <a href="{{ url('/logout') }}"  onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();"
                                              class="profile_dropdown_card_a">Logout</a>
@@ -83,20 +83,6 @@
                 </a>
             </div>
         </nav>
-        @if (!Auth::guest())
-            <ul id="slide-out" class="side-nav" style="transform: translateX(0px);">
-              <li>
-                    <div class="userView">
-                        <div class="background">
-                            <img src="{{URL::asset('/img/office.jpg')}}" />
-                        </div>
-                        <a href="#!user"><img class="circle" src="{{URL::asset('/img/default_profile_photo.png')}}"></a>
-                        <a href="#!name"><span class="white-text name">{{ $user->name }}</span></a>
-                        <a href="#!email"><span class="white-text email">{{ $user->email }}</span></a>
-                    </div>
-              </li>
-            </ul>
-        @endif
         @yield('content')
     </div>
     <!-- Scripts -->
@@ -107,6 +93,9 @@
     <script>
         @if (session('status'))
             Materialize.toast("{{ session('status') }}", 4000, 'green darken-4');
+        @endif
+        @if (session('alert-success'))
+            Materialize.toast("{{ session('alert-success') }}", 4000, 'green darken-4');
         @endif
         @if(!Auth::guest())
             $('.dropdown-button').dropdown({

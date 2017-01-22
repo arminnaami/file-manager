@@ -2,7 +2,9 @@ nav ul a,
 nav .brand-logo {
   color: #444;
 }
-
+nav .brand-logo{
+  position: inherit;
+}
 p {
   line-height: 2rem;
 }
@@ -50,6 +52,9 @@ p {
   -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.2);
   box-shadow: 0 2px 10px rgba(0,0,0,.2);
   overflow: inherit !important;
+  right: 0 !important;
+  top: 65px !important;
+  min-width: 320px;
 }
 #profile_dropdown img{
   width: 100px;
@@ -66,6 +71,8 @@ p {
 
 #profile_dropdown_card{ 
   width: 320px;
+  min-width: 320px;
+  min-height: 100px;
   padding:20px;
   text-align:left;
 }
@@ -95,4 +102,10 @@ p {
   padding-right: 10px;
   margin-left: 0px;
   margin-right: 0px;
+}
+.mt0{
+  margin-top: 0 !important;
+}
+.mb0{
+  margin-bottom: 0 !important;
 }
