@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"scrip",
+				"scripts\t(login.blade.php)"
+			],
+			[
+				"car",
+				"Carbon\\Carbon〔class〕"
+			],
+			[
+				"Roles",
+				"RolesTableSeeder〔class〕"
+			],
+			[
+				"def",
+				"default\t(RegisterController.php)"
+			],
+			[
+				"register",
+				"register-holder\t(register.blade.php)"
+			],
+			[
+				"section",
+				"section"
+			],
+			[
 				"rem",
 				"remember"
 			],
@@ -24,19 +48,32 @@
 	"buffers":
 	[
 		{
-			"file": ".env",
+			"contents": "Package Control Messages\n========================\n\nCodeFormatter\n-------------\n\n  Thanks for installing Sublime CodeFormatter! Below are some quick notes to get you\n  started with the plugin.\n  \n  CodeFormatter\n  =============\n  \n  \n  CodeFormatter is a Sublime Text 2/3 plugin that supports format (beautify) source code.\n  \n  \n  CodeFormatter has support for the following languages:\n  \n  * PHP - By phpfmt\n  * JavaScript/JSON - By JSBeautifier\n  * HTML - By JSBeautifier\n  * CSS - By JSBeautifier\n  * SCSS - By Nishutosh Sharma\n  * Python - By PythonTidy (only ST2)\n  * Visual Basic/VBScript\n  \n  \n  Sponsors\n  -----\n  No sponsors yet.. :(\n  \n  If you like the software, don't forget to donate to further development of it!\n  \n  [![PayPal donate button](https://www.paypalobjects.com/webstatic/en_US/btn/btn_donate_pp_142x27.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=akalongman@gmail.com&item_name=Donation to Sublime Text - CodeFormatter&item_number=1&no_shipping=1 \"Donate to this project using Paypal\")\n  \n  \n  Installing\n  ----------\n  **With the Package Control plugin:** The easiest way to install CodeFormatter is through Package Control, which can be found at this site: http://wbond.net/sublime_packages/package_control\n  \n  Once you install Package Control, restart Sublime Text and bring up the Command Palette (`Command+Shift+P` on OS X, `Control+Shift+P` on Linux/Windows). Select \"Package Control: Install Package\", wait while Package Control fetches the latest package list, then select CodeFormatter when the list appears. The advantage of using this method is that Package Control will automatically keep CodeFormatter up to date with the latest version.\n  \n  **Without Git:** Download the latest source from [GitHub](https://github.com/akalongman/sublimetext-codeformatter) and copy the CodeFormatter folder to your Sublime Text \"Packages\" directory.\n  \n  **With Git:** Clone the repository in your Sublime Text \"Packages\" directory:\n  \n      git clone https://github.com/akalongman/sublimetext-codeformatter.git CodeFormatter\n  \n  \n  The \"Packages\" directory is located at:\n  \n  * OS X:\n  \n          ST2: ~/Library/Application Support/Sublime Text 2/Packages/\n          ST3: ~/Library/Application Support/Sublime Text 3/Packages/\n  \n  * Linux:\n  \n          ST2: ~/.config/sublime-text-2/Packages/\n          ST3: ~/.config/sublime-text-3/Packages/\n  \n  * Windows:\n  \n          ST2: %APPDATA%/Sublime Text 2/Packages/\n          ST3: %APPDATA%/Sublime Text 3/Packages/\n  \n  \n  ## Formatter-specific notes\n  Following are notes specific to individual formatters that you should be aware of:\n  ### PHP\n  PHP - Used phpfmt (https://github.com/phpfmt/fmt) by Carlos Cirello and Shaked Klein Orbach.\n  \n  Getting and installing PHP - http://www.php.net/manual/en/install.general.php\n  \n  You must install 5.6 or above\n  \n  On Linux/OSx after installation of package, you must set chmod +x to file fmt.phar in folder %PACKAGESDIR%/CodeFormatter/codeformatter/lib/phpbeautifier\n  \n  You can list all available transformations from Command Palette: CodeFormatter: Show PHP Transformations\n  \n  Language specific options:\n  ```js\n     \"codeformatter_php_options\":\n      {\n          \"syntaxes\": \"php\", // Syntax names which must process PHP formatter\n          \"php_path\": \"\", // Path for PHP executable, e.g. \"/usr/lib/php\" or \"C:/Program Files/PHP/php.exe\". If empty, uses command \"php\" from system environments\n          \"format_on_save\": false, // Format on save\n          \"psr1\": false, // Activate PSR1 style\n          \"psr1_naming\": false, // Activate PSR1 style - Section 3 and 4.3 - Class and method names case\n          \"psr2\": true, // Activate PSR2 style\n          \"indent_with_space\": 4, // Use spaces instead of tabs for indentation\n          \"enable_auto_align\": true, // Enable auto align of = and =>\n          \"visibility_order\": true, // Fixes visibiliy order for method in classes - PSR-2 4.2\n          \"smart_linebreak_after_curly\": true, // Convert multistatement blocks into multiline blocks\n  \n          // Enable specific transformations. Example: [\"ConvertOpenTagWithEcho\", \"PrettyPrintDocBlocks\"]\n          // You can list all available transformations from command palette: CodeFormatter: Show PHP Transformations\n          \"passes\": [],\n  \n          // Disable specific transformations\n          \"exclude\": []\n      }\n  ```\n  \n  \n  \n  ### Javascript/JSON\n  Javascript/JSON - used [JSBeautifier] (http://jsbeautifier.org/) by Einar Lielmanis\n  \n  Language specific options:\n  ```js\n      \"codeformatter_js_options\":\n      {\n          \"syntaxes\": \"javascript,json\", // Syntax names which must process JS formatter\n          \"format_on_save\": false, // Format on save\n          \"indent_size\": 4, // indentation size\n          \"indent_char\": \" \", // Indent character\n          \"indent_with_tabs\": false, // Indent with one tab (overrides indent_size and indent_char options)\n          \"eol\": \"\\n\", // EOL symbol\n          \"preserve_newlines\": false, // whether existing line breaks should be preserved,\n          \"max_preserve_newlines\": 10, // maximum number of line breaks to be preserved in one chunk\n          \"space_in_paren\": false, // Add padding spaces within paren, ie. f( a, b )\n          \"space_in_empty_paren\": false, // Add padding spaces within paren if parent empty, ie. f(  )\n          \"e4x\": false, // Pass E4X xml literals through untouched\n          \"jslint_happy\": false, // if true, then jslint-stricter mode is enforced. Example function () vs function()\n          \"brace_style\": \"collapse\", // \"collapse\" | \"expand\" | \"end-expand\". put braces on the same line as control statements (default), or put braces on own line (Allman / ANSI style), or just put end braces on own line.\n          \"keep_array_indentation\": false, // keep array identation.\n          \"keep_function_indentation\": false, // keep function identation.\n          \"eval_code\": false, // eval code\n          \"unescape_strings\": false, // Decode printable characters encoded in xNN notation\n          \"wrap_line_length\": 0, // Wrap lines at next opportunity after N characters\n          \"break_chained_methods\": false, // Break chained method calls across subsequent lines\n          \"end_with_newline\": false, // Add new line at end of file\n          \"comma_first\": false // Add comma first\n      }\n  ```\n  \n  ### HTML\n  HTML - used custom python port, please use it with caution, feature in early beta\n  \n  Language specific options:\n  ```js\n      \"codeformatter_html_options\":\n      {\n          \"syntaxes\": \"html,asp,xml\", // Syntax names which must process HTML formatter\n          \"format_on_save\": false, // Format on save\n          \"indent_size\": 4, // indentation size\n          \"indent_char\": \" \", // Indentation character\n          \"indent_with_tabs\": false, // Indent with one tab (overrides indent_size and indent_char options)\n          \"preserve_newlines\": false, // Preserve existing line-breaks\n          \"max_preserve_newlines\": 10, // Maximum number of line-breaks to be preserved in one chunk\n          \"indent_tags\": \"html|head|body|div|nav|ul|ol|dl|li|table|thead|tbody|tr|th|td|blockquote|select|form|option|optgroup|fieldset|legend|label|header|section|aside|footer|figure|video|datalist|keygen|audio|embed|source|track|output|article|bdi|details|dialog|figcaption|main|mark|menuitem|meter|nav|progress|rp|rt|ruby|summary|time|wbr\" // List of tags (defaults to indent) that should be reformatted. Example \"div|p|li|table\"\n      }\n  ```\n  \n  ### CSS\n  CSS - used [JSBeautifier] (http://jsbeautifier.org/) by Einar Lielmanis and Style Css by Harutyun Amirjanyan\n  \n  Language specific options:\n  ```js\n      \"codeformatter_css_options\":\n      {\n          \"syntaxes\": \"css,less\", // Syntax names which must process CSS formatter\n          \"format_on_save\": false, // Format on save\n          \"indent_size\": 4, // Indentation size\n          \"indent_char\": \" \", // Indentation character\n          \"indent_with_tabs\": false, // Indent with one tab (overrides indent_size and indent_char options)\n          \"selector_separator_newline\": false, // Add new lines after selector separators\n          \"end_with_newline\": false, // Add new line of end in file\n          \"newline_between_rules\": false, // Add new line between rules\n          \"eol\": \"\\n\" // EOL symbol\n      }\n  ```\n  ### SCSS\n  SCSS - Simply modified the CSS formatter module as per the response from scss-lint (Gives way to modify further)\n  \n  Language specific options:\n  ```js\n      \"codeformatter_scss_options\":\n      {\n          \"syntaxes\": \"scss\", // Indentation size\n          \"indent_size\": 2, // Indentation size\n          \"format_on_save\": false, // Format on save\n          \"indent_char\": \" \", // Indentation character\n          \"indent_with_tabs\": false, // Indent with one tab (overrides indent_size and indent_char options)\n          \"selector_separator_newline\": true, // Add new lines after selector separators\n          \"end_with_newline\": true // Add new line of end in file\n      }\n  ```\n  \n  ### Python\n  Python - used [PythonTidy] (https://pypi.python.org/pypi/PythonTidy/) by Chuck Rhode\n  \n  Language specific options:\n  ```js\n      \"codeformatter_python_options\":\n      {\n          \"syntaxes\": \"python\", // Syntax names which must process Python formatter\n          \"format_on_save\": false, // Format on save\n          \"indent_size\": 1, // indentation size\n          \"indent_with_tabs\": true, // Indent with tabs or spaces\n          \"max_char\": 80, // Width of output lines in characters.\n          \"assignment\": \" = \", // This is how the assignment operator is to appear.\n          \"function_param_assignment\": \"=\", // This is how function-parameter assignment should appear.\n          \"function_param_sep\": \", \", // This is how function parameters are separated.\n          \"list_sep\": \", \", // This is how list items are separated.\n          \"subscript_sep\": \"=\", // This is how subscripts are separated.\n          \"dict_colon\": \": \", // This separates dictionary keys from values.\n          \"slice_colon\": \":\", // this separates the start:end indices of slices.\n          \"comment_prefix\": \"# \", // This is the sentinel that marks the beginning of a commentary string.\n          \"shebang\": \"#!/usr/bin/env python\", // Hashbang, a line-one comment naming the Python interpreter to Unix shells.\n          \"boilerplate\": \"\", // Standard code block (if any). This is inserted after the module doc string on output.\n          \"blank_line\": \"\", // This is how a blank line is to appear (up to the newline character).\n          \"keep_blank_lines\": true, // If true, preserve one blank where blank(s) are encountered.\n          \"add_blank_lines_around_comments\": true, // If true, set off comment blocks with blanks.\n          \"add_blank_line_after_doc_string\": true, // If true, add blank line after doc strings.\n          \"max_seps_func_def\": 3, // Split lines containing longer function definitions.\n          \"max_seps_func_ref\": 5, // Split lines containing longer function calls.\n          \"max_seps_series\": 5, // Split lines containing longer lists or tuples.\n          \"max_seps_dict\": 3, // Split lines containing longer dictionary definitions.\n          \"max_lines_before_split_lit\": 2, // Split string literals containing more newline characters.\n          \"left_margin\": \"\", // This is how the left margin is to appear.\n          \"normalize_doc_strings\": false, // If true, normalize white space in doc strings.\n          \"leftjust_doc_strings\": false, // If true, left justify doc strings.\n          \"wrap_doc_strings\": false, // If true, wrap doc strings to max_char.\n          \"leftjust_comments\": false, // If true, left justify comments.\n          \"wrap_comments\": false, // If true, wrap comments to max_char.\n          \"double_quoted_strings\": false, // If true, use quotes instead of apostrophes for string literals.\n          \"single_quoted_strings\": false, // If true, use apostrophes instead of quotes for string literals.\n          \"can_split_strings\": false, // If true, longer strings are split at the max_char.\n          \"doc_tab_replacement\": \"....\", // This literal replaces tab characters in doc strings and comments.\n  \n          // Optionally preserve unassigned constants so that code to be tidied\n          // may contain blocks of commented-out lines that have been no-op'ed\n          // with leading and trailing triple quotes.  Python scripts may declare\n          // constants without assigning them to a variables, but CodeFormatter\n          // considers this wasteful and normally elides them.\n          \"keep_unassigned_constants\": false,\n  \n          // Optionally omit parentheses around tuples, which are superfluous\n          // after all.  Normal CodeFormatter behavior will be still to include them\n          // as a sort of tuple display analogous to list displays, dict\n          // displays, and yet-to-come set displays.\n          \"parenthesize_tuple_display\": true,\n  \n          // When CodeFormatter splits longer lines because max_seps\n          // are exceeded, the statement normally is closed before the margin is\n          // restored.  The closing bracket, brace, or parenthesis is placed at the\n          // current indent level.  This looks ugly to \"C\" programmers.  When\n          // java_style_list_dedent is True, the closing bracket, brace, or\n          // parenthesis is brought back left to the indent level of the enclosing\n          // statement.\n          \"java_style_list_dedent\": false\n      }\n  ```\n  ### Visual Basic/VBScript\n  Visual Basic/VBScript - used custom approach using the HTML beautifier as a guide\n  \n  Language specific options:\n  ```js\n      \"codeformatter_vbscript_options\":\n      {\n          \"syntaxes\": \"vbscript\", // Syntax names which must process VBScript formatter\n          \"format_on_save\": false, // Format on save\n          \"indent_size\": 1, // indentation size\n          \"indent_char\": \"\\t\", // Indentation character\n          \"indent_with_tabs\": true, // Indent with one tab (overrides indent_size and indent_char options)\n          \"preserve_newlines\": true, // Preserve existing line-breaks\n          \"max_preserve_newlines\": 10, // Maximum number of line-breaks to be preserved in one chunk\n          \"opening_tags\": \"^(Function .*|Sub .*|If .* Then|For .*|Do While .*|Select Case.*)\", // List of keywords which open a new block\n          \"middle_tags\": \"^(Else|ElseIf .* Then|Case .*)$\", // List of keywords which divide a block, but neither open or close the block\n          \"closing_tags\": \"(End Function|End Sub|End If|Next|Loop|End Select)$\" // List of keywords which close an open block\n      }\n  ```\n  \n  Usage\n  -----\n  Tools -> Command Palette (`Cmd+Shift+P` or `Ctrl+Shift+P`) and type `Format Code`.\n  \n  You can set up your own key combo for this, by going to Preferences -> Key Bindings - User, and adding a command in that huge array: `{ \"keys\": [\"ctrl+alt+f\"], \"command\": \"code_formatter\" },`. Default keybinding is `ctrl+alt+f`. You can use any other key you want, thought most of them are already taken.\n  \n  TODO\n  -----\n  Add other languages support:\n  * Python (for ST3)\n  * Perl\n  * Ruby\n  \n  Pull requests are welcome.\n  \n  Troubleshooting\n  ---------------\n  If you like living on the edge, please report any bugs you find on the [CodeFormatter issues](https://github.com/akalongman/sublimetext-codeformatter/issues) page.\n\n\nphpfmt\n------\n\n  # [phpfmt](https://github.com/phpfmt/fmt) support for Sublime Text 3\n  \n  \n  Thanks for installing phpfmt for Sublime Text.\n  \n  Please, before posting an issue that this plugin is not formatting your code, answer the following questions:\n  \n  - Have you installed PHP in the computer which is running Sublime Text?\n  \n  - Is PHP configured in the default $PATH/%PATH% variable?\n  \n  - If PHP is not configured in $PATH/%PATH%, have you added the option \"php_bin\" in the configuration file with full path of PHP binary?\n  \n  - Are you running at least PHP 5.6?\n  \n  If you have answered more than one \"no\", then double check your environment.\n  \n  XDebug makes this plugin to work much slower than normal. Consider disabling it before actually using phpfmt.\n",
 			"settings":
 			{
-				"buffer_size": 639,
-				"line_ending": "Windows"
+				"buffer_size": 16171,
+				"line_ending": "Unix",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
 			}
 		},
 		{
-			"file": "app/Http/Controllers/HomeController.php",
+			"file": "app/Http/Controllers/Auth/RegisterController.php",
 			"settings":
 			{
-				"buffer_size": 452,
-				"line_ending": "Windows"
+				"buffer_size": 1903,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/ozi/.config/sublime-text-3/Packages/phpfmt/phpfmt.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 87,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -47,13 +84,77 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 173.0,
-		"last_filter": "install",
+		"height": 392.0,
+		"last_filter": "reset",
 		"selected_items":
 		[
 			[
+				"reset",
+				"Git: Reset (hard) HEAD"
+			],
+			[
+				"phpfmt",
+				"phpfmt: enable/disable additional transformations"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"pull",
+				"Git: Pull"
+			],
+			[
+				"satus",
+				"Git: Status"
+			],
+			[
+				"commi",
+				"Git: Commit"
+			],
+			[
+				"add",
+				"Git: Add All"
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"mir",
+				"Laravel Artisan 5: Migrate:Refresh"
+			],
+			[
+				"seed",
+				"Laravel Artisan 5: DB:Seed"
+			],
+			[
+				"refresh",
+				"Laravel Artisan 5: Migrate:Refresh"
+			],
+			[
+				"refres",
+				"Laravel Artisan 5: Migrate:Refresh"
+			],
+			[
+				"laravel make",
+				"Laravel Artisan 5: Make:Seeder"
+			],
+			[
+				"artisan migrate",
+				"Laravel Artisan 5: Migrate"
+			],
+			[
+				"artisan roll",
+				"Laravel Artisan 5: Migrate:Rollback"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
 			],
 			[
 				"git commi",
@@ -76,10 +177,6 @@
 				"Git: Status"
 			],
 			[
-				"remove",
-				"Package Control: Remove Package"
-			],
-			[
 				"push",
 				"Git: Push Current Branch"
 			],
@@ -88,24 +185,12 @@
 				"Git: Push"
 			],
 			[
-				"pull",
-				"Git: Pull"
-			],
-			[
 				"stat",
 				"Git: Status"
 			],
 			[
 				"commit",
 				"Git: Commit"
-			],
-			[
-				"add",
-				"Git: Add All"
-			],
-			[
-				"status",
-				"Git: Status"
 			],
 			[
 				"migrate",
@@ -124,16 +209,8 @@
 				"Laravel Artisan 5: Make:Migration"
 			],
 			[
-				"artisan migrate",
-				"Laravel Artisan 5: Migrate"
-			],
-			[
 				"git remo",
 				"Git: Track Remote Branch"
-			],
-			[
-				"commi",
-				"Git: Commit"
 			],
 			[
 				"git init",
@@ -148,14 +225,13 @@
 				"Git: Init"
 			]
 		],
-		"width": 528.0
+		"width": 593.0
 	},
 	"console":
 	{
 		"height": 126.0,
 		"history":
 		[
-			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
 			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
 			" import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
 		]
@@ -171,58 +247,83 @@
 	},
 	"expanded_folders":
 	[
-		"/C/xampp/htdocs/file-manager",
-		"/C/xampp/htdocs/file-manager/app",
-		"/C/xampp/htdocs/file-manager/app/Http",
-		"/C/xampp/htdocs/file-manager/app/Http/Controllers",
-		"/C/xampp/htdocs/file-manager/config"
+		"/var/www/html/fileManager",
+		"/var/www/html/fileManager/app",
+		"/var/www/html/fileManager/app/Http",
+		"/var/www/html/fileManager/app/Http/Controllers",
+		"/var/www/html/fileManager/app/Http/Controllers/Auth",
+		"/var/www/html/fileManager/app/Providers",
+		"/var/www/html/fileManager/database",
+		"/var/www/html/fileManager/database/migrations"
 	],
 	"file_history":
 	[
-		"/C/Users/Yuzdzhan/AppData/Roaming/Sublime Text 3/Packages/Phpcs/phpcs.sublime-settings",
-		"/C/Users/Yuzdzhan/AppData/Roaming/Sublime Text 3/Packages/User/phpcs.sublime-settings",
-		"/C/xampp/htdocs/file-manager/config/mail.php",
-		"/C/xampp/htdocs/file-manager/.env.example",
-		"/var/www/html/fileManager/app/Http/Controllers/Auth/LoginController.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php",
-		"/var/www/html/fileManager/vendor/composer/ClassLoader.php",
+		"/home/ozi/.config/sublime-text-3/Packages/phpfmt/message",
+		"/home/ozi/.config/sublime-text-3/Packages/CodeFormatter/CodeFormatter.sublime-settings",
+		"/home/ozi/.config/sublime-text-3/Packages/User/CodeFormatter.sublime-settings",
+		"/var/www/html/fileManager/app/Providers/AuthServiceProvider.php",
+		"/home/ozi/.config/sublime-text-3/Packages/phpfmt/phpfmt.sublime-settings",
+		"/var/www/html/fileManager/resources/views/home.blade.php",
+		"/var/www/html/fileManager/.gitignore",
+		"/var/www/html/fileManager/config/mail.php",
+		"/var/www/html/fileManager/.env",
+		"/var/www/html/fileManager/app/Http/Controllers/Auth/ResetPasswordController.php",
+		"/var/www/html/fileManager/resources/views/auth/passwords/reset.blade.php",
 		"/var/www/html/fileManager/resources/views/layouts/app.blade.php",
+		"/var/www/html/fileManager/resources/views/auth/register.blade.php",
+		"/var/www/html/fileManager/resources/views/auth/passwords/email.blade.php",
 		"/var/www/html/fileManager/resources/views/auth/login.blade.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/AliasLoader.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
 		"/var/www/html/fileManager/public/css/app.css",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/SendsPasswordResetEmails.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Auth/Passwords/PasswordBroker.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Auth/Passwords/CanResetPassword.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Notifications/RoutesNotifications.php",
+		"/var/www/html/fileManager/config/app.php",
+		"/var/www/html/fileManager/app/Http/Controllers/Auth/LoginController.php",
+		"/var/www/html/fileManager/app/Http/Controllers/Auth/RegisterController.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
+		"/var/www/html/fileManager/app/User.php",
+		"/var/www/html/fileManager/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/var/www/html/fileManager/database/seeds/DatabaseSeeder.php",
+		"/var/www/html/fileManager/database/migrations/2013_12_26_122732_roles.php",
+		"/var/www/html/fileManager/database/seeds/RolesTableSeeder.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php",
+		"/var/www/html/fileManager/vendor/nesbot/carbon/src/Carbon/Carbon.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php",
+		"/home/ozi/.config/sublime-text-3/Packages/Emmet/Default (Linux).sublime-keymap",
+		"/home/ozi/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/ozi/.config/sublime-text-3/Packages/Emmet/Emmet.sublime-settings",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Application.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Arr.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/helpers.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/AliasLoader.php",
+		"/var/www/html/fileManager/vendor/composer/ClassLoader.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Validation/ValidationServiceProvider.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Validation/ValidatesRequests.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Container/Container.php",
+		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Controller.php",
 		"/var/www/html/fileManager/public/js/app.js",
 		"/tmp/mozilla_ozi0/index-1.html",
 		"/tmp/mozilla_ozi0/style-2.css",
 		"/tmp/mozilla_ozi0/login.html",
-		"/var/www/html/fileManager/config/app.php",
 		"/tmp/mozilla_ozi0/index.html",
 		"/tmp/mozilla_ozi0/style-1.css",
 		"/tmp/mozilla_ozi0/custom-1.js",
 		"/tmp/mozilla_ozi0/custom.js",
 		"/tmp/mozilla_ozi0/style.css",
 		"/tmp/mozilla_ozi0/app.js",
-		"/var/www/html/fileManager/app/User.php",
-		"/var/www/html/fileManager/app/Http/Controllers/Auth/RegisterController.php",
-		"/var/www/html/fileManager/database/migrations/2014_10_12_000000_create_users_table.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Config/Repository.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Arr.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Auth/ThrottlesLogins.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/helpers.php",
 		"/var/www/html/fileManager/vendor/symfony/http-foundation/Request.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Facades/Auth.php",
 		"/var/www/html/fileManager/vendor/symfony/http-foundation/ParameterBag.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Application.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Auth/AuthManager.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Container/Container.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Http/Request.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Contracts/Auth/Guard.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Validation/ValidationServiceProvider.php",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php",
 		"/tmp/mozilla_ozi0/login-1.html",
-		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Foundation/Validation/ValidatesRequests.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Log/Writer.php",
 		"/var/www/html/fileManager/app/Exceptions/Handler.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
@@ -240,7 +341,6 @@
 		"/home/ozi/Downloads/materialize/css/materialize.css",
 		"/var/www/html/fileManager/app/Http/Controllers/Auth/ForgotPasswordController.php",
 		"/var/www/html/fileManager/vendor/laravel/framework/src/Illuminate/Contracts/Validation/Validator.php",
-		"/var/www/html/fileManager/.env",
 		"/var/www/html/fileManager/public/index.php",
 		"/var/www/html/fileManager/bootstrap/autoload.php",
 		"/var/www/html/fileManager/vendor/autoload.php",
@@ -249,8 +349,6 @@
 		"/var/www/html/fileManager/app/Http/Controllers/HomeController.php",
 		"/var/www/html/fileManager/public/.htaccess",
 		"/tmp/mozilla_ozi0/ImageController.php",
-		"/var/www/html/fileManager/.gitignore",
-		"/var/www/html/fileManager/database/migrations/2013_12_26_122732_roles.php",
 		"/home/ozi/.config/sublime-text-3/Packages/Xdebug Client/Xdebug.sublime-settings",
 		"/var/www/html/fileManager/vendor/composer/autoload_static.php",
 		"/var/www/html/fileManager/fileManager.sublime-project",
@@ -287,19 +385,11 @@
 		"/var/www/html/testProject/resources/views/welcome.blade.php",
 		"/var/www/html/testProject/vendor/monolog/monolog/tests/Monolog/Handler/MockRavenClient.php",
 		"/var/www/html/testProject/config/app.php",
-		"/var/www/html/testProject/.env",
-		"/var/www/html/testProject/vendor/symfony/routing/Route.php",
-		"/var/www/html/test/index.php",
-		"/home/ozi/.config/sublime-text-3/Packages/PHP Companion/PHP Companion.sublime-settings",
-		"/home/ozi/.config/sublime-text-3/Packages/User/PHP Companion.sublime-settings",
-		"/home/ozi/.config/sublime-text-3/Packages/Git/Git.sublime-settings",
-		"/home/ozi/.config/sublime-text-3/Packages/User/GitGutter.sublime-settings",
-		"/home/ozi/.config/sublime-text-3/Packages/GitGutter/GitGutter.sublime-settings",
-		"/home/ozi/.config/sublime-text-3/Packages/User/Git.sublime-settings"
+		"/var/www/html/testProject/.env"
 	],
 	"find":
 	{
-		"height": 31.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -315,7 +405,60 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"path",
+			"', '",
+			"', ' ",
+			"</td>",
+			"   class=\"color3\">",
+			"</tr>",
+			"<tr>",
+			"</span>&nbsp;<a href=\"/class=\"color3\">",
+			"\n      <td class=\"bg1\">",
+			"\n      <td class=\"bg2\">",
+			"</span>&nbsp;<a href=\"class=\"color3\">",
+			" <td class=\"bg2\" width=\"17%\" nowrap=\"nowrap\"><span class=\"icon1\"><img src=\"",
+			"</strong></a>&nbsp;</td>",
+			"class=\"color3\">",
+			"title=\"3ga file extension\"><strong class=\"color3\">",
+			"<td class=\"bg2\" width=\"17%\" nowrap=\"nowrap\"><span class=\"noiconsmall\"></span>&nbsp;<a h",
+			"<td class=\"bg2\" width=\"17%\" nowrap=\"nowrap\"><span class=\"noiconsmall\"></span>&nbsp;<a href=\"/3ga-file-extension\" title=\"3ga file extension\"><strong class=\"color3\">",
+			"', '",
+			"   ",
+			"WebEx",
+			"arf    WebEx",
+			"    ",
+			"   ",
+			"        ",
+			"   ",
+			"        ",
+			"       ",
+			"      ",
+			"     ",
+			"    ",
+			"   ",
+			"         ",
+			"        ",
+			"       ",
+			"      ",
+			"     ",
+			"    ",
+			"        ",
+			"</td>",
+			"</tr>",
+			"<td class=\"bg1\">",
+			"<td class=\"bg2\">",
+			"</strong></a>&nbsp;</td>",
+			"class=\"color3\">",
+			" class=\"color3\">",
+			"<strong ",
+			"strong",
+			"\"><strong",
+			"<strong",
+			"php",
+			"sendmail",
+			"fmr_",
+			"fmu_",
+			"form-control",
+			"fmu_password",
 			"min",
 			"postlogin",
 			"fmu",
@@ -336,6 +479,13 @@
 		"regex": false,
 		"replace_history":
 		[
+			"   ",
+			"",
+			"'), trim('",
+			"', '",
+			"   ",
+			"",
+			"validate"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -351,52 +501,128 @@
 			[
 				{
 					"buffer": 0,
-					"file": ".env",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 639,
+						"buffer_size": 16171,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								439,
-								439
+								2692,
+								2692
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"auto_indent": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 304.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/Http/Controllers/HomeController.php",
+					"file": "app/Http/Controllers/Auth/RegisterController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 452,
+						"buffer_size": 1903,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								380,
-								380
+								1067,
+								1067
 							]
 						],
 						"settings":
 						{
-							"auto_complete": true,
+							"auto_complete": false,
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
@@ -404,8 +630,8 @@
 								{
 									"1":
 									[
-										450,
-										451
+										1901,
+										1902
 									]
 								},
 								"icon":
@@ -420,8 +646,8 @@
 								{
 									"1":
 									[
-										110,
-										111
+										230,
+										231
 									]
 								},
 								"unmatched":
@@ -435,6 +661,11 @@
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -450,21 +681,21 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -475,16 +706,11 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
@@ -496,13 +722,136 @@
 					},
 					"stack_index": 0,
 					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/ozi/.config/sublime-text-3/Packages/phpfmt/phpfmt.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 87,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								65,
+								65
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										85,
+										86
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										0,
+										1
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 28.0
 	},
 	"input":
 	{
@@ -517,11 +866,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.972632731253,
 			1.0
 		],
 		"rows":
@@ -551,7 +907,7 @@
 	"project": "fileManager.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 66.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -561,8 +917,56 @@
 		"selected_items":
 		[
 			[
-				"mail",
-				"config\\mail.php"
+				"home",
+				"resources/views/home.blade.php"
+			],
+			[
+				"email",
+				"resources/views/auth/passwords/email.blade.php"
+			],
+			[
+				"app.b",
+				"resources/views/layouts/app.blade.php"
+			],
+			[
+				"register",
+				"resources/views/auth/register.blade.php"
+			],
+			[
+				"sends",
+				"vendor/laravel/framework/src/Illuminate/Foundation/Auth/SendsPasswordResetEmails.php"
+			],
+			[
+				"app.php",
+				"config/app.php"
+			],
+			[
+				"app",
+				"public/css/app.css"
+			],
+			[
+				"reset",
+				"resources/views/auth/passwords/reset.blade.php"
+			],
+			[
+				"login",
+				"resources/views/auth/login.blade.php"
+			],
+			[
+				"registeruser",
+				"vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php"
+			],
+			[
+				"app.css",
+				"public/css/app.css"
+			],
+			[
+				"logincontr",
+				"app/Http/Controllers/Auth/LoginController.php"
+			],
+			[
+				"app.bla",
+				"resources/views/layouts/app.blade.php"
 			],
 			[
 				"logincontroller",
@@ -571,10 +975,6 @@
 			[
 				"authenticatesusers",
 				"vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php"
-			],
-			[
-				"login",
-				"resources/views/auth/login.blade.php"
 			],
 			[
 				"authenticateuser",
@@ -587,10 +987,6 @@
 			[
 				"logincontrolle",
 				"app/Http/Controllers/Auth/LoginController.php"
-			],
-			[
-				"app.css",
-				"public/css/app.css"
 			],
 			[
 				"user",
@@ -633,10 +1029,50 @@
 			"hide_conflict": false,
 			"restore_index":
 			{
-				"17":
+				"23":
+				{
+					"group": 0,
+					"index": 3
+				},
+				"25":
+				{
+					"group": 0,
+					"index": 1
+				},
+				"29":
+				{
+					"group": 0,
+					"index": 2
+				},
+				"30":
 				{
 					"group": 0,
 					"index": 0
+				},
+				"31":
+				{
+					"group": 0,
+					"index": 4
+				},
+				"35":
+				{
+					"group": 2,
+					"index": 1
+				},
+				"36":
+				{
+					"group": 1,
+					"index": 0
+				},
+				"37":
+				{
+					"group": 2,
+					"index": 0
+				},
+				"38":
+				{
+					"group": 1,
+					"index": 1
 				}
 			},
 			"restore_layout":
@@ -646,18 +1082,32 @@
 					[
 						0,
 						0,
-						1,
+						2,
 						1
+					],
+					[
+						0,
+						1,
+						1,
+						2
+					],
+					[
+						1,
+						1,
+						2,
+						2
 					]
 				],
 				"cols":
 				[
 					0.0,
+					0.5,
 					1.0
 				],
 				"rows":
 				[
 					0.0,
+					0.673938223938,
 					1.0
 				]
 			}
@@ -667,7 +1117,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 221.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
