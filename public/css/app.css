@@ -109,3 +109,16 @@ p {
 .mb0{
   margin-bottom: 0 !important;
 }
+#slide-out{
+  top: 65px;
+  width:200px;
+}
+#slide-out .userView{
+  padding:10px;
+  text-align: center;
+}
+#slide-out #user-profile-img{
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+}

@@ -10,43 +10,45 @@ use Illuminate\Support\Facades\Validator;
 class ProfileController extends Controller
 {
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
-    public function index()
-    {
-        return view('profile.index')->with('user', Auth::user());
-    }
+	public function index()
+	{
+		return view('profile.index')->with('user', Auth::user());
+	}
 
-    public function edit()
-    {
-        return view('profile.edit')->with('user', Auth::user());
-    }
+	public function edit()
+	{
+		return view('profile.edit')->with('user', Auth::user());
+	}
 
-    public function store(Request $request)
-    {
-        $this->validator($request->all())->validate();
+	public function store(Request $request)
+	{
+		$this->validator($request->all())->validate();
 
-        $user        = User::find(Auth::user()->id);
-        $user->name  = $request->name;
-        $user->email = $request->email;
-        $user->save();
+		$user		 = User::find(Auth::user()->id);
+		$user->name	 = $request->name;
+		$user->email = $request->email;
+		$user->save();
 
-        $request->session()->flash('alert-success', 'User was successfully edited!');
-        return redirect()->route("profile");
-    }
-    private function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name'  => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-        ]);
-    }
+		$request->session()->flash('alert-success', 'User was successfully edited!');
+		return redirect()->route("profile");
+	}
+
+	private function validator(array $data)
+	{
+		return Validator::make($data, [
+				'name'	 => 'required|max:255',
+				'email'	 => 'required|email|max:255|unique:users',
+		]);
+	}
+
 }
