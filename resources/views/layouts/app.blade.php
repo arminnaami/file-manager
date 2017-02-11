@@ -37,16 +37,16 @@
                 @else
                     <li>
                         <a href="javascript:;" class='dropdown-button' id="profile_dropdown_btn" data-activates='profile_dropdown'>
-                            <img src="{{URL::asset('/img/default_profile_photo.png')}}" class="circle">
+                            <img src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
                         </a>
                         <ul id='profile_dropdown' class='dropdown-content'>
                             <li>
                                 <div id="profile_dropdown_card">
                                     <div id="profile_dropdown_card_img_hldr">
-                                        <img src="{{URL::asset('/img/default_profile_photo.png')}}" class="circle">
+                                        <img src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
                                     </div>
                                     <div id="profile_dropdown_card_account">
-                                        <strong>{{ $user->name }}</strong><br>
+                                        <strong>{{ $user->profileImage->name.'.'.$user->profileImage->extension }}</strong><br>
                                         <span>{{ $user->email }}</span><br><br>
                                         <a href="{{ url('/profile') }}" class="btn" id="profile_dropdown_myacc_btm">My profile</a>
                                         <a href="{{ url('/logout') }}"  onclick="event.preventDefault();
@@ -90,7 +90,7 @@
                         <div class="background">
                             <img src="{{URL::asset('/img/office.jpg')}}" />
                         </div>
-                        <a href="#!user" id="user-profile-img"><img class="circle" src="{{URL::asset('/img/default_profile_photo.png')}}"></a>
+                        <a href="#!user" id="user-profile-img"><img class="circle" src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}"></a>
                         <a href="#!name"><span class="white-text name">{{ $user->name }}</span></a>
                         <a href="#!email"><span class="white-text email">{{ $user->email }}</span></a>
                     </div>

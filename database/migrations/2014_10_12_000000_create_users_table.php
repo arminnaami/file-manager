@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('profile_picture_id')->unsigned()->default('1');
+            $table->foreign('profile_picture_id')->references('id')->on('files');
             $table->rememberToken();
             $table->timestamps();
         });

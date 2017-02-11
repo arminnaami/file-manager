@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'file_id',
+        'name', 'email', 'password', 'profile_picture_id',
     ];
 
     /**
@@ -33,6 +33,6 @@ class User extends Authenticatable
 
 
     public function profileImage(){
-        $this->hasOne('App\File');
+        return $this->hasOne('App\File', 'id', 'profile_picture_id');
     }
 }

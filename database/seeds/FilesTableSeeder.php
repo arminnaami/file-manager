@@ -16,6 +16,7 @@ class FilesTableSeeder extends Seeder
         $file->private_name = md5('profile_picture');
         $file->extension = 'png';
         $file->description = 'Default profile image';
+        $file->is_crypted = false;
 
         $file->save();
     }
