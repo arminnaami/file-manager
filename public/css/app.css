@@ -1,4 +1,4 @@
-nav ul a,
+.brand-logonav ul a,
 nav .brand-logo {
   color: #444;
 }
@@ -121,4 +121,16 @@ p {
   width: 64px;
   height: 64px;
   margin: 0 auto;
+}
+
+.btn-thinner{
+  line-height: 25px;
+  height: 25px;
+}
+#upload_drpdn{
+  min-width: 200px;
+}
+#upload_drpdn i{
+  display: inline;
+  vertical-align: bottom;
 }

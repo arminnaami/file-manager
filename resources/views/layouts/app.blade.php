@@ -26,10 +26,33 @@
 <body>
     <div id="app">
         <nav class="white center" role="navigation">
-            <div class="nav-wrapper container">
+            <div class="nav-wrapper container left-align">
                 <a class="brand-logo" href="{{ url('/') }}" id="logo-container">
                         {{ config('app.name', 'FileManager') }}
-                    </a>
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                <a class='dropdown-button btn btn-thinner' href='#' data-activates='upload_drpdn'>New</a>
+
+                  <!-- Dropdown Structure -->
+                  <ul id='upload_drpdn' class='dropdown-content'>
+                    <li><a href="#!"><i class="material-icons">create_new_folder</i>&nbsp;Create new folder</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#!"><i class="material-icons">file_upload</i>&nbsp;File upload</a></li>
+                    <li><a href="#!"><i class="material-icons">folder</i>&nbsp;Folder upload</a></li>
+                  </ul>
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+
+
+
                 <ul class="right hide-on-med-and-down">
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">Login</a></li>
@@ -110,24 +133,6 @@
         @endif
         @if (session('alert-success'))
             Materialize.toast("{{ session('alert-success') }}", 4000, 'green darken-4');
-        @endif
-        @if(!Auth::guest())
-            $('.dropdown-button').dropdown({
-                inDuration: 300,
-                outDuration: 225,
-                constrain_width: false, // Does not change width of dropdown to that of the activator
-                hover: true, // Activate on hover
-                gutter: 0, // Spacing from edge
-                belowOrigin: true, // Displays dropdown below the button
-                alignment: 'right' // Displays dropdown with edge aligned to the left of button
-            });
-            $( window ).resize(function() {
-              if($( window ).width() < 991){
-                $('#slide-out').hide();
-                }else{
-                    $('#slide-out').show();
-                }
-            });
         @endif
     </script>
 </body>

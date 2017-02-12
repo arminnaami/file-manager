@@ -35,4 +35,11 @@ class User extends Authenticatable
     public function profileImage(){
         return $this->hasOne('App\File', 'id', 'profile_picture_id');
     }
+
+    public function files()
+    {
+        return $this->belongsToMany('App\File', 'access_rights', 'user_id', 'file_id')
+                    ->withPivot('created_at', 'file_access_token')
+                    ->withTimestamps();
+    }
 }

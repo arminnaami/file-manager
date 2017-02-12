@@ -27,6 +27,8 @@ class File extends Model
 
     public function users()
     {
-        return $this->hasMany('App\User');
+        return $this->belongsToMany('App\User', 'access_rights', 'file_id', 'user_id')
+                    ->withPivot('created_at', 'file_access_token')
+                    ->withTimestamps();
     }
 }
