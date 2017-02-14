@@ -1,3 +1,8 @@
+nav{
+  position: fixed;
+  z-index: 999;
+  top: 0;
+}
 .brand-logonav ul a,
 nav .brand-logo {
   color: #444;
@@ -66,10 +71,10 @@ p {
 }
 #profile_dropdown li:hover{
   cursor: default;
-  background-color: white; 
+  background-color: white;
 }
 
-#profile_dropdown_card{ 
+#profile_dropdown_card{
   width: 320px;
   min-width: 320px;
   min-height: 100px;
@@ -77,7 +82,7 @@ p {
   text-align:left;
 }
 #profile_dropdown_card_img_hldr{
-  width: 100px; 
+  width: 100px;
   display: inline-block;
 }
 #profile_dropdown_card_img_hldr img{
@@ -86,7 +91,7 @@ p {
 #profile_dropdown_card_account{
   display:inline-block;
   vertical-align: top;
-  padding:10px; 
+  padding:10px;
   font-size: 13px;
 }
 .profile_dropdown_card_a{
@@ -133,4 +138,7 @@ p {
 #upload_drpdn i{
   display: inline;
   vertical-align: bottom;
+}
+.home-page-container{
+  margin-left: 200px;
 }

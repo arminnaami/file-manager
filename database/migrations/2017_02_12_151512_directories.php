@@ -15,6 +15,8 @@ class Directories extends Migration {
 			$table->increments('id');
 			$table->integer('parent_id')->unsigned()->nullable();
 			$table->foreign('parent_id')->references('id')->on('directories');
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users');
 			$table->string('name');
 			$table->timestamps();
 		});

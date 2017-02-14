@@ -19,7 +19,7 @@
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-    'csrfToken' => csrf_token(),
+	'csrfToken' => csrf_token(),
 ]); ?>
     </script>
 </head>
@@ -30,21 +30,21 @@
                 <a class="brand-logo" href="{{ url('/') }}" id="logo-container">
                         {{ config('app.name', 'FileManager') }}
                 </a>
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+                @if (!Auth::guest())
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
-                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
-                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
-                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
-                {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
-                <a class='dropdown-button btn btn-thinner' href='#' data-activates='upload_drpdn'>New</a>
-
-                  <!-- Dropdown Structure -->
-                  <ul id='upload_drpdn' class='dropdown-content'>
-                    <li><a href="#!"><i class="material-icons">create_new_folder</i>&nbsp;Create new folder</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!"><i class="material-icons">file_upload</i>&nbsp;File upload</a></li>
-                    <li><a href="#!"><i class="material-icons">folder</i>&nbsp;Folder upload</a></li>
-                  </ul>
+                    <a class='dropdown-button btn btn-thinner' href='#' data-activates='upload_drpdn'>New</a>
+                    <ul id='upload_drpdn' class='dropdown-content'>
+                        <li><a href="#create_folder"><i class="material-icons">create_new_folder</i>&nbsp;Create new folder</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#!"><i class="material-icons">file_upload</i>&nbsp;File upload</a></li>
+                        <li><a href="#!"><i class="material-icons">folder</i>&nbsp;Folder upload</a></li>
+                    </ul>
+                  @endif
                 {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
                 {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
                 {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
@@ -119,8 +119,35 @@
                     </div>
                 </li>
             </ul>
-        @endif
+            <!-- Modal Structure -->
+            <div id="create_folder" class="modal">
+                <div class="modal-content">
+                    <h4>Create folder</h4>
+                    <div class="container">
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <input
+                            type="text"
+                            name="folder_name"
+                            id="folder_name"
+                            required
+                            autofocus>
+                            <label for="folder_name">Enter folder name</label>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Disagree</a>
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
+            <div class="home-page-container">
+                @yield('content')
+            </div>
+        @else
         @yield('content')
+        @endif
     </div>
     <!-- Scripts -->
     <script src="/js/jquery-3.1.1.min.js"></script>
