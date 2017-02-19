@@ -1,4 +1,4 @@
-nav{
+#logged-nav{
   position: fixed;
   z-index: 999;
   top: 0;
@@ -141,4 +141,5 @@ p {
 }
 .home-page-container{
   margin-left: 200px;
+  margin-top: 65px;
 }

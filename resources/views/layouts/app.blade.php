@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="white center" role="navigation">
+        <nav class="white center" @if (!Auth::guest()) id="logged-nav" @endif role="navigation">
             <div class="nav-wrapper container left-align">
                 <a class="brand-logo" href="{{ url('/') }}" id="logo-container">
                         {{ config('app.name', 'FileManager') }}
@@ -69,7 +69,7 @@
                                         <img src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
                                     </div>
                                     <div id="profile_dropdown_card_account">
-                                        <strong>{{ $user->profileImage->name.'.'.$user->profileImage->extension }}</strong><br>
+                                        <strong>{{ $user->name}}</strong><br>
                                         <span>{{ $user->email }}</span><br><br>
                                         <a href="{{ url('/profile') }}" class="btn" id="profile_dropdown_myacc_btm">My profile</a>
                                         <a href="{{ url('/logout') }}"  onclick="event.preventDefault();
