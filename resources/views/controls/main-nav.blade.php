@@ -48,7 +48,7 @@
                                 <a href="{{ url('/profile') }}" class="btn" id="profile_dropdown_myacc_btm">My profile</a>
                                 <a href="{{ url('/logout') }}"  onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();"
-                                     class="profile_dropdown_card_a">Logout</a>
+                                     class="profile_dropdown_card_a" id="logoutbtn">Logout</a>
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>

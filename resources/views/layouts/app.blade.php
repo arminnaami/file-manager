@@ -18,16 +18,18 @@
 
     <!-- Scripts -->
     <script>
-        window.Laravel = <?php echo json_encode([
-	'csrfToken' => csrf_token(),
-]); ?>
+        window.Laravel = {!!
+            json_encode([
+                 'csrfToken' => csrf_token(),
+             ]);
+        !!}
     </script>
 </head>
 <body>
     <div id="app">
         @include('controls.main-nav')
         @if (!Auth::guest())
-            
+
             @include('controls.sidebar')
             <!-- Modal Structure -->
             @include('controls.create-folder')

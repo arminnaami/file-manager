@@ -14,7 +14,7 @@ class File extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'private_name', 'extension', 'description', 'is_crypted'
+        'name', 'private_name', 'extension', 'description', 'is_crypted',
     ];
 
     /**
@@ -24,11 +24,10 @@ class File extends Model
      */
     protected $hidden = [];
 
-
     public function users()
     {
         return $this->belongsToMany('App\User', 'access_rights', 'file_id', 'user_id')
-                    ->withPivot('created_at', 'file_access_token')
-                    ->withTimestamps();
+            ->withPivot('created_at', 'file_access_token')
+            ->withTimestamps();
     }
 }

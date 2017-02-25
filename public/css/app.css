@@ -143,3 +143,16 @@ p {
   margin-left: 200px;
   margin-top: 65px;
 }
+.collection .collection-item.avatar{
+  min-height: 50px;
+}
+.collection .collection-item.avatar i.circle{
+  background-color: white;
+  color: #999;
+  width: 32px;
+  height: 32px;
+  line-height: 31px;
+}
+.collection .collection-item.avatar.active i.circle{
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
