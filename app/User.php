@@ -38,6 +38,6 @@ class User extends Authenticatable {
 			->withTimestamps();
 	}
 	public function directories() {
-		return $this->hasMany('App\Directory', 'id', 'user_id');
+		return $this->hasMany('App\Directory', 'user_id', 'id');
 	}
 }

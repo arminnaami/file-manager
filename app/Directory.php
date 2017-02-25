@@ -16,4 +16,7 @@ class Directory extends Model {
 	public function folders() {
 		return $this->hasMany('App\Directory', 'parent_id', 'id');
 	}
+	public function files(){
+		return $this->hasMany('App\Directory', 'directory_id', 'id');
+	}
 }

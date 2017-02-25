@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::get('/profile', ['as' => 'profile', 'uses' => 'ProfileController@index']);
 Route::get('/profile/edit', 'ProfileController@edit');
 Route::post('/profile/edit', 'ProfileController@store');
+
+Route::post('/directory/create', 'DirectoryController@store');
