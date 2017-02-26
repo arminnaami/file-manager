@@ -1,12 +1,20 @@
-<li class="collection-item avatar directory-row">
+<li class="collection-item avatar directory-row" data-dir-id="{{$directory->id}}">
 	<i class="material-icons circle">folder</i>
-	<span class="title">{{$directory->name}}</span>
+	<span class="title">{{$directory->original_name}}</span>
 </li>
 @section('scripts')
 	<script type="text/javascript">
 	$('.directory-row').on('click', function(){
 		$('.directory-row').not(this).removeClass('active');
 		$(this).addClass('active');
+	});
+
+	$('.directory-row').dblclick(function(){
+
+		var dirId = $(this).data('dirId');
+
+
+		window.location="/directory/"+dirId;
 	});
 	</script>
 @endsection

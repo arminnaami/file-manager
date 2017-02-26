@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Directory extends Model
 {
     protected $fillable = [
-        'name', 'directory_id',
+        'name', 'parent_id', 'original_name',
     ];
 
     public function parent()
@@ -15,7 +15,7 @@ class Directory extends Model
         return $this->belongsTo('App\Directory', 'id', 'parent_id');
     }
 
-    public function folders()
+    public function directories()
     {
         return $this->hasMany('App\Directory', 'parent_id', 'id');
     }

@@ -24,3 +24,5 @@ Route::get('/profile/edit', 'ProfileController@edit');
 Route::post('/profile/edit', 'ProfileController@store');
 
 Route::post('/directory/create', 'DirectoryController@store');
+
+Route::get('/directory/{id?}', ['as' => 'directory', 'uses' => 'DirectoryController@index']);

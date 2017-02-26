@@ -1,4 +1,4 @@
-<form class="col s12" role="form" method="POST" action="{{ url('/directory/create') }}">
+<form class="col s12" id='create_directory_form' role="form" method="POST" action="{{ url('/directory/create') }}">
     {{ csrf_field() }}
     <div id="create_directory" class="modal">
         <div class="modal-content">
@@ -15,7 +15,7 @@
                             <label for="directory_name">Enter folder name</label>
                         </div>
                     </div>
-                
+
             </div>
         </div>
         <div class="modal-footer">
