@@ -16,11 +16,11 @@
 @parent
 <script type="text/javascript">
 	$('<input>').attr({
-    type: 'hidden',
-    id: 'parent_id',
-    name: 'parent_id',
-    value: {{$directory->id}}
-}).appendTo('#create_directory_form');
+	    type: 'hidden',
+	    id: 'parent_id',
+	    name: 'parent_id',
+	    value: {{$directory->id}}
+	}).appendTo('#create_directory_form');
 
 
 	$('#back_row').on('click', function(){
@@ -28,9 +28,15 @@
 	});
 
 	$('#back_row').dblclick(function(){
-
 		var dirId = $(this).data('dirId');
 		window.location="/directory/"+dirId;
 	});
+
+	$('#back_row').on('tap', function(){
+		if($(window).width() < 991){
+			var dirId = $(this).data('dirId');
+			window.location="/directory/"+dirId;
+		}
+	});
 </script>
-@endsection
+@stop

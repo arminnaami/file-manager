@@ -14,6 +14,11 @@
 		var dirId = $(this).data('dirId');
 		window.location="/directory/"+dirId;
 	});
-	$('.directory-row').on('tap', function(){alert();});
+	$('.directory-row').on('tap', function(){
+		if($(window).width() < 991){
+			var dirId = $(this).data('dirId');
+			window.location="/directory/"+dirId;
+		}
+	});
 	</script>
 @endsection
