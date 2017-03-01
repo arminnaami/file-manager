@@ -4,11 +4,12 @@
             <div class="background">
                 <img src="{{URL::asset('/img/office.jpg')}}" />
             </div>
-            <a href="#!user" id="user-profile-img"><img class="circle" src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}"></a>
-            <a href="#!name"><span class="white-text name">{{ $user->name }}</span></a>
-            <a href="#!email"><span class="white-text email">{{ $user->email }}</span></a>
+            <a href="{{ url('/profile') }}" id="user-profile-img"><img class="circle" src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}"></a>
+            <a href="{{ url('/profile') }}"><span class="white-text name">{{ $user->name }}</span></a>
+            <a href="{{ url('/profile') }}"><span class="white-text email">{{ $user->email }}</span></a>
         </div>
     </li>
+    <li @if(Route::current()->getName() == 'home') class="active" @endif ><a href="{{ url('/home') }}"><i class="material-icons">perm_media</i> My Drive</a></li>
 </ul>
 
 @section('scripts')

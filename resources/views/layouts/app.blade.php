@@ -29,7 +29,6 @@
     <div id="app">
         @include('controls.main-nav')
         @if (!Auth::guest())
-
             @include('controls.sidebar')
             <!-- Modal Structure -->
             @include('controls.create-folder')

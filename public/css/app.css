@@ -5,6 +5,8 @@
   position: fixed;
   z-index: 999;
   top: 0;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(0,0,0,0.14);
 }
 a.brand-logo,
 nav ul a {
@@ -145,6 +147,7 @@ p {
 }
 .home-page-container{
   margin-left: 300px;
+  margin-top: -5px;
 }
 .collection .collection-item.avatar{
   min-height: 50px;
@@ -166,6 +169,13 @@ p {
   position: fixed;
   bottom: 20px;
   right: 20px;
+}
+#breadcrumb{
+  padding-left: 20px;
+}
+#breadcrumb a,
+#breadcrumb a:before{
+  color: rgba(0,0,0,0.87);
 }
 @media screen and (max-width: 990px) {
   .home-page-container{
