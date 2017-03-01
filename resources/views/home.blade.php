@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+@include('controls.breadcrumb')
 	@if(count($directories) > 0)
 		<ul class="collection">
 		  @foreach ($directories as $directory)

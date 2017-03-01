@@ -12,7 +12,7 @@ class Directory extends Model
 
     public function parent()
     {
-        return $this->belongsTo('App\Directory', 'id', 'parent_id');
+        return $this->belongsTo('App\Directory', 'parent_id', 'id');
     }
 
     public function directories()
@@ -22,5 +22,14 @@ class Directory extends Model
     public function files()
     {
         return $this->hasMany('App\Directory', 'directory_id', 'id');
+    }
+
+    public function getParents($directory, &$parents){
+        $parent = $directory->parent;
+        if(!empty($parent)){
+            $parents[] = $parent;
+            $this->getParents($parent, $parents);
+        }
+        return array_reverse($parents);
     }
 }

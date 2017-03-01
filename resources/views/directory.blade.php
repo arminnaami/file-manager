@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
- {{-- @include('controls.breadcrumb') --}}
+@include('controls.breadcrumb')
 <ul class="collection">
 	<li class="collection-item avatar directory-row" id="back_row" data-dir-id="{{$directory->parent_id}}">
 		<i class="material-icons circle">replay</i>

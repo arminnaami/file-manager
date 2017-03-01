@@ -138,9 +138,11 @@ p {
   line-height: 25px;
   height: 25px;
 }
+#upload_drpdn_main_nav,
 #upload_drpdn{
   min-width: 200px;
 }
+#upload_drpdn_main_nav i,
 #upload_drpdn i{
   display: inline;
   vertical-align: bottom;
@@ -148,6 +150,9 @@ p {
 .home-page-container{
   margin-left: 300px;
   margin-top: -5px;
+}
+.home-page-container > .collection{
+  margin-top: 0px;
 }
 .collection .collection-item.avatar{
   min-height: 50px;
@@ -172,10 +177,27 @@ p {
 }
 #breadcrumb{
   padding-left: 20px;
+  background-color: #fafafa !important;
 }
 #breadcrumb a,
 #breadcrumb a:before{
-  color: rgba(0,0,0,0.87);
+  color: #555;
+}
+.breadcrumb i{
+  margin-left: 0 !important;
+}
+.breadcrumb span{
+  padding:5px;
+}
+.breadcrumb span:hover{
+  border:1px solid #e0e0e0;
+  background-color: white;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+#breadcrumb .nav-wrapper > div{
+  white-space: nowrap;
+  overflow-x: scroll;
 }
 @media screen and (max-width: 990px) {
   .home-page-container{

@@ -15,7 +15,10 @@ class DirectoryController extends Controller
     {
         if ($id != '') {
             $directory = Directory::find($id);
-            return view('directory')->with(['directory' => $directory]);
+            $dirModel = new Directory();
+            $parents = array();
+            $parents = $dirModel->getParents($directory, $parents);
+            return view('directory')->with(['directory' => $directory, 'parents' => $parents]);
         } else {
             return redirect()->route('home');
         }
