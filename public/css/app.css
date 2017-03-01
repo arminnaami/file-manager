@@ -1,10 +1,13 @@
-#logged-nav{
+#app{
+  margin-top: 70px;
+}
+#top-nav{
   position: fixed;
   z-index: 999;
   top: 0;
 }
-.brand-logonav ul a,
-nav .brand-logo {
+a.brand-logo,
+nav ul a {
   color: #444;
 }
 nav .brand-logo{
@@ -115,8 +118,9 @@ p {
   margin-bottom: 0 !important;
 }
 #slide-out{
-  top: 65px;
-  width:200px;
+  top:64px;
+  overflow: auto;
+  margin-left: -300px
 }
 #slide-out .userView{
   padding:10px;
@@ -140,8 +144,7 @@ p {
   vertical-align: bottom;
 }
 .home-page-container{
-  margin-left: 200px;
-  margin-top: 65px;
+  margin-left: 300px;
 }
 .collection .collection-item.avatar{
   min-height: 50px;
@@ -155,4 +158,34 @@ p {
 }
 .collection .collection-item.avatar.active i.circle{
   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+.mob-yes{
+  display:none;
+}
+#mob-add-new{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+@media screen and (max-width: 990px) {
+  .home-page-container{
+    margin-left: 0px !important;
+  }
+  .mob-yes{
+    display: inherit;
+  }
+  .mob-no{
+    display: none;
+  }
+  nav .brand-logo{
+    position:absolute;
+  }
+  #slide-out{
+    margin-left: 0
+  }
+}
+@media screen and (max-width: 600px) {
+  #slide-out{
+    top:56px;
+  }
 }

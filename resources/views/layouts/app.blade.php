@@ -36,6 +36,7 @@
             <div class="home-page-container">
                 @yield('content')
             </div>
+             @include('controls.mobile-add-new')
         @else
         @yield('content')
         @endif

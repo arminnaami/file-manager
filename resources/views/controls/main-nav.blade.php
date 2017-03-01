@@ -1,5 +1,5 @@
 
-<nav class="white center" @if (!Auth::guest()) id="logged-nav" @endif role="navigation">
+<nav class="white center" id="top-nav" role="navigation">
     <div class="nav-wrapper container left-align">
         <a class="brand-logo" href="{{ url('/') }}" id="logo-container">
                 {{ config('app.name', 'FileManager') }}
@@ -11,7 +11,7 @@
         {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
         @if (!Auth::guest())
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class='dropdown-button btn btn-thinner' href='#' data-activates='upload_drpdn'>New</a>
+            <a class='dropdown-button btn btn-thinner mob-no' href='#' data-activates='upload_drpdn'>New</a>
             <ul id='upload_drpdn' class='dropdown-content'>
                 <li><a href="#create_directory"><i class="material-icons">create_new_folder</i>&nbsp;Create new folder</a></li>
                 <li class="divider"></li>
@@ -29,8 +29,8 @@
 
         <ul class="right hide-on-med-and-down">
         @if (Auth::guest())
-            <li><a href="{{ url('/login') }}">Login</a></li>
-            <li><a href="{{ url('/register') }}">Register</a></li>
+            <li @if(Route::current()->getName() == 'login')class="active"@endif><a href="{{ url('/login') }}">Login</a></li>
+            <li @if(Route::current()->getName() == 'register')class="active"@endif><a href="{{ url('/register') }}">Register</a></li>
         @else
             <li>
                 <a href="javascript:;" class='dropdown-button' id="profile_dropdown_btn" data-activates='profile_dropdown'>
@@ -59,24 +59,39 @@
             </li>
         @endif
         </ul>
-        <ul class="side-nav" id="nav-mobile">
-             @if (Auth::guest())
-                <li><a href="{{ url('/login') }}">Login</a></li>
-                <li><a href="{{ url('/register') }}">Register</a></li>
-            @else
-                <li>
-                    <a href="{{ url('/logout') }}"
-                        onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-                </li>
-            @endif
-        </ul>
-        <a class="button-collapse" data-activates="nav-mobile" href="#">
+        <a class="button-collapse" data-activates="slide-out" href="#" id="side-nav-btn">
             <i class="material-icons">
                 menu
             </i>
         </a>
     </div>
 </nav>
+@section('scripts')
+@parent
+    <script type="text/javascript">
+
+        (function($) {
+            $(function() {
+                $('.dropdown-button').dropdown({
+                    inDuration: 300,
+                    outDuration: 225,
+                    constrainWidth: false, // Does not change width of dropdown to that of the activator
+                    hover: false, // Activate on hover
+                    gutter: 0, // Spacing from edge
+                    belowOrigin: true, // Displays dropdown below the button
+                    alignment: 'left', // Displays dropdown with edge aligned to the left of button
+                    stopPropagation: false // Stops event propagation
+                });
+                $('#profile_dropdown_btn.dropdown-button').dropdown({
+                    inDuration: 300,
+                    outDuration: 225,
+                    constrain_width: false, // Does not change width of dropdown to that of the activator
+                    hover: true, // Activate on hover
+                    gutter: 0, // Spacing from edge
+                    belowOrigin: true, // Displays dropdown below the button
+                    alignment: 'right' // Displays dropdown with edge aligned to the left of button
+                });
+            }); // end of document ready
+        })(jQuery); // end of jQuery name space
+    </script>
+@stop

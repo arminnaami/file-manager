@@ -3,6 +3,7 @@
 	<span class="title">{{$directory->original_name}}</span>
 </li>
 @section('scripts')
+	@parent
 	<script type="text/javascript">
 	$('.directory-row').on('click', function(){
 		$('.directory-row').not(this).removeClass('active');

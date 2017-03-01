@@ -1,5 +1,5 @@
-<ul id="slide-out" class="side-nav" style="transform: translateX(0px);">
-    <li>
+<ul id="slide-out" class="side-nav">
+     <li>
         <div class="userView">
             <div class="background">
                 <img src="{{URL::asset('/img/office.jpg')}}" />
@@ -10,3 +10,25 @@
         </div>
     </li>
 </ul>
+
+@section('scripts')
+@parent
+<script type="text/javascript">
+(function($) {
+    $(function() {
+         $("#side-nav-btn").sideNav();
+         function toggleSideNav(){
+            if ($(window).width() < 991) {
+                $('#slide-out').css('transform', 'translateX(-100%)');
+            } else {
+                $('#slide-out').css('transform', 'translateX(100%)');
+            }
+         }
+         toggleSideNav();
+         $(window).resize(function() {
+           toggleSideNav();
+        });
+    }); // end of document ready
+})(jQuery); // end of jQuery name space
+</script>
+@stop
