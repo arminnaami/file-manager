@@ -13,6 +13,7 @@
 @endsection
 
 @section('scripts')
+@parent
 <script type="text/javascript">
 	$('<input>').attr({
     type: 'hidden',
