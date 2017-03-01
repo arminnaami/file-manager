@@ -42,7 +42,8 @@
         @endif
     </div>
     <!-- Scripts -->
-    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/jquery-1.8.3.min.js"></script>
+    <script src="/js/jquery.mobile.custom.js"></script>
     <script src="/js/materialize.min.js"></script>
     <script src="/js/app.js"></script>
     @yield('scripts')

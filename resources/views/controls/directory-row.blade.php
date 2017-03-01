@@ -11,11 +11,9 @@
 	});
 
 	$('.directory-row').dblclick(function(){
-
 		var dirId = $(this).data('dirId');
-
-
 		window.location="/directory/"+dirId;
 	});
+	$('.directory-row').on('tap', function(){alert();});
 	</script>
 @endsection
