@@ -32,4 +32,14 @@ class Directory extends Model
         }
         return array_reverse($parents);
     }
+
+    public function getFullPath($directory, &$path){
+        $parent = $directory->parent;
+        if(!empty($parent)){
+            $path[] = $parent->name;
+            $this->getFullPath($parent, $path);
+        }
+        dd($path);
+        return array_reverse($parents);
+    }
 }

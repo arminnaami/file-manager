@@ -34,7 +34,7 @@
   		}
 	});
 	if($('#breadcrumb .nav-wrapper').hasScrollBar()){
-		//todo
+		$('#breadcrumb .nav-wrapper > div').scrollLeft($(this).width());
 	}
     }); // end of document ready
 })(jQuery); // end of jQuery name space
