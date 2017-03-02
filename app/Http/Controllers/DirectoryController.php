@@ -6,7 +6,7 @@ use App\Directory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Storage;
+use App\Classes\DirectoryCls;
 
 class DirectoryController extends Controller
 {
@@ -17,7 +17,7 @@ class DirectoryController extends Controller
             $directory = Directory::find($id);
             $dirModel = new Directory();
             $parents = array();
-            $parents = $dirModel->getParents($directory, $parents);
+            $parents = DirectoryCls::GetParentsTree($directory);
             return view('directory')->with(['directory' => $directory, 'parents' => $parents]);
         } else {
             return redirect()->route('home');
@@ -30,26 +30,14 @@ class DirectoryController extends Controller
 
         $user     = Auth::user();
         $name     = md5($request->directory_name . $user->id . time());
-        $fullPath = "{$user->id}/{$name}";
-
-        Storage::makeDirectory($fullPath);
 
         $directory                = new Directory();
         $directory->name          = $name;
         $directory->user_id       = $user->id;
         $directory->original_name = $request->directory_name;
-        if ($request->parent_id != '') {
-            $parent = Directory::find($request->parent_id);
+        $directory->parent_id     = $request->parent_id;
 
-            if (!$parent) {
-                $request->session()->flash('alert-error', 'Parent directory not exists!');
-                return redirect()->route("home");
-            }
-            $parent->directories()->save($directory);
-        } else {
-            $directory->save();
-
-        }
+        DirectoryCls::CreateDirectory($directory);
 
         $request->session()->flash('alert-success', 'Directory created!');
         if ($request->parent_id != '') {

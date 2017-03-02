@@ -23,23 +23,4 @@ class Directory extends Model
     {
         return $this->hasMany('App\Directory', 'directory_id', 'id');
     }
-
-    public function getParents($directory, &$parents){
-        $parent = $directory->parent;
-        if(!empty($parent)){
-            $parents[] = $parent;
-            $this->getParents($parent, $parents);
-        }
-        return array_reverse($parents);
-    }
-
-    public function getFullPath($directory, &$path){
-        $parent = $directory->parent;
-        if(!empty($parent)){
-            $path[] = $parent->name;
-            $this->getFullPath($parent, $path);
-        }
-        dd($path);
-        return array_reverse($parents);
-    }
 }
