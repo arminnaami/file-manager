@@ -23,4 +23,11 @@ class Directory extends Model
     {
         return $this->hasMany('App\Directory', 'directory_id', 'id');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'directories_accress_rights', 'directory_id', 'user_id')
+            ->withPivot('created_at', 'is_creator')
+            ->withTimestamps();
+    }
 }

@@ -71,7 +71,6 @@ class RegisterController extends Controller
         ]);
 
         Storage::makeDirectory($user->id);
-
         return $user;
     }
 

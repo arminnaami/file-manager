@@ -33,7 +33,6 @@ class DirectoryController extends Controller
 
         $directory                = new Directory();
         $directory->name          = $name;
-        $directory->user_id       = $user->id;
         $directory->original_name = $request->directory_name;
         $directory->parent_id     = $request->parent_id;
 
@@ -43,6 +42,23 @@ class DirectoryController extends Controller
         if ($request->parent_id != '') {
             return redirect()->route("directory", ['id' => $request->parent_id]);
         }
+        return redirect()->route("home");
+    }
+
+    public function delete($id, Request $request){
+
+        $directory = Directory::find($id);
+        $parentId = '';
+        if($directory->parent)
+        {
+            $parentId = $directory->parent->id;
+        }
+        DirectoryCls::DeleteDirectory($directory);
+        $request->session()->flash('alert-success', 'Directory deleted!');
+        if($parentId != ''){
+            return redirect()->route("directory", ['id' => $parentId]);
+        }
+
         return redirect()->route("home");
     }
 

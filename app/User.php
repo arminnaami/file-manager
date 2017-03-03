@@ -42,6 +42,8 @@ class User extends Authenticatable
     }
     public function directories()
     {
-        return $this->hasMany('App\Directory', 'user_id', 'id');
+        return $this->belongsToMany('App\Directory', 'directories_accress_rights', 'user_id', 'directory_id')
+            ->withPivot('created_at', 'is_creator')
+            ->withTimestamps();
     }
 }
