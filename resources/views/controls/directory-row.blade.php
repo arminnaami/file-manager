@@ -7,6 +7,7 @@
 	    </a>
 	    <ul>
 	      	<li><a class="btn-floating red delete-directory-btn" data-dir-id="{{$directory->id}}"><i class="material-icons">delete_forever</i></a></li>
+	      	<li><a href="#share_directory" class="btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}"><i class="material-icons">share</i></a></li>
 	    </ul>
 	</div>
 </li>
@@ -34,6 +35,11 @@
 		if(confirm('Are you shure?')){
 			window.location="/directory/delete/"+dirId;
 		}
+		return;
+	});
+	$('.share-directory-btn').on('click', function(){
+		var dirId = $(this).data('dirId');
+		$('#share_directory_form').find('#dir_to_share').val(dirId);
 	});
 	</script>
 @endsection

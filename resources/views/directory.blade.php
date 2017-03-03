@@ -7,10 +7,11 @@
 		<i class="material-icons circle">replay</i>
 		<span class="title">Back</span>
 	</li>
-  @foreach ($directory->directories as $subDir)
-    @include('controls.directory-row', ['directory' => $subDir])
-  @endforeach
+	@foreach ($directory->directories as $subDir)
+	    @include('controls.directory-row', ['directory' => $subDir])
+	@endforeach
 </ul>
+@include('controls.share-folder')
 @endsection
 
 @section('scripts')

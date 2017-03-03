@@ -10,6 +10,7 @@
         </div>
     </li>
     <li @if(Route::current()->getName() == 'home') class="active" @endif ><a href="{{ url('/home') }}"><i class="material-icons">perm_media</i> My Drive</a></li>
+    <li @if(Route::current()->getName() == 'sharedWithMe') class="active" @endif ><a href="{{ url('/shared-with-me') }}"><i class="material-icons">folder_shared</i> Shared with me</a></li>
 </ul>
 
 @section('scripts')

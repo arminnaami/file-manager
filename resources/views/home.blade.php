@@ -9,5 +9,7 @@
 		    @include('controls.directory-row', ['directory' => $directory])
 		  @endforeach
 		</ul>
+
+        @include('controls.share-folder')
 	@endif
 @endsection
