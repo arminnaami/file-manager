@@ -75,6 +75,7 @@
 </form>
 @endsection
 @section('scripts')
+@parent
 <script type="text/javascript">
 @if ($errors->has('name'))
 	Materialize.toast("{{ $errors->first('name') }}", 4000, 'red darken-4');
@@ -87,4 +88,4 @@
 	$('#email').prop("aria-invalid", "true");
 @endif
 </script>
-@endsection
+@stop

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Classes\FileCls;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -34,7 +35,22 @@ class ProfileController extends Controller
     {
         $this->validator($request->all())->validate();
 
+        $profilePic = null;
+
+        if($request->file('profile_picture')){
+            $profilePic = $request->file('profile_picture');
+
+            $valRes = FileCls::ImageValidator($profilePic);
+
+            if($valRes->fails()){
+                $error = $valRes->errors()->getMessages();
+                $request->session()->flash('alert-error', $error['image'][0]);
+                return redirect()->route("profile_edit");
+            }
+        }
         $user        = Auth::user();
+        FileCls::ChangeProfilePicture($user, $profilePic);
+
         $user->name  = $request->name;
         $user->email = $request->email;
         $user->save();

@@ -53,6 +53,9 @@
         @if (session('alert-success'))
             Materialize.toast("{{ session('alert-success') }}", 4000, 'green darken-4');
         @endif
+        @if (session('alert-error'))
+            Materialize.toast("{{ session('alert-error') }}", 4000, 'red darken-4');
+        @endif
     </script>
 </body>
 </html>
