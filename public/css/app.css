@@ -234,6 +234,11 @@ p {
   font-size: 1.1em;
   line-height: 30px;
 }
+#edit-profile .file-field .btn{
+  line-height: 36px;
+  height: 36px;
+  margin-top: 10px;
+}
 @media screen and (max-width: 990px) {
   .home-page-container{
     margin-left: 0px !important;

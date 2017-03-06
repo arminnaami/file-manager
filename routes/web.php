@@ -19,7 +19,7 @@ Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/shared-with-me', ['as' => 'sharedWithMe', 'uses' => 'HomeController@sharedWithMe']);
 
 Route::get('/profile', ['as' => 'profile', 'uses' => 'ProfileController@index']);
-Route::get('/profile/edit', 'ProfileController@edit');
+Route::get('/profile/edit', ['as' => 'profile_edit', 'uses' => 'ProfileController@edit']);
 Route::post('/profile/edit', 'ProfileController@store');
 
 Route::post('/directory/create', 'DirectoryController@store');

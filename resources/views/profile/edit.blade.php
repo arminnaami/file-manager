@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<form class="col s12" role="form" method="POST" action="{{ url('/profile/edit') }}">
+<form class="col s12" role="form" method="POST" action="{{ url('/profile/edit') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
-	<div class="container">
+	<div class="container" id="edit-profile">
 		<div class="row">
 			<div class="col s6 offset-s3">
 				<ul class="collection with-header">
@@ -39,6 +39,22 @@
 			                    value="{{ $user->email }}"
 			                    class="validate"
 			                    >
+							</div>
+						</div>
+					</li>
+					<li class="collection-item">
+						<div class="row valign-wrapper mb0">
+							<div class="col s3">
+								<strong>Profile picture</strong>
+							</div>
+							<div class="file-field input-field col s9 mt0">
+								<div class="btn">
+									<span>File</span>
+									<input type="file" name="profile_picture">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text">
+								</div>
 							</div>
 						</div>
 					</li>
