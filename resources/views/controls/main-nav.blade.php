@@ -34,13 +34,27 @@
         @else
             <li>
                 <a href="javascript:;" class='dropdown-button' id="profile_dropdown_btn" data-activates='profile_dropdown'>
-                    <img src="{{asset('storage/'.$user->id.'/'.$user->profileImage->private_name.'.'.$user->profileImage->extension)}}" class="circle">
+
+
+                    @if($user->profileImage->id == 1)
+                        <img src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
+                    @else
+                        <img src="{{asset('storage/'.$user->id.'/'.$user->profileImage->private_name.'.'.$user->profileImage->extension)}}" class="circle">
+                    @endif
+
+
+
                 </a>
                 <ul id='profile_dropdown' class='dropdown-content'>
                     <li>
                         <div id="profile_dropdown_card">
                             <div id="profile_dropdown_card_img_hldr">
-                                <img src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
+
+                                @if($user->profileImage->id == 1)
+                                    <img src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
+                                @else
+                                    <img src="{{asset('storage/'.$user->id.'/'.$user->profileImage->private_name.'.'.$user->profileImage->extension)}}" class="circle">
+                                @endif
                             </div>
                             <div id="profile_dropdown_card_account">
                                 <strong>{{ $user->name}}</strong><br>

@@ -4,7 +4,13 @@
             <div class="background">
                 <img src="{{URL::asset('/img/office.jpg')}}" />
             </div>
-            <a href="{{ url('/profile') }}" id="user-profile-img"><img class="circle" src="{{URL::asset('/storage/'.$user->id.'/'.$user->profileImage->private_name.'.'.$user->profileImage->extension)}}"></a>
+            <a href="{{ url('/profile') }}" id="user-profile-img">
+                @if($user->profileImage->id == 1)
+                    <img src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
+                @else
+                    <img src="{{asset('storage/'.$user->id.'/'.$user->profileImage->private_name.'.'.$user->profileImage->extension)}}" class="circle">
+                @endif
+            </a>
             <a href="{{ url('/profile') }}"><span class="white-text name">{{ $user->name }}</span></a>
             <a href="{{ url('/profile') }}"><span class="white-text email">{{ $user->email }}</span></a>
         </div>
