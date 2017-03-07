@@ -32,6 +32,7 @@
             @include('controls.sidebar')
             <!-- Modal Structure -->
             @include('controls.create-folder')
+            @include('controls.upload-file')
             <div class="home-page-container">
                 @yield('content')
             </div>

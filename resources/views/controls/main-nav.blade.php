@@ -15,7 +15,7 @@
             <ul id='upload_drpdn_main_nav' class='dropdown-content'>
                 <li><a href="#create_directory"><i class="material-icons">create_new_folder</i>&nbsp;Create new folder</a></li>
                 <li class="divider"></li>
-                <li><a href="#!"><i class="material-icons">file_upload</i>&nbsp;File upload</a></li>
+                <li><a href="#upload_file"><i class="material-icons">file_upload</i>&nbsp;File upload</a></li>
                 <li><a href="#!"><i class="material-icons">folder</i>&nbsp;Folder upload</a></li>
             </ul>
           @endif

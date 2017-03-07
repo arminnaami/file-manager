@@ -28,4 +28,4 @@ Route::get('/directory/{id?}', ['as' => 'directory', 'uses' => 'DirectoryControl
 Route::get('/directory/delete/{id}', 'DirectoryController@delete');
 
 
-Route::post('/file/create', 'FiesController@store');
+Route::post('/file/create', 'FilesController@store');

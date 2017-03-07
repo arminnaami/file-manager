@@ -11,6 +11,11 @@ use App\User;
 class DirectoryController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index($id = '')
     {
         if ($id != '') {
@@ -35,8 +40,8 @@ class DirectoryController extends Controller
         $directory->name          = $name;
         $directory->original_name = $request->directory_name;
         $directory->parent_id     = $request->parent_id;
-        
-        DirectoryCls::CreateDirectory($directory);
+
+        DirectoryCls::CreateDirectory($directory, $user);
 
         $request->session()->flash('alert-success', 'Directory created!');
         if ($request->parent_id != '') {
@@ -53,7 +58,8 @@ class DirectoryController extends Controller
         {
             $parentId = $directory->parent->id;
         }
-        DirectoryCls::DeleteDirectory($directory);
+        $user = Auth::user();
+        DirectoryCls::DeleteDirectory($directory, $user);
         $request->session()->flash('alert-success', 'Directory deleted!');
         if($parentId != ''){
             return redirect()->route("directory", ['id' => $parentId]);
@@ -65,32 +71,32 @@ class DirectoryController extends Controller
     public function share(Request $request){
         if($request->user_email == '')
         {
-            return \Response::json(array('message' => 'Please enter valid email address'), 404);    
+            return \Response::json(array('message' => 'Please enter valid email address'), 404);
         }
 
         if($request->user_email == Auth::user()->email)
         {
-            return \Response::json(array('message' => "Can't share folder with yourself"), 404);    
+            return \Response::json(array('message' => "Can't share folder with yourself"), 404);
         }
 
         $user = User::where('email', $request->user_email)->first();
         if(!$user){
-            return \Response::json(array('message' => 'User not found'), 404);    
+            return \Response::json(array('message' => 'User not found'), 404);
         }
 
         if($request->directory_id == '')
         {
-            return \Response::json(array('message' => 'Please select folder to share'), 404);    
+            return \Response::json(array('message' => 'Please select folder to share'), 404);
         }
 
         $directory = Directory::find($request->directory_id);
         if(!$directory){
-            return \Response::json(array('message' => 'Directory not found'), 404);    
+            return \Response::json(array('message' => 'Directory not found'), 404);
         }
 
         if($directory->users()->where('user_id', $user->id)->first()){
 
-            return \Response::json(array('message' => 'This folder is already shared with selected user'), 404);    
+            return \Response::json(array('message' => 'This folder is already shared with selected user'), 404);
         }
 
         $directory->users()->attach($user->id);
