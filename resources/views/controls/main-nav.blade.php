@@ -34,7 +34,7 @@
         @else
             <li>
                 <a href="javascript:;" class='dropdown-button' id="profile_dropdown_btn" data-activates='profile_dropdown'>
-                    <img src="{{asset('storage/public/'.$user->id.'/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
+                    <img src="{{asset('storage/'.$user->id.'/'.$user->profileImage->private_name.'.'.$user->profileImage->extension)}}" class="circle">
                 </a>
                 <ul id='profile_dropdown' class='dropdown-content'>
                     <li>

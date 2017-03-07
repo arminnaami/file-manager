@@ -22,13 +22,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
         $directories = Auth::user()->directories()->where('is_creator', true)->where('parent_id', null)->get();
         return view('home')->with(['directories' => $directories]);
     }
 
     public function sharedWithMe(){
         $directories = Auth::user()->directories()->where('is_creator', null)->get();
-        return view('home')->with(['directories' => $directories]);   
+        return view('home')->with(['directories' => $directories]);
     }
 }

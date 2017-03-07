@@ -27,3 +27,5 @@ Route::post('/directory/share', 'DirectoryController@share');
 Route::get('/directory/{id?}', ['as' => 'directory', 'uses' => 'DirectoryController@index']);
 Route::get('/directory/delete/{id}', 'DirectoryController@delete');
 
+
+Route::post('/file/create', 'FiesController@store');
