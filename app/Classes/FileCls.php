@@ -82,7 +82,7 @@ class FileCls {
 			$newFile->save();
 
 
-       		$user->files()->attach($newFile->id, ['file_access_token' => '']);
+       		$user->files()->attach($newFile->id, ['is_creator' => true]);
 
 	}
 }
