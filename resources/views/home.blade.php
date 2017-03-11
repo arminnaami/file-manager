@@ -6,14 +6,11 @@
 	@if(count($directories) > 0 || count($files) > 0)
 		<ul class="collection">
 			@foreach ($directories as $directory)
-				@include('controls.directory-row', ['directory' => $directory])
+				@include('controls.directory-row')
 			@endforeach
 
 			@foreach ($files as $file)
-			<li class="collection-item avatar directory-row">
-				<i class="material-icons circle">folder</i>
-				<span class="title">{{$file->name}}.{{$file->extension}}</span>
-			</li>
+				@include('controls.file-row')
 			@endforeach
 
 
