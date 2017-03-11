@@ -22,15 +22,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
+        $user        = Auth::user();
         $directories = $user->directories()->where('is_creator', true)->where('parent_id', null)->get();
-        $files = $user->files()->where('is_creator', true)->where('directory_id', null)->get();
+        $files       = $user->files()->where('is_creator', true)->where('directory_id', null)->get();
 
         return view('home')->with(['directories' => $directories, 'files' => $files]);
     }
 
-    public function sharedWithMe(){
+    public function sharedWithMe()
+    {
+
+        $user        = Auth::user();
         $directories = $user->directories()->where('is_creator', null)->get();
-        return view('home')->with(['directories' => $directories]);
+        $files       = $user->files()->where('is_creator', null)->get();
+        return view('home')->with(['directories' => $directories, 'files' => $files]);
     }
 }

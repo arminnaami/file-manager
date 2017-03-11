@@ -2,87 +2,91 @@
 namespace App\Classes;
 
 use App\Directory;
-use Storage;
 use App\File;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\UploadedFile;
-class FileCls {
+use Illuminate\Support\Facades\Validator;
+use Storage;
 
-	public static function ImageValidator(UploadedFile $file){
+class FileCls
+{
 
-	    // Build the input for validation
-	    $fileArray = array('image' => $file);
+    public static function ImageValidator(UploadedFile $file)
+    {
 
-	    // Tell the validator that this file should be an image
-	    $rules = array(
-	      'image' => 'mimes:jpeg,jpg,png,gif'
-	    );
+        // Build the input for validation
+        $fileArray = array('image' => $file);
 
-	    // Now pass the input and rules into the validator
-	    $validator = Validator::make($fileArray, $rules);
+        // Tell the validator that this file should be an image
+        $rules = array(
+            'image' => 'mimes:jpeg,jpg,png,gif',
+        );
 
-		return $validator;
-	}
+        // Now pass the input and rules into the validator
+        $validator = Validator::make($fileArray, $rules);
 
-	public static function GetUniqueFileName(UploadedFile $file){
-		$fileHash = sha1_file($file->path());
-		$uniqueId = uniqid();
-		return md5($fileHash.$uniqueId);
-	}
+        return $validator;
+    }
 
-	public static function ChangeProfilePicture(\App\User $user, UploadedFile $profilePicture){
-		if(!self::ImageValidator($profilePicture)->fails()){
+    public static function GetUniqueFileName(UploadedFile $file)
+    {
+        $fileHash = sha1_file($file->path());
+        $uniqueId = uniqid();
+        return md5($fileHash . $uniqueId);
+    }
 
-			$oldPicture = File::find($user->profile_picture_id);
+    public static function ChangeProfilePicture(\App\User $user, UploadedFile $profilePicture)
+    {
+        if (!self::ImageValidator($profilePicture)->fails()) {
 
-			$fileName = self::GetUniqueFileName($profilePicture);
+            $oldPicture = File::find($user->profile_picture_id);
 
-			$path = "public/{$user->id}";
-			Storage::putFileAs($path, $profilePicture, $fileName);
+            $fileName  = self::GetUniqueFileName($profilePicture);
+            $extension = pathinfo($profilePicture->getClientOriginalName(), PATHINFO_EXTENSION);
+            $path      = "public/{$user->id}";
+            Storage::putFileAs($path, $profilePicture, $fileName . '.' . $extension);
 
-			$file = new File();
-			$file->name = pathinfo($profilePicture->getClientOriginalName(), PATHINFO_FILENAME);
-			$file->private_name = pathinfo($fileName, PATHINFO_FILENAME);
-			$file->extension = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
-			$file->description = 'Profile picture from '. date('d-m-Y');
-			$file->is_crypted = 0;
-			$file->save();
+            $file               = new File();
+            $file->name         = pathinfo($profilePicture->getClientOriginalName(), PATHINFO_FILENAME);
+            $file->private_name = pathinfo($fileName, PATHINFO_FILENAME);
+            $file->extension    = $extension;
+            $file->description  = 'Profile picture from ' . date('d-m-Y');
+            $file->is_crypted   = 0;
+            $file->save();
 
-			$user->profile_picture_id = $file->id;
-			$user->save();
+            $user->profile_picture_id = $file->id;
+            $user->save();
 
-			if($oldPicture->id != 1){
-				$oldPicture->delete();
-				$path = "public/{$user->id}/{$oldPicture->private_name}.{$oldPicture->extension}";
-				Storage::delete($path);
-			}
+            if ($oldPicture->id != 1) {
+                $oldPicture->delete();
+                $path = "public/{$user->id}/{$oldPicture->private_name}.{$oldPicture->extension}";
+                Storage::delete($path);
+            }
 
-		}
-	}
+        }
+    }
 
-	public static function SaveFile(\App\User $user, UploadedFile $file, \App\Directory $directory = null){
+    public static function SaveFile(\App\User $user, UploadedFile $file, \App\Directory $directory = null)
+    {
 
-			if($directory == null){
-				$directory = new Directory();
-			}
+        if ($directory == null) {
+            $directory = new Directory();
+        }
 
-			$fileName = self::GetUniqueFileName($file);
+        $fileName = self::GetUniqueFileName($file);
 
-			$path = DirectoryCls::GetDirectoryFullPath($directory, $user);
+        $path = DirectoryCls::GetDirectoryFullPath($directory, $user);
 
-			Storage::putFileAs($path, $file, $fileName);
+        Storage::putFileAs($path, $file, $fileName);
 
-			$newFile = new File();
-			$newFile->name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-			$newFile->private_name = pathinfo($fileName, PATHINFO_FILENAME);
-			$newFile->extension = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
-			$newFile->description = 'TODO'. date('d-m-Y');
-			$newFile->is_crypted = 0;
-			$newFile->save();
+        $newFile               = new File();
+        $newFile->name         = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $newFile->private_name = pathinfo($fileName, PATHINFO_FILENAME);
+        $newFile->extension    = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+        $newFile->description  = 'TODO' . date('d-m-Y');
+        $newFile->is_crypted   = 0;
+        $newFile->save();
 
+        $user->files()->attach($newFile->id, ['is_creator' => true]);
 
-       		$user->files()->attach($newFile->id, ['is_creator' => true]);
-
-	}
+    }
 }
