@@ -73,11 +73,13 @@
             </li>
         @endif
         </ul>
+        @if (!Auth::guest())
         <a class="button-collapse" data-activates="slide-out" href="#" id="side-nav-btn">
             <i class="material-icons">
                 menu
             </i>
         </a>
+        @endif
     </div>
 </nav>
 @section('scripts')

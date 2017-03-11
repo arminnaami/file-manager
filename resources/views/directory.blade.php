@@ -12,6 +12,7 @@
 	@endforeach
 </ul>
 @include('controls.share-folder')
+@include('controls.share-file')
 @endsection
 
 @section('scripts')

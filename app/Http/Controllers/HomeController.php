@@ -33,8 +33,8 @@ class HomeController extends Controller
     {
 
         $user        = Auth::user();
-        $directories = $user->directories()->where('is_creator', null)->get();
-        $files       = $user->files()->where('is_creator', null)->get();
+        $directories = $user->directories()->where('is_creator', false)->get();
+        $files       = $user->files()->where('is_creator', false)->where('directory_id', null)->get();
         return view('home')->with(['directories' => $directories, 'files' => $files]);
     }
 }

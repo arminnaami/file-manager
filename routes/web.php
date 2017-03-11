@@ -29,3 +29,5 @@ Route::get('/directory/delete/{id}', 'DirectoryController@delete');
 
 Route::post('/file/create', 'FilesController@store');
 Route::get('/file/{id}', 'FilesController@download');
+Route::get('/file/delete/{id}', 'FilesController@delete');
+Route::post('/file/share', 'FilesController@share');

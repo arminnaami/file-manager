@@ -12,13 +12,9 @@
 			@foreach ($files as $file)
 				@include('controls.file-row')
 			@endforeach
-
-
-
-
-
 		</ul>
 
         @include('controls.share-folder')
+        @include('controls.share-file')
 	@endif
 @endsection

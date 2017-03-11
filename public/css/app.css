@@ -65,6 +65,7 @@ p {
   right: 0 !important;
   top: 65px !important;
   min-width: 320px;
+  margin-top: -2px;
 }
 #profile_dropdown img{
   width: 100px;
@@ -241,6 +242,7 @@ p {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    cursor: default;
 }
 #edit-profile .file-field .btn{
   line-height: 36px;

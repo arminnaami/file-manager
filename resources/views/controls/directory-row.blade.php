@@ -6,7 +6,7 @@
 	      	<i class="material-icons">menu</i>
 	    </a>
 	    <ul>
-	      	<li><a class="btn-floating red delete-directory-btn" data-dir-id="{{$directory->id}}"><i class="material-icons">delete_forever</i></a></li>
+	      	<li><a class="btn-floating red" href="javascript:deleteDirectory('{{$directory->id}}');" data-dir-id="{{$directory->id}}"><i class="material-icons">delete_forever</i></a></li>
 	      	<li><a href="#share_directory" class="btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}"><i class="material-icons">share</i></a></li>
 	    </ul>
 	</div>
@@ -16,6 +16,7 @@
 	<script type="text/javascript">
 	$('.directory-row').on('click', function(){
 		$('.directory-row').not(this).removeClass('active');
+		$('.file-row').not(this).removeClass('active');
 		$(this).addClass('active');
 	});
 
@@ -23,20 +24,17 @@
 		var dirId = $(this).data('dirId');
 		window.location="/directory/"+dirId;
 	});
-	$('.directory-row').on('tap', function(){
-		if($(window).width() < 991){
+	$('.directory-row').on('tap', function(event){
+		if($(window).width() < 991 && !$(event.target).hasClass('material-icons')){
 			var dirId = $(this).data('dirId');
 			window.location="/directory/"+dirId;
 		}
 	});
-
-	$('.delete-directory-btn').on('click', function(){
-		var dirId = $(this).data('dirId');
+	function deleteDirectory(dirId){
 		if(confirm('Are you shure?')){
 			window.location="/directory/delete/"+dirId;
 		}
-		return;
-	});
+	}
 	$('.share-directory-btn').on('click', function(){
 		var dirId = $(this).data('dirId');
 		$('#share_directory_form').find('#dir_to_share').val(dirId);

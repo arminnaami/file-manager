@@ -3,13 +3,21 @@ namespace App\Classes;
 
 use App\Directory;
 use App\File;
+use App\User;
+use App\Classes\DirectoryCls;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Validator;
 use Storage;
 
 class FileCls
 {
-
+    public static function GetFilePath(File $file, User $user)
+    {
+        $fileDir = ($file->directory == null) ? new Directory() : $file->directory;
+        $path    = DirectoryCls::GetDirectoryFullPath($fileDir, $user);
+        $path    = "{$path}/{$file->private_name}";
+        return $path;
+    }
     public static function ImageValidator(UploadedFile $file)
     {
 
