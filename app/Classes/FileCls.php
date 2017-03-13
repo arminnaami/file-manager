@@ -15,7 +15,7 @@ class FileCls
     {
         $fileDir = ($file->directory == null) ? new Directory() : $file->directory;
         $path    = DirectoryCls::GetDirectoryFullPath($fileDir, $user);
-        $path    = "{$path}/{$file->private_name}";
+        $path    = "{$path}{$file->private_name}";
         return $path;
     }
     public static function ImageValidator(UploadedFile $file)
@@ -42,7 +42,7 @@ class FileCls
         return md5($fileHash . $uniqueId);
     }
 
-    public static function ChangeProfilePicture(\App\User $user, UploadedFile $profilePicture)
+    public static function ChangeProfilePicture(User $user, UploadedFile $profilePicture)
     {
         if (!self::ImageValidator($profilePicture)->fails()) {
 
@@ -73,7 +73,7 @@ class FileCls
         }
     }
 
-    public static function SaveFile(\App\User $user, UploadedFile $file, \App\Directory $directory = null)
+    public static function SaveFile(User $user, UploadedFile $file, Directory $directory = null)
     {
 
         if ($directory == null) {
@@ -92,9 +92,27 @@ class FileCls
         $newFile->extension    = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
         $newFile->description  = 'TODO' . date('d-m-Y');
         $newFile->is_crypted   = 0;
+        $newFile->directory_id = $directory->id;
         $newFile->save();
 
         $user->files()->attach($newFile->id, ['is_creator' => true]);
+
+    }
+
+    public static function DeleteFile(File $file, User $user){
+
+        if(!$file->users()->find($user->id)->pivot->is_creator){
+            $file->users()->detach($user->id);
+            return;
+        }
+        foreach($file->users as $v){
+            $file->users()->detach($v->id);
+        }
+
+        $path = FileCls::GetFilePath($file, $user);
+        Storage::delete($path);
+
+        $file->delete();
 
     }
 }

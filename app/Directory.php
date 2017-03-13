@@ -21,7 +21,7 @@ class Directory extends Model
     }
     public function files()
     {
-        return $this->hasMany('App\Directory', 'directory_id', 'id');
+        return $this->hasMany('App\File', 'directory_id', 'id');
     }
 
     public function users()
@@ -29,5 +29,14 @@ class Directory extends Model
         return $this->belongsToMany('App\User', 'directories_accress_rights', 'directory_id', 'user_id')
             ->withPivot('created_at', 'is_creator')
             ->withTimestamps();
+    }
+
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($directory) {
+             $directory->files()->delete();
+             $directory->directories()->delete();
+        });
     }
 }

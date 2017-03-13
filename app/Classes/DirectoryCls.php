@@ -24,10 +24,13 @@ class DirectoryCls {
 
         $parents = self::GetParentsTree($directory);
 
-        $path = $user->id;
+        $path = '/'.$user->id;
 
         if(!$parents){
-            return $path;
+            if($directory->name == ''){
+                return $path.'/';
+            }
+            return $path.'/'.$directory->name.'/';
         }
 
         if(count($parents) > 0){
@@ -37,7 +40,7 @@ class DirectoryCls {
         foreach($parents as $parent){
             $path .="{$parent->name}/";
         }
-        $path = $path.$directory->name;
+        $path = $path.$directory->name.'/';
         return $path;
     }
     public static function CreateDirectory(Directory $directory, User $user){
@@ -50,18 +53,13 @@ class DirectoryCls {
     }
 
     public static function DeleteDirectory(Directory $directory, User $user){
-
-        $deleteFolder = false;
-        if(count($directory->users) == 1){
-            $deleteFolder = true;
+        if(!$directory->users()->find($user->id)->pivot->is_creator){
+            $directory->users()->detach($user->id);
+            return;
         }
 
-        $directory->users()->detach($user->id);
-
-        if($deleteFolder){
-            $path = self::GetDirectoryFullPath($directory, $user);
-            Storage::deleteDirectory($path);
-            $directory->delete();
-        }
+        $path = self::GetDirectoryFullPath($directory, $user);
+        Storage::deleteDirectory($path);
+        $directory->delete();
     }
 }

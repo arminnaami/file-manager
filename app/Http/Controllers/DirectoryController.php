@@ -16,13 +16,27 @@ class DirectoryController extends Controller
         $this->middleware('auth');
     }
 
-    public function index($id = '')
+    public function index(Request $request)
     {
+        $id = $request->id;
         if ($id != '') {
             $directory = Directory::find($id);
+            if(!$directory){
+
+                $request->session()->flash('alert-error', 'Directory not found or removed by the creator!');
+                return redirect()->route('home');
+            }
             $dirModel = new Directory();
             $parents = array();
             $parents = DirectoryCls::GetParentsTree($directory);
+
+            $user     = Auth::user();
+            foreach($parents as $k => $parent){
+                if(!$parent->users()->find($user->id)){
+                    unset($parents[$k]);
+                }
+            }
+
             return view('directory')->with(['directory' => $directory, 'parents' => $parents]);
         } else {
             return redirect()->route('home');
@@ -65,7 +79,7 @@ class DirectoryController extends Controller
             return redirect()->route("directory", ['id' => $parentId]);
         }
 
-        return redirect()->route("home");
+        return redirect()->back();
     }
 
     public function share(Request $request){
@@ -99,7 +113,7 @@ class DirectoryController extends Controller
             return \Response::json(array('message' => 'This folder is already shared with selected user'), 404);
         }
 
-        $directory->users()->attach($user->id);
+        $directory->users()->attach($user->id, ['is_creator' => false]);
         return \Response::json(array('success'), 201);
     }
     private function validator(array $data)

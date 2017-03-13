@@ -19,14 +19,20 @@ class FilesController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request)
+    public function store($id = '', Request $request)
     {
         if (!$request->file('file')) {
             $request->session()->flash('alert-error', 'Please select file');
             return redirect()->back();
         }
+
+        $directory = new Directory();
+        if($id != ''){
+            $directory = Directory::find($id);
+        }
+
         $user = Auth::user();
-        FileCls::SaveFile($user, $request->file('file'));
+        FileCls::SaveFile($user, $request->file('file'), $directory);
 
         $request->session()->flash('alert-success', 'File upload complete');
         return redirect()->back();
@@ -58,17 +64,13 @@ class FilesController extends Controller
     public function delete($id, Request $request){
         $file = File::find($id);
         $user = Auth::user();
+
         if(!$file){
             $request->session()->flash('alert-error', 'File does not exists');
             return redirect()->back();
         }
 
-        $path = FileCls::GetFilePath($file, $user);
-
-        $file->users()->detach($user->id);
-
-        Storage::delete($path);
-        $file->delete();
+        FileCls::DeleteFile($file, $user);
 
         $request->session()->flash('alert-success', 'File deleted!');
         return redirect()->back();

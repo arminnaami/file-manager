@@ -36,9 +36,10 @@
     $('#share_directory_modal_btn').on('click', function(){
         $.post(
             '/directory/share',
-            $('#share_directory_form').serialize()) 
+            $('#share_directory_form').serialize())
         .done(function(response) {
             Materialize.toast('Direcotry has been shared!', 4000, 'green darken-4');
+            $('#share_directory').modal('close');
         })
         .fail(function(xhr, status, error) {
             var errorMsg = JSON.parse(xhr.responseText);

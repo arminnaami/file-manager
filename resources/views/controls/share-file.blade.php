@@ -36,14 +36,14 @@
     $('#share_file_modal_btn').on('click', function(){
         $.post(
             '/file/share',
-            $('#share_file_form').serialize()) 
+            $('#share_file_form').serialize())
         .done(function(response) {
             Materialize.toast('File has been shared!', 4000, 'green darken-4');
+            $('#share_file').modal('close');
         })
         .fail(function(xhr, status, error) {
             var errorMsg = JSON.parse(xhr.responseText);
             Materialize.toast(errorMsg.message, 4000, 'red darken-4');
-
             $('#user_email').addClass("invalid");
             $('#user_email').prop("aria-invalid", "true");
         });

@@ -5,10 +5,13 @@
 <ul class="collection">
 	<li class="collection-item avatar directory-row" id="back_row" data-dir-id="{{$directory->parent_id}}">
 		<i class="material-icons circle">replay</i>
-		<span class="title">Back</span>
+		<span class="title unselectable">Back</span>
 	</li>
 	@foreach ($directory->directories as $subDir)
 	    @include('controls.directory-row', ['directory' => $subDir])
+	@endforeach
+	@foreach ($directory->files as $file)
+	    @include('controls.file-row', ['file' => $file])
 	@endforeach
 </ul>
 @include('controls.share-folder')
@@ -25,14 +28,12 @@
 	    value: {{$directory->id}}
 	}).appendTo('#create_directory_form');
 
-
 	$('#back_row').on('click', function(){
 		$(this).addClass('active');
 	});
 
 	$('#back_row').dblclick(function(){
-		var dirId = $(this).data('dirId');
-		window.location="/directory/"+dirId;
+		window.history.back();
 	});
 
 	$('#back_row').on('tap', function(){

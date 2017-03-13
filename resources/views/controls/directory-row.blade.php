@@ -1,6 +1,6 @@
 <li class="collection-item avatar directory-row" data-dir-id="{{$directory->id}}" style="display: block;">
 	<i class="material-icons circle">folder</i>
-	<span class="title">{{$directory->original_name}}</span>
+	<span class="title unselectable">{{$directory->original_name}}</span>
 	<div class="fixed-action-btn horizontal click-to-toggle">
 		<a class="btn-floating btn-large">
 	      	<i class="material-icons">menu</i>

@@ -1,4 +1,8 @@
-<form class="col s12" id='upload_file_form' role="form" method="POST" action="{{ url('/file/create') }}" enctype="multipart/form-data">
+@if(isset($directory))
+    <form class="col s12" id='upload_file_form' role="form" method="POST" action="{{ url('/file/create/'.$directory->id) }}" enctype="multipart/form-data">
+@else
+    <form class="col s12" id='upload_file_form' role="form" method="POST" action="{{ url('/file/create/') }}" enctype="multipart/form-data">
+@endif
     {{ csrf_field() }}
     <div id="upload_file" class="modal">
         <div class="modal-content">
