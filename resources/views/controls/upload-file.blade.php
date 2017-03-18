@@ -1,9 +1,8 @@
-@if(isset($directory))
-    <form class="col s12" id='upload_file_form' role="form" method="POST" action="{{ url('/file/create/'.$directory->id) }}" enctype="multipart/form-data">
-@else
-    <form class="col s12" id='upload_file_form' role="form" method="POST" action="{{ url('/file/create/') }}" enctype="multipart/form-data">
-@endif
+<form class="col s12" id='upload_file_form' role="form" method="POST" action="{{ url('/file/create/') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
+    @if(isset($directory))
+    <input type="hidden" name="dir_id" value="{{$directory->id}}">
+    @endif
     <div id="upload_file" class="modal">
         <div class="modal-content">
             <h4>Upload file</h4>

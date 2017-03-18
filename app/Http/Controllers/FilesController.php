@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\DirectoryCls;
 use App\Classes\FileCls;
 use App\Directory;
 use App\File;
@@ -19,16 +18,17 @@ class FilesController extends Controller
         $this->middleware('auth');
     }
 
-    public function store($id = '', Request $request)
+    public function store(Request $request)
     {
         if (!$request->file('file')) {
             $request->session()->flash('alert-error', 'Please select file');
             return redirect()->back();
         }
 
+        $dirId     = $request->dir_id;
         $directory = new Directory();
-        if($id != ''){
-            $directory = Directory::find($id);
+        if ($dirId != '') {
+            $directory = Directory::find($dirId);
         }
 
         $user = Auth::user();
@@ -61,11 +61,12 @@ class FilesController extends Controller
 
     }
 
-    public function delete($id, Request $request){
+    public function delete($id, Request $request)
+    {
         $file = File::find($id);
         $user = Auth::user();
 
-        if(!$file){
+        if (!$file) {
             $request->session()->flash('alert-error', 'File does not exists');
             return redirect()->back();
         }
@@ -75,33 +76,31 @@ class FilesController extends Controller
         $request->session()->flash('alert-success', 'File deleted!');
         return redirect()->back();
     }
-    public function share(Request $request){
-        if($request->user_email == '')
-        {
+    public function share(Request $request)
+    {
+        if ($request->user_email == '') {
             return \Response::json(array('message' => 'Please enter valid email address'), 404);
         }
 
-        if($request->user_email == Auth::user()->email)
-        {
+        if ($request->user_email == Auth::user()->email) {
             return \Response::json(array('message' => "Can't share file with yourself"), 404);
         }
 
         $user = User::where('email', $request->user_email)->first();
-        if(!$user){
+        if (!$user) {
             return \Response::json(array('message' => 'User not found'), 404);
         }
 
-        if($request->file_id == '')
-        {
+        if ($request->file_id == '') {
             return \Response::json(array('message' => 'Please select file to share'), 404);
         }
 
         $file = File::find($request->file_id);
-        if(!$file){
+        if (!$file) {
             return \Response::json(array('message' => 'File not found'), 404);
         }
 
-        if($file->users()->where('user_id', $user->id)->first()){
+        if ($file->users()->where('user_id', $user->id)->first()) {
 
             return \Response::json(array('message' => 'This file is already shared with selected user'), 404);
         }

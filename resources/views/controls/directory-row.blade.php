@@ -8,6 +8,7 @@
 	    <ul>
 	      	<li><a class="btn-floating red" href="javascript:deleteDirectory('{{$directory->id}}');" data-dir-id="{{$directory->id}}"><i class="material-icons">delete_forever</i></a></li>
 	      	<li><a href="#share_directory" class="btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}"><i class="material-icons">share</i></a></li>
+	      	<li><a class="btn-floating green lighten-1 download-dir-btn" data-dir-id="{{$directory->id}}"><i class="material-icons">file_download</i></a></li>
 	    </ul>
 	</div>
 </li>
@@ -38,6 +39,10 @@
 	$('.share-directory-btn').on('click', function(){
 		var dirId = $(this).data('dirId');
 		$('#share_directory_form').find('#dir_to_share').val(dirId);
+	});
+	$('.download-dir-btn').on('click', function(){
+		var dirId = $(this).data('dirId');
+		window.location="/directory/download/"+dirId;
 	});
 	</script>
 @endsection
