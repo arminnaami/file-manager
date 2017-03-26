@@ -30,5 +30,7 @@ Route::get('/directory/download/{id}', 'DirectoryController@download');
 
 Route::post('/file/create/{id?}', 'FilesController@store');
 Route::get('/file/{id}', 'FilesController@download');
+Route::get('/file/get/{id}', 'FilesController@downloadWithToken');
 Route::get('/file/delete/{id}', 'FilesController@delete');
 Route::post('/file/share', 'FilesController@share');
+Route::post('/file/get-file-token', 'FilesController@getFileToken');

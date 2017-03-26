@@ -15,7 +15,7 @@ class FilesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['downloadWithToken']]);
     }
 
     public function store(Request $request)
@@ -65,7 +65,6 @@ class FilesController extends Controller
     {
         $file = File::find($id);
         $user = Auth::user();
-
         if (!$file) {
             $request->session()->flash('alert-error', 'File does not exists');
             return redirect()->back();
@@ -107,5 +106,42 @@ class FilesController extends Controller
 
         $file->users()->attach($user->id);
         return \Response::json(array('success'), 201);
+    }
+
+    public function getFileToken(Request $request)
+    {
+        $user  = Auth::user();
+        $file  = $user->files()->find($request->file_id);
+        $token = $file->pivot->file_access_token;
+        if ($token == '') {
+            $token = sha1($file->private_name . time() . $user->id);
+
+            $user->files()->updateExistingPivot($request->file_id, ['file_access_token' => $token]);
+        }
+        $url = url('file/get', $parameters = ['token' => $token], $secure = null);
+        return \Response::json(array('token' => $url), 200);
+
+    }
+
+    public function downloadWithToken($token)
+    {
+        $file = \DB::table('access_rights')->where('file_access_token', $token)->first();
+        if (!$file) {
+            $request->session()->flash('alert-error', 'File does not exists');
+            return redirect()->to('/');
+        }
+        $file    = File::find($file->file_id);
+        $creator = $file->users()->where('is_creator', true)->first();
+
+        $path = FileCls::GetFilePath($file, $creator);
+
+        if (!Storage::disk('local')->exists($path)) {
+            $request->session()->flash('alert-error', 'File does not exists');
+            return redirect()->to('/');
+        }
+
+        $storagePrefix = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+        $name          = "{$file->name}.{$file->extension}";
+        return response()->download($storagePrefix . $path, $name);
     }
 }
