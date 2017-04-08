@@ -155,25 +155,32 @@ p {
 .home-page-container > .collection{
   margin-top: 0px;
 }
-.collection .collection-item.avatar{
+.avatar{
   min-height: 50px;
 }
-.collection .collection-item.avatar i.circle,
-.collection-item .fixed-action-btn .btn-floating,
-.collection-item .fixed-action-btn .btn-floating.btn-large i{
+tr.active{
+  background-color: #26a69a;
+  color: #eafaf9;
+}
+td{
+  border-radius: 0;
+}
+.avatar i.circle,
+.fixed-action-btn .btn-floating,
+.fixed-action-btn .btn-floating.btn-large i{
   background-color: white;
   color: #999;
   width: 32px;
   height: 32px;
   line-height: 31px;
 }
-.collection-item .fixed-action-btn .btn-floating.btn-large{
+.fixed-action-btn .btn-floating.btn-large{
   box-shadow: none;
 }
-.collection-item.active .fixed-action-btn .btn-floating.btn-large{
+.active .fixed-action-btn .btn-floating.btn-large{
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2)
 }
-.collection .collection-item.avatar.active i.circle{
+.avatar.active i.circle{
   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
 }
 .mob-yes{
@@ -208,30 +215,30 @@ p {
   white-space: nowrap;
   overflow-x: auto;
 }
-.collection-item .fixed-action-btn{
+.fixed-action-btn{
   position: absolute;
   bottom: 8px;
 }
-.collection-item .fixed-action-btn .btn-floating.btn-large{
+.fixed-action-btn .btn-floating.btn-large{
   width: 35px;
   height: 35px;
   line-height: 35px;
 }
-.collection-item .fixed-action-btn .btn-floating.btn-large i{
+.fixed-action-btn .btn-floating.btn-large i{
   line-height: 37px;
 }
-.collection-item .fixed-action-btn.horizontal ul{
+.fixed-action-btn.horizontal ul{
   right: 35px;
 }
-.collection-item .fixed-action-btn.horizontal ul li{
+.fixed-action-btn.horizontal ul li{
   margin-top: 5px;
 }
-.collection-item .fixed-action-btn ul a.btn-floating{
+.fixed-action-btn ul a.btn-floating{
   width: 30px;
   height: 30px;
   line-height: 30px;
 }
-.collection-item .fixed-action-btn ul a.btn-floating i{
+.fixed-action-btn ul a.btn-floating i{
   font-size: 1.1em;
   line-height: 30px;
 }

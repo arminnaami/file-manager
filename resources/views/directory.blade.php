@@ -2,18 +2,34 @@
 
 @section('content')
 @include('controls.breadcrumb')
-<ul class="collection">
-	<li class="collection-item avatar directory-row" id="back_row" data-dir-id="{{$directory->parent_id}}">
-		<i class="material-icons circle">replay</i>
-		<span class="title unselectable">Back</span>
-	</li>
-	@foreach ($directory->directories as $subDir)
-	    @include('controls.directory-row', ['directory' => $subDir])
-	@endforeach
-	@foreach ($directory->files as $file)
-	    @include('controls.file-row', ['file' => $file])
-	@endforeach
-</ul>
+<table class="responsive">
+		<thead>
+			<tr>
+				<th>&nbsp;</th>
+				<th>Name</th>
+				<th>Last modified</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="avatar directory-row"id="back_row" data-dir-id="{{$directory->parent_id}}">
+				<td class="center" style="width: 32px;">
+					<i class="material-icons circle">replay</i>
+				</td>
+				<td>
+					<span class="title unselectable">Back</span>
+				</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			@foreach ($directory->directories as $subDir)
+			    @include('controls.directory-row', ['directory' => $subDir])
+			@endforeach
+			@foreach ($directory->files as $file)
+			    @include('controls.file-row', ['file' => $file])
+			@endforeach
+		</tbody>
+	</table>
 @include('controls.share-folder')
 @include('controls.share-file')
 @endsection

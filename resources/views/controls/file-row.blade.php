@@ -1,17 +1,38 @@
-<li class="collection-item avatar file-row" data-file-id="{{$file->id}}" style="display: block;">
-	<i class="material-icons circle">photo</i>
-	<span class="title unselectable">{{$file->name}}.{{$file->extension}}</span>
-	<div class="fixed-action-btn horizontal click-to-toggle">
-		<a class="btn-floating btn-large">
-	      	<i class="material-icons">menu</i>
-	    </a>
-	    <ul>
-	      	<li><a class="btn-floating red" href="javascript:deleteFile('{{$file->id}}');" data-file-id="{{$file->id}}"><i class="material-icons">delete_forever</i></a></li>
-	      	<li><a href="#share_file" class="btn-floating blue share-file-btn" data-file-id="{{$file->id}}"><i class="material-icons">share</i></a></li>
-	    	<li><a class="btn-floating green lighten-1 download-file-btn" data-file-id="{{$file->id}}"><i class="material-icons">file_download</i></a></li>
-	    </ul>
-	</div>
-</li>
+<tr class='avatar file-row' data-file-id="{{$file->id}}">
+	<td class="center" style="width :32px;">
+		<i class="material-icons circle">photo</i>
+	</td>
+	<td>
+		<span class="title unselectable">{{$file->name}}.{{$file->extension}}</span>
+	</td>
+	<td>
+		{{date('M, d, Y', strtotime($file->updated_at))}}
+	</td>
+	<td style="position: relative;">
+		<div class="fixed-action-btn horizontal click-to-toggle" style="position:static;">
+			<a class="btn-floating btn-large">
+		      	<i class="material-icons">menu</i>
+		    </a>
+		    <ul style="top: 80%; right: 70px;">
+		      	<li>
+			      	<a class="btn-floating red" href="javascript:deleteFile('{{$file->id}}');" data-file-id="{{$file->id}}">
+			      		<i class="material-icons">delete_forever</i>
+			      	</a>
+		      	</li>
+		      	<li>
+			      	<a href="#share_file" class="btn-floating blue share-file-btn" data-file-id="{{$file->id}}">
+			      		<i class="material-icons">share</i>
+			      	</a>
+		      	</li>
+		    	<li>
+			    	<a class="btn-floating green lighten-1 download-file-btn" data-file-id="{{$file->id}}">
+			    		<i class="material-icons">file_download</i>
+			    	</a>
+		    	</li>
+		    </ul>
+		</div>
+	</td>
+</tr>
 @section('scripts')
 	@parent
 	<script type="text/javascript">

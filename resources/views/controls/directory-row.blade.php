@@ -1,17 +1,38 @@
-<li class="collection-item avatar directory-row" data-dir-id="{{$directory->id}}" style="display: block;">
-	<i class="material-icons circle">folder</i>
-	<span class="title unselectable">{{$directory->original_name}}</span>
-	<div class="fixed-action-btn horizontal click-to-toggle">
-		<a class="btn-floating btn-large">
-	      	<i class="material-icons">menu</i>
-	    </a>
-	    <ul>
-	      	<li><a class="btn-floating red" href="javascript:deleteDirectory('{{$directory->id}}');" data-dir-id="{{$directory->id}}"><i class="material-icons">delete_forever</i></a></li>
-	      	<li><a href="#share_directory" class="btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}"><i class="material-icons">share</i></a></li>
-	      	<li><a class="btn-floating green lighten-1 download-dir-btn" data-dir-id="{{$directory->id}}"><i class="material-icons">file_download</i></a></li>
-	    </ul>
-	</div>
-</li>
+<tr class="avatar directory-row" data-dir-id="{{$directory->id}}">
+	<td class="center" style="widows: 32px;">
+		<i class="material-icons circle">folder</i>
+	</td>
+	<td>
+		<span class="title unselectable">{{$directory->original_name}}</span>
+	</td>
+	<td>
+		{{date('M, d, Y', strtotime($directory->updated_at))}}
+	</td>
+	<td style="position: relative;">
+		<div class="fixed-action-btn horizontal click-to-toggle" style="position: static;">
+			<a class="btn-floating btn-large">
+		      	<i class="material-icons">menu</i>
+		    </a>
+		    <ul style="top: 80%; right: 70px;">
+		      	<li>
+			      	<a class="btn-floating red" href="javascript:deleteDirectory('{{$directory->id}}');" data-dir-id="{{$directory->id}}">
+			      		<i class="material-icons">delete_forever</i>
+			      	</a>
+		      	</li>
+		      	<li>
+			      	<a href="#share_directory" class="btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}">
+			      		<i class="material-icons">share</i>
+			      	</a>
+		      	</li>
+		      	<li>
+			      	<a class="btn-floating green lighten-1 download-dir-btn" data-dir-id="{{$directory->id}}">
+			      		<i class="material-icons">file_download</i>
+			      	</a>
+		      	</li>
+		    </ul>
+		</div>
+	</td>
+</tr>
 @section('scripts')
 	@parent
 	<script type="text/javascript">
