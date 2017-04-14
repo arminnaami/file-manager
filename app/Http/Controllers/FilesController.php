@@ -26,11 +26,10 @@ class FilesController extends Controller
         }
 
         $dirId     = $request->dir_id;
-        $directory = new Directory();
+        $directory = null;
         if ($dirId != '') {
             $directory = Directory::find($dirId);
         }
-
         $user = Auth::user();
         FileCls::SaveFile($user, $request->file('file'), $directory);
 

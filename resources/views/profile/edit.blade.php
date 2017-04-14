@@ -5,7 +5,7 @@
     {{ csrf_field() }}
 	<div class="container" id="edit-profile">
 		<div class="row">
-			<div class="col s6 offset-s3">
+			<div class="col s12">
 				<ul class="collection with-header">
 					<li class="collection-header">
 						<h4>Profile edit</h4>

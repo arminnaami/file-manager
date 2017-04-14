@@ -1,10 +1,10 @@
 <?php
 namespace App\Classes;
 
+use App\Classes\DirectoryCls;
 use App\Directory;
 use App\File;
 use App\User;
-use App\Classes\DirectoryCls;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Validator;
 use Storage;
@@ -99,13 +99,14 @@ class FileCls
 
     }
 
-    public static function DeleteFile(File $file, User $user){
+    public static function DeleteFile(File $file, User $user)
+    {
 
-        if(!$file->users()->find($user->id)->pivot->is_creator){
+        if (!$file->users()->find($user->id)->pivot->is_creator) {
             $file->users()->detach($user->id);
             return;
         }
-        foreach($file->users as $v){
+        foreach ($file->users as $v) {
             $file->users()->detach($v->id);
         }
 

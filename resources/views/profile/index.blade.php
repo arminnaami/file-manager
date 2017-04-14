@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col s6 offset-s3">
+		<div class="col s12">
 			<ul class="collection with-header">
 				<li class="collection-header">
 					<h4>Profile</h4>

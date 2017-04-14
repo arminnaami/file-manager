@@ -9,7 +9,7 @@
 		{{date('M, d, Y', strtotime($directory->updated_at))}}
 	</td>
 	<td style="position: relative;">
-		<div class="fixed-action-btn horizontal click-to-toggle" style="position: static;">
+		<div class="fixed-action-btn horizontal click-to-toggle right" style="position: static; padding-right: 20px;">
 			<a class="btn-floating btn-large">
 		      	<i class="material-icons">menu</i>
 		    </a>

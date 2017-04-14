@@ -30,4 +30,8 @@ class File extends Model
             ->withPivot('created_at', 'file_access_token', 'is_creator')
             ->withTimestamps();
     }
+    public function extensionIcon()
+    {
+        return $this->hasOne('App\Extension', 'id', 'extension');
+    }
 }

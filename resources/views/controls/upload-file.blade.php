@@ -23,7 +23,17 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Disagree</a>
-            <button type="submit" name="upload_file" class="modal-action waves-effect waves-green btn-flat">Agree</button>
+            <button type="submit" name="upload_file" id="upload_file_btn" class="modal-action waves-effect waves-green btn-flat">Agree</button>
         </div>
     </div>
 </form>
+
+@section('scripts')
+    @parent
+    <script type="text/javascript">
+        $('#upload_file_btn').on('click', function(){
+            $('<div id="loading"><div>Loading...</div></div>').appendTo('body');
+            $(this).parents('form').first().submit();
+        });
+    </script>
+@endsection

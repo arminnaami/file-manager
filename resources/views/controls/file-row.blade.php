@@ -1,6 +1,8 @@
 <tr class='avatar file-row' data-file-id="{{$file->id}}">
 	<td class="center" style="width :32px;">
-		<i class="material-icons circle">photo</i>
+		<svg class="icon"  style="width: 32px; height:32px;">
+			<use xlink:href="{{ URL::asset('/img/file_extensions.svg') }}{{$file->extensionIcon->icon_id}}"></use>
+		</svg>
 	</td>
 	<td>
 		<span class="title unselectable">{{$file->name}}.{{$file->extension}}</span>
@@ -9,7 +11,7 @@
 		{{date('M, d, Y', strtotime($file->updated_at))}}
 	</td>
 	<td style="position: relative;">
-		<div class="fixed-action-btn horizontal click-to-toggle" style="position:static;">
+		<div class="fixed-action-btn horizontal right click-to-toggle" style="position:static; padding-right: 20px;">
 			<a class="btn-floating btn-large">
 		      	<i class="material-icons">menu</i>
 		    </a>

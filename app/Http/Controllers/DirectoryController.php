@@ -38,7 +38,7 @@ class DirectoryController extends Controller
                 }
             }
 
-            return view('directory')->with(['directory' => $directory, 'parents' => $parents]);
+            return view('directory')->with(['mainDir' => $directory, 'parents' => $parents]);
         } else {
             return redirect()->route('home');
         }

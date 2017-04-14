@@ -12,7 +12,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr class="avatar directory-row"id="back_row" data-dir-id="{{$directory->parent_id}}">
+
+			@foreach ($mainDir->directories as $subDir)
+			    @include('controls.directory-row', ['directory' => $subDir])
+			@endforeach
+			@foreach ($mainDir->files as $file)
+			    @include('controls.file-row', ['file' => $file])
+			@endforeach
+			<tr class="avatar directory-row"id="back_row" data-dir-id="{{$mainDir->parent_id}}">
 				<td class="center" style="width: 32px;">
 					<i class="material-icons circle">replay</i>
 				</td>
@@ -22,12 +29,6 @@
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
-			@foreach ($directory->directories as $subDir)
-			    @include('controls.directory-row', ['directory' => $subDir])
-			@endforeach
-			@foreach ($directory->files as $file)
-			    @include('controls.file-row', ['file' => $file])
-			@endforeach
 		</tbody>
 	</table>
 @include('controls.share-folder')
@@ -41,7 +42,7 @@
 	    type: 'hidden',
 	    id: 'parent_id',
 	    name: 'parent_id',
-	    value: {{$directory->id}}
+	    value: {{$mainDir->id}}
 	}).appendTo('#create_directory_form');
 
 	$('#back_row').on('click', function(){
