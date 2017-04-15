@@ -11,9 +11,9 @@
 		 <a class='breadcrumb' href='#'><span class="dropdown-button" data-activates='upload_drpdn'>My Drive&nbsp;&#9662;</span></a>
 		@endif
 		 <ul id='upload_drpdn' class='dropdown-content'>
-            <li><a href="#create_directory"><i class="material-icons">create_new_folder</i>&nbsp;Create new folder</a></li>
+            <li><a href="#create_directory" class="activate_modal"><i class="material-icons">create_new_folder</i>&nbsp;Create new folder</a></li>
             <li class="divider"></li>
-            <li><a href="#upload_file"><i class="material-icons">file_upload</i>&nbsp;File upload</a></li>
+            <li><a href="#upload_file" class="activate_modal"><i class="material-icons">file_upload</i>&nbsp;File upload</a></li>
         </ul>
       </div>
     </div>

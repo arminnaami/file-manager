@@ -5,7 +5,7 @@
         New
     </div>
     <div class="container">
-    <a href='#create_directory'><i class="material-icons" style='color:#26a69a; font-size: 50px'>create_new_folder</i></a>
+    <a href='#create_directory' class="activate_modal"><i class="material-icons" style='color:#26a69a; font-size: 50px'>create_new_folder</i></a>
     </div>
 
 </div>

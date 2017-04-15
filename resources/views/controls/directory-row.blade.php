@@ -20,7 +20,7 @@
 			      	</a>
 		      	</li>
 		      	<li>
-			      	<a href="#share_directory" class="btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}">
+			      	<a href="#share_directory" class="activate_modal btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}">
 			      		<i class="material-icons">share</i>
 			      	</a>
 		      	</li>

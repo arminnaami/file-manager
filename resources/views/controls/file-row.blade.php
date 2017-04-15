@@ -1,7 +1,13 @@
 <tr class='avatar file-row' data-file-id="{{$file->id}}">
 	<td class="center" style="width :32px;">
 		<svg class="icon"  style="width: 32px; height:32px;">
-			<use xlink:href="{{ URL::asset('/img/file_extensions.svg') }}{{$file->extensionIcon->icon_id}}"></use>
+			<use xlink:href="{{ URL::asset('/img/file_extensions.svg') }}
+			@if ($file->extensionIcon != null)
+				{{$file->extensionIcon->icon_id}}
+			@else
+				#file
+			@endif
+			"></use>
 		</svg>
 	</td>
 	<td>
@@ -22,7 +28,7 @@
 			      	</a>
 		      	</li>
 		      	<li>
-			      	<a href="#share_file" class="btn-floating blue share-file-btn" data-file-id="{{$file->id}}">
+			      	<a href="#share_file" class="activate_modal btn-floating blue share-file-btn" data-file-id="{{$file->id}}">
 			      		<i class="material-icons">share</i>
 			      	</a>
 		      	</li>
