@@ -123,6 +123,23 @@ class DirectoryController extends Controller
         return response()->download($zipPath)->deleteFileAfterSend(true);
 
     }
+    public function rename(Request $request)
+    {
+        if ($request->dir_name == '') {
+            return \Response::json(array('message' => 'Directory name is required!'), 404);
+        }
+        if ($request->dir_id == '') {
+            return \Response::json(array('message' => 'Directory not found!'), 404);
+        }
+        $dir = Directory::find($request->dir_id);
+        if (!$dir) {
+            return \Response::json(array('message' => 'Directory not found!'), 404);
+        }
+
+        $dir->original_name = htmlspecialchars(trim($request->dir_name));
+        $dir->save();
+        return \Response::json(array('message' => 'Directory has been renmaed!'), 200);
+    }
 
     private function validator(array $data)
     {
@@ -130,4 +147,5 @@ class DirectoryController extends Controller
             'directory_name' => 'required|max:255',
         ]);
     }
+
 }

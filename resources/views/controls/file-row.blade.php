@@ -28,6 +28,11 @@
 			      	</a>
 		      	</li>
 		      	<li>
+			      	<a href="#rename_file" class="activate_modal btn-floating yellow rename-file-btn" data-file-id="{{$file->id}}">
+			      		<i class="material-icons">edit</i>
+			      	</a>
+		      	</li>
+		      	<li>
 			      	<a href="#share_file" class="activate_modal btn-floating blue share-file-btn" data-file-id="{{$file->id}}">
 			      		<i class="material-icons">share</i>
 			      	</a>
@@ -72,6 +77,10 @@
 	$('.share-file-btn').on('click', function(){
 		var fileId = $(this).data('fileId');
 		$('#share_file_form').find('#file_to_share').val(fileId);
+	});
+	$('.rename-file-btn').on('click', function(){
+		var fileId = $(this).data('fileId');
+		$('#rename_file_form').find('#file_to_rename').val(fileId);
 	});
 	</script>
 @endsection

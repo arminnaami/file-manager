@@ -8,7 +8,7 @@
 	    }
 	    $('.activate_modal').on('click', function(){
 	    	var id = $(this).attr('href');
-	    	$(id).find('input[type=text]').each(function(){
+	    	$(id).find('input[type=text], input[type=email]').each(function(){
 	    		$(this).val('');
 	    	});
 	    });

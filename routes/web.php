@@ -27,6 +27,7 @@ Route::post('/directory/share', 'DirectoryController@share');
 Route::get('/directory/{id?}', ['as' => 'directory', 'uses' => 'DirectoryController@index']);
 Route::get('/directory/delete/{id}', 'DirectoryController@delete');
 Route::get('/directory/download/{id}', 'DirectoryController@download');
+Route::post('/directory/rename', 'DirectoryController@rename');
 
 Route::post('/file/create/{id?}', 'FilesController@store');
 Route::get('/file/{id}', 'FilesController@download');
@@ -34,3 +35,4 @@ Route::get('/file/get/{id}', 'FilesController@downloadWithToken');
 Route::get('/file/delete/{id}', 'FilesController@delete');
 Route::post('/file/share', 'FilesController@share');
 Route::post('/file/get-file-token', 'FilesController@getFileToken');
+Route::post('/file/rename', 'FilesController@rename');

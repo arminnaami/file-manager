@@ -33,6 +33,8 @@
 	</table>
 @include('controls.share-folder')
 @include('controls.share-file')
+@include('controls.edit-file')
+@include('controls.edit-directory')
 @endsection
 
 @section('scripts')

@@ -107,6 +107,24 @@ class FilesController extends Controller
         return \Response::json(array('success'), 201);
     }
 
+    public function rename(Request $request)
+    {
+        if ($request->file_name == '') {
+            return \Response::json(array('message' => 'File name is required!'), 404);
+        }
+        if ($request->file_id == '') {
+            return \Response::json(array('message' => 'File not found!'), 404);
+        }
+        $file = File::find($request->file_id);
+        if (!$file) {
+            return \Response::json(array('message' => 'File not found!'), 404);
+        }
+
+        $file->name = htmlspecialchars(trim($request->file_name));
+        $file->save();
+        return \Response::json(array('message' => 'File has been renmaed!'), 200);
+    }
+
     public function getFileToken(Request $request)
     {
         $user  = Auth::user();

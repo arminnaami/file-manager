@@ -20,6 +20,11 @@
 			      	</a>
 		      	</li>
 		      	<li>
+			      	<a href="#rename_dir" class="activate_modal btn-floating yellow rename-directory-btn" data-dir-id="{{$directory->id}}">
+			      		<i class="material-icons">edit</i>
+			      	</a>
+		      	</li>
+		      	<li>
 			      	<a href="#share_directory" class="activate_modal btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}">
 			      		<i class="material-icons">share</i>
 			      	</a>
@@ -64,6 +69,11 @@
 	$('.download-dir-btn').on('click', function(){
 		var dirId = $(this).data('dirId');
 		window.location="/directory/download/"+dirId;
+	});
+
+	$('.rename-directory-btn').on('click', function(){
+		var dirId = $(this).data('dirId');
+		$('#rename_directory_form').find('#dir_to_rename').val(dirId);
 	});
 	</script>
 @endsection
