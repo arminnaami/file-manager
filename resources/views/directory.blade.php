@@ -12,10 +12,11 @@
 			</tr>
 		</thead>
 		<tbody>
-
-			@foreach ($mainDir->directories as $subDir)
-			    @include('controls.directory-row', ['directory' => $subDir])
-			@endforeach
+			@if(count($mainDir->directories) > 0)
+				@foreach ($mainDir->directories as $subDir)
+				    @include('controls.directory-row', ['directory' => $subDir])
+				@endforeach
+			@endif
 			@foreach ($mainDir->files as $file)
 			    @include('controls.file-row', ['file' => $file])
 			@endforeach
@@ -53,13 +54,6 @@
 
 	$('#back_row').dblclick(function(){
 		window.history.back();
-	});
-
-	$('#back_row').on('tap', function(){
-		if($(window).width() < 991){
-			var dirId = $(this).data('dirId');
-			window.location="/directory/"+dirId;
-		}
 	});
 </script>
 @stop

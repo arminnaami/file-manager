@@ -21,24 +21,33 @@ class DirectoryController extends Controller
     {
         $id = $request->id;
         if ($id != '') {
-            $directory = Directory::find($id);
-            if (!$directory) {
 
+            $user      = Auth::user();
+            $directory = Directory::find($id);
+            if (!$directory->users()->find($user->id)) {
+
+                return redirect()->route('home');
+            }
+
+            if (!$directory) {
                 $request->session()->flash('alert-error', 'Directory not found or removed by the creator!');
                 return redirect()->route('home');
             }
-            $dirModel = new Directory();
-            $parents  = array();
-            $parents  = DirectoryCls::GetParentsTree($directory);
+            $parents = array();
+            $parents = DirectoryCls::GetParentsTree($directory);
 
-            $user = Auth::user();
             foreach ($parents as $k => $parent) {
                 if (!$parent->users()->find($user->id)) {
                     unset($parents[$k]);
                 }
             }
-
-            return view('directory')->with(['mainDir' => $directory, 'parents' => $parents]);
+            //////////////////////////////////////////////////
+            $arrUserDirectoryRelations = array();
+            foreach ($directory->directories as $k => $v) {
+                $arrUserDirectoryRelations[$v->id] = $v->users()->find($user->id);
+            }
+            //////////////////////////////////////////////////
+            return view('directory')->with(['mainDir' => $directory, 'parents' => $parents, 'arrUserDirectoryRelations' => $arrUserDirectoryRelations]);
         } else {
             return redirect()->route('home');
         }
@@ -78,6 +87,10 @@ class DirectoryController extends Controller
         $request->session()->flash('alert-success', 'Directory deleted!');
         if ($parentId != '') {
             return redirect()->route("directory", ['id' => $parentId]);
+        }
+
+        if (!$directory->users()->find($user->id)->pivot->is_creator) {
+            return redirect()->route("sharedWithMe");
         }
 
         return redirect()->back();

@@ -19,16 +19,18 @@
 			      		<i class="material-icons">delete_forever</i>
 			      	</a>
 		      	</li>
-		      	<li>
-			      	<a href="#rename_dir" class="activate_modal btn-floating yellow rename-directory-btn" data-dir-id="{{$directory->id}}">
-			      		<i class="material-icons">edit</i>
-			      	</a>
-		      	</li>
-		      	<li>
-			      	<a href="#share_directory" class="activate_modal btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}">
-			      		<i class="material-icons">share</i>
-			      	</a>
-		      	</li>
+		      	@if(isset($arrUserDirectoryRelations) && $arrUserDirectoryRelations[$directory->id]->pivot->is_creator)
+			      	<li>
+				      	<a href="#rename_dir" class="activate_modal btn-floating yellow rename-directory-btn" data-dir-id="{{$directory->id}}">
+				      		<i class="material-icons">edit</i>
+				      	</a>
+			      	</li>
+			      	<li>
+				      	<a href="#share_directory" class="activate_modal btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}">
+				      		<i class="material-icons">share</i>
+				      	</a>
+			      	</li>
+		      	@endif
 		      	<li>
 			      	<a class="btn-floating green lighten-1 download-dir-btn" data-dir-id="{{$directory->id}}">
 			      		<i class="material-icons">file_download</i>
@@ -50,12 +52,6 @@
 	$('.directory-row').dblclick(function(){
 		var dirId = $(this).data('dirId');
 		window.location="/directory/"+dirId;
-	});
-	$('.directory-row').on('tap', function(event){
-		if($(window).width() < 991 && !$(event.target).hasClass('material-icons')){
-			var dirId = $(this).data('dirId');
-			window.location="/directory/"+dirId;
-		}
 	});
 	function deleteDirectory(dirId){
 		if(confirm('Are you shure?')){

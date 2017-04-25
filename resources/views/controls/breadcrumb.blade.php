@@ -1,12 +1,12 @@
 <nav id="breadcrumb" class="white">
     <div class="nav-wrapper">
       <div class="col s12">
-		@if(isset($directory))
+		@if(isset($mainDir))
 			<a href="{{url('home')}}" class="breadcrumb"><span>My Drive</span></a>
 			@foreach ($parents as $parent)
 	        	<a href="#!" class="breadcrumb back" data-dir-id="{{$parent->id}}"><span>{{ $parent->original_name }}</span></a>
 			@endforeach
-			<a href="#!" class="breadcrumb"><span class="dropdown-button" data-activates='upload_drpdn'>{{ $directory->original_name }}&nbsp;&#9662;</span></a>
+			<a href="#!" class="breadcrumb"><span class="dropdown-button" data-activates='upload_drpdn'>{{ $mainDir->original_name }}&nbsp;&#9662;</span></a>
 		@else
 		 <a class='breadcrumb' href='#'><span class="dropdown-button" data-activates='upload_drpdn'>My Drive&nbsp;&#9662;</span></a>
 		@endif

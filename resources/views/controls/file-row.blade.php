@@ -63,12 +63,6 @@
 		var fileId = $(this).data('fileId');
 		window.location="/file/"+fileId;
 	});
-	$('.file-row').on('tap', function(){
-		if($(window).width() < 991){
-			var fileId = $(this).data('fileId');
-			window.location="/file/"+fileId;
-		}
-	});
 	function deleteFile(fileId){
 		if(confirm('Are you shure?')){
 			window.location="/file/delete/"+fileId;

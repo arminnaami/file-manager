@@ -31,12 +31,13 @@ class Directory extends Model
             ->withTimestamps();
     }
 
-    protected static function boot() {
+    protected static function boot()
+    {
         parent::boot();
 
-        static::deleting(function($directory) {
-             $directory->files()->delete();
-             $directory->directories()->delete();
+        static::deleting(function ($directory) {
+            $directory->files()->delete();
+            $directory->directories()->delete();
         });
     }
 }

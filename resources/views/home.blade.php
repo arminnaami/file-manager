@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-@include('controls.breadcrumb')
-	@if(count($directories) > 0 || count($files) > 0)
+@if(count($directories) > 0 || count($files) > 0)
 	<table>
 		<thead>
 			<tr>
@@ -24,9 +22,9 @@
 		</tbody>
 	</table>
 
-        @include('controls.share-folder')
-        @include('controls.share-file')
-        @include('controls.edit-file')
-        @include('controls.edit-directory')
-	@endif
+    @include('controls.share-folder')
+    @include('controls.share-file')
+    @include('controls.edit-file')
+    @include('controls.edit-directory')
+@endif
 @endsection
