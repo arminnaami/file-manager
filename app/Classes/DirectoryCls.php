@@ -61,6 +61,11 @@ class DirectoryCls
     public static function DeleteDirectory(Directory $directory, User $user)
     {
         if (!$directory->users()->find($user->id)->pivot->is_creator) {
+
+            foreach ($directory->files as $file) {
+                $file->users()->detach($user->id);
+            }
+
             $directory->users()->detach($user->id);
             return;
         }
@@ -157,4 +162,17 @@ class DirectoryCls
         $dirPath = implode(DIRECTORY_SEPARATOR, $arrDirPaths);
         return trim($dirPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
     }
+
+    public static function shareDirectories($directories, $userId)
+    {
+        foreach ($directories as $directory) {
+
+            $directory->users()->attach($userId, ['is_creator' => false]);
+            foreach ($directory->files as $file) {
+                $file->users()->attach($userId);
+            }
+            self::shareDirectories($directory->directories, $userId);
+        }
+    }
+
 }

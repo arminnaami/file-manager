@@ -27,16 +27,18 @@
 			      		<i class="material-icons">delete_forever</i>
 			      	</a>
 		      	</li>
-		      	<li>
-			      	<a href="#rename_file" class="activate_modal btn-floating yellow rename-file-btn" data-file-id="{{$file->id}}">
-			      		<i class="material-icons">edit</i>
-			      	</a>
-		      	</li>
-		      	<li>
-			      	<a href="#share_file" class="activate_modal btn-floating blue share-file-btn" data-file-id="{{$file->id}}">
-			      		<i class="material-icons">share</i>
-			      	</a>
-		      	</li>
+		      	@if(isset($is_creator) && $is_creator)
+			      	<li>
+				      	<a href="#rename_file" class="activate_modal btn-floating yellow rename-file-btn" data-file-id="{{$file->id}}">
+				      		<i class="material-icons">edit</i>
+				      	</a>
+			      	</li>
+			      	<li>
+				      	<a href="#share_file" class="activate_modal btn-floating blue share-file-btn" data-file-id="{{$file->id}}">
+				      		<i class="material-icons">share</i>
+				      	</a>
+			      	</li>
+		      	@endif
 		    	<li>
 			    	<a class="btn-floating green lighten-1 download-file-btn" data-file-id="{{$file->id}}">
 			    		<i class="material-icons">file_download</i>

@@ -12,14 +12,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			@if(count($mainDir->directories) > 0)
-				@foreach ($mainDir->directories as $subDir)
-				    @include('controls.directory-row', ['directory' => $subDir])
+			@if(count($arrDirectories) > 0)
+				@foreach ($arrDirectories as $subDir)
+				    @include('controls.directory-row', ['directory' => $subDir['dir'], 'is_creator' => $subDir['is_creator']])
 				@endforeach
 			@endif
-			@foreach ($mainDir->files as $file)
-			    @include('controls.file-row', ['file' => $file])
-			@endforeach
+			@if(count($arrFiles) > 0)
+				@foreach ($arrFiles as $file)
+				    @include('controls.file-row', ['file' => $file['file'], 'is_creator' => $file['is_creator']])
+				@endforeach
+			@endif
 			<tr class="avatar directory-row"id="back_row" data-dir-id="{{$mainDir->parent_id}}">
 				<td class="center" style="width: 32px;">
 					<i class="material-icons circle">replay</i>

@@ -14,10 +14,10 @@
 		<tbody>
 
 			@foreach ($directories as $directory)
-				@include('controls.directory-row')
+				@include('controls.directory-row', ['is_creator' => true])
 			@endforeach
 			@foreach ($files as $file)
-				@include('controls.file-row')
+				@include('controls.file-row', ['is_creator' => true])
 			@endforeach
 		</tbody>
 	</table>

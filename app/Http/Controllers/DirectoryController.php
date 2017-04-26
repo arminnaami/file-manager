@@ -24,30 +24,47 @@ class DirectoryController extends Controller
 
             $user      = Auth::user();
             $directory = Directory::find($id);
-            if (!$directory->users()->find($user->id)) {
-
-                return redirect()->route('home');
-            }
-
             if (!$directory) {
                 $request->session()->flash('alert-error', 'Directory not found or removed by the creator!');
                 return redirect()->route('home');
             }
+
             $parents = array();
             $parents = DirectoryCls::GetParentsTree($directory);
-
             foreach ($parents as $k => $parent) {
                 if (!$parent->users()->find($user->id)) {
                     unset($parents[$k]);
                 }
             }
-            //////////////////////////////////////////////////
-            $arrUserDirectoryRelations = array();
-            foreach ($directory->directories as $k => $v) {
-                $arrUserDirectoryRelations[$v->id] = $v->users()->find($user->id);
+
+            $arrDirectories = array();
+            foreach ($directory->directories as $child) {
+                $relationData = $child->users()->find($user->id);
+                if ($relationData) {
+                    $arrDirectories[] = array(
+                        'dir'        => $child,
+                        'is_creator' => $relationData->pivot->is_creator,
+                    );
+                }
             }
             //////////////////////////////////////////////////
-            return view('directory')->with(['mainDir' => $directory, 'parents' => $parents, 'arrUserDirectoryRelations' => $arrUserDirectoryRelations]);
+            $arrFiles = array();
+            foreach ($directory->files as $file) {
+                $relationData = $file->users()->find($user->id);
+                if ($relationData) {
+                    $arrFiles[] = array(
+                        'file'       => $file,
+                        'is_creator' => $relationData->pivot->is_creator,
+                    );
+                }
+            }
+            //////////////////////////////////////////////////
+            return view('directory')->with([
+                'mainDir'        => $directory,
+                'parents'        => $parents,
+                'arrDirectories' => $arrDirectories,
+                'arrFiles'       => $arrFiles,
+            ]);
         } else {
             return redirect()->route('home');
         }
@@ -78,22 +95,22 @@ class DirectoryController extends Controller
     {
 
         $directory = Directory::find($id);
-        $parentId  = '';
-        if ($directory->parent) {
-            $parentId = $directory->parent->id;
-        }
-        $user = Auth::user();
+        $parent    = $directory->parent;
+        $user      = Auth::user();
+
+        $isCreatorDeleting = $directory->users()->find($user->id)->pivot->is_creator;
         DirectoryCls::DeleteDirectory($directory, $user);
         $request->session()->flash('alert-success', 'Directory deleted!');
-        if ($parentId != '') {
-            return redirect()->route("directory", ['id' => $parentId]);
+
+        if ($parent && $parent->users()->find($user->id)) {
+            return redirect()->route("directory", ['id' => $parent->id]);
         }
 
-        if (!$directory->users()->find($user->id)->pivot->is_creator) {
-            return redirect()->route("sharedWithMe");
+        if ($isCreatorDeleting) {
+            return redirect()->route('home');
         }
 
-        return redirect()->back();
+        return redirect()->route("sharedWithMe");
     }
 
     public function share(Request $request)
@@ -124,8 +141,7 @@ class DirectoryController extends Controller
 
             return \Response::json(array('message' => 'This folder is already shared with selected user'), 404);
         }
-
-        $directory->users()->attach($user->id, ['is_creator' => false]);
+        DirectoryCls::shareDirectories(array($directory), $user->id);
         return \Response::json(array('success'), 201);
     }
 

@@ -19,7 +19,7 @@
 			      		<i class="material-icons">delete_forever</i>
 			      	</a>
 		      	</li>
-		      	@if(isset($arrUserDirectoryRelations) && $arrUserDirectoryRelations[$directory->id]->pivot->is_creator)
+		      	@if(isset($is_creator) && $is_creator)
 			      	<li>
 				      	<a href="#rename_dir" class="activate_modal btn-floating yellow rename-directory-btn" data-dir-id="{{$directory->id}}">
 				      		<i class="material-icons">edit</i>
