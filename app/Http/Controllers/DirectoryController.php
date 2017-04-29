@@ -64,6 +64,7 @@ class DirectoryController extends Controller
             return view('directory')->with([
                 'mainDir'        => $directory,
                 'allowUpload'    => $allowUpload,
+                'is_creator'     => $allowUpload,
                 'parents'        => $parents,
                 'arrDirectories' => $arrDirectories,
                 'arrFiles'       => $arrFiles,

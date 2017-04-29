@@ -1,9 +1,28 @@
 
 <nav class="white center" id="top-nav" role="navigation">
     <div class="nav-wrapper container left-align">
-        <a class="brand-logo" href="{{ url('/') }}" id="logo-container">
+         <a class="brand-logo" href="{{ url('/') }}" id="logo-container">
                 {{ config('app.name', 'FileManager') }}
         </a>
+        {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+        {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+        {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+        {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+        {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+        @if (!Auth::guest() && $is_creator)
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class='dropdown-button btn btn-thinner mob-no' href='#' data-activates='upload_drpdn_main_nav'>New</a>
+            <ul id='upload_drpdn_main_nav' class='dropdown-content'>
+                <li><a href="#create_directory" class="activate_modal"><i class="material-icons">create_new_folder</i>&nbsp;Create new folder</a></li>
+                <li class="divider"></li>
+                <li><a href="#upload_file" class="activate_modal"><i class="material-icons">file_upload</i>&nbsp;File upload</a></li>
+            </ul>
+          @endif
+        {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+        {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+        {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+        {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+        {{-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
 
         <ul class="right hide-on-med-and-down">
         @if (Auth::guest())
