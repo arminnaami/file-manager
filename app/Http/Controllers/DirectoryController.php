@@ -180,4 +180,40 @@ class DirectoryController extends Controller
         ]);
     }
 
+    public function getDirToken(Request $request)
+    {
+        $user  = Auth::user();
+        $dir   = $user->directories()->find($request->directory_id);
+        $token = $dir->pivot->directory_access_token;
+        if ($token == '') {
+            $token = sha1($dir->name . time() . $user->id);
+
+            $user->directories()->updateExistingPivot($request->directory_id, ['directory_access_token' => $token]);
+        }
+        $url = url('directory/get', $parameters = ['token' => $token], $secure = null);
+        return \Response::json(array('token' => $url), 200);
+
+    }
+
+    public function downloadWithToken($token)
+    {
+        $dir = \DB::table('directories_accress_rights')->where('directory_access_token', $token)->first();
+        if (!$dir) {
+            $request->session()->flash('alert-error', 'Directory does not exists');
+            return redirect()->to('/');
+        }
+        $dir     = Directory::find($dir->directory_id);
+        $creator = $dir->users()->where('is_creator', true)->first();
+
+        $path = DirectoryCls::GetDirectoryFullPath($dir, $creator);
+
+        if (!\Storage::disk('local')->exists($path)) {
+            $request->session()->flash('alert-error', 'Directory does not exists');
+            return redirect()->to('/');
+        }
+
+        $zipPath = DirectoryCls::Zip($dir);
+        return response()->download($zipPath)->deleteFileAfterSend(true);
+    }
+
 }

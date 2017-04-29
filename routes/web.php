@@ -22,17 +22,19 @@ Route::get('/profile', ['as' => 'profile', 'uses' => 'ProfileController@index'])
 Route::get('/profile/edit', ['as' => 'profile_edit', 'uses' => 'ProfileController@edit']);
 Route::post('/profile/edit', 'ProfileController@store');
 
-Route::post('/directory/create', 'DirectoryController@store');
-Route::post('/directory/share', 'DirectoryController@share');
 Route::get('/directory/{id?}', ['as' => 'directory', 'uses' => 'DirectoryController@index']);
 Route::get('/directory/delete/{id}', 'DirectoryController@delete');
 Route::get('/directory/download/{id}', 'DirectoryController@download');
+Route::get('/directory/get/{id}', 'DirectoryController@downloadWithToken');
+Route::post('/directory/share', 'DirectoryController@share');
 Route::post('/directory/rename', 'DirectoryController@rename');
+Route::post('/directory/create', 'DirectoryController@store');
+Route::post('/directory/get-dir-token', 'DirectoryController@getDirToken');
 
-Route::post('/file/create/{id?}', 'FilesController@store');
 Route::get('/file/{id}', 'FilesController@download');
 Route::get('/file/get/{id}', 'FilesController@downloadWithToken');
 Route::get('/file/delete/{id}', 'FilesController@delete');
+Route::post('/file/create/{id?}', 'FilesController@store');
 Route::post('/file/share', 'FilesController@share');
 Route::post('/file/get-file-token', 'FilesController@getFileToken');
 Route::post('/file/rename', 'FilesController@rename');

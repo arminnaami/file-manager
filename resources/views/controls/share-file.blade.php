@@ -66,12 +66,6 @@
         .done(function(response) {
             $("#file_token").val(response.token).parents('div').first().show();
         })
-        .fail(function(xhr, status, error) {
-            var errorMsg = JSON.parse(xhr.responseText);
-            Materialize.toast(errorMsg.message, 4000, 'red darken-4');
-            $('#user_email').addClass("invalid");
-            $('#user_email').prop("aria-invalid", "true");
-        });
     });
 </script>
 @stop

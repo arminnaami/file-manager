@@ -4,23 +4,35 @@
         <div class="modal-content">
             <h4>Share folder</h4>
             <div class="container">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input
-                            type="email"
-                            name="user_email"
-                            id="user_email"
-                            class="validate"
-                            required
-                            autofocus>
-                            <label for="user_email">Enter user email</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input
+                        type="email"
+                        name="user_email"
+                        id="user_email"
+                        class="validate"
+                        required
+                        autofocus>
+                        <label for="user_email">Enter user email</label>
 
-                            <input
-                            type="hidden"
-                            id="dir_to_share"
-                            name="directory_id">
-                        </div>
+                        <input
+                        type="hidden"
+                        id="dir_to_share"
+                        name="directory_id">
                     </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <a id="get-dir-token" href='javascript:;'>Get Link</a>
+                    </div>
+                    <div class="input-field col s12" style="display:none;">
+                        <input
+                        type="text"
+                        name="dir_token"
+                        id="dir_token"
+                        readonly=1>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -48,6 +60,14 @@
             $('#user_email').addClass("invalid");
             $('#user_email').prop("aria-invalid", "true");
         });
+    });
+    $('#get-dir-token').on('click', function(){
+        $.post(
+            '/directory/get-dir-token',
+            $('#share_directory_form').serialize())
+        .done(function(response) {
+            $("#dir_token").val(response.token).parents('div').first().show();
+        })
     });
 </script>
 @stop
