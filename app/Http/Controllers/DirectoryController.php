@@ -59,8 +59,11 @@ class DirectoryController extends Controller
                 }
             }
             //////////////////////////////////////////////////
+            $allowUpload = $directory->users()->find($user->id)->pivot->is_creator;
+
             return view('directory')->with([
                 'mainDir'        => $directory,
+                'allowUpload'    => $allowUpload,
                 'parents'        => $parents,
                 'arrDirectories' => $arrDirectories,
                 'arrFiles'       => $arrFiles,

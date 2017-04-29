@@ -163,15 +163,15 @@ class DirectoryCls
         return trim($dirPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
     }
 
-    public static function shareDirectories($directories, $userId)
+    public static function shareDirectories($directories, $userId, $isRoot = true)
     {
         foreach ($directories as $directory) {
 
-            $directory->users()->attach($userId, ['is_creator' => false]);
+            $directory->users()->attach($userId, ['is_creator' => false, 'is_root' => $isRoot]);
             foreach ($directory->files as $file) {
                 $file->users()->attach($userId);
             }
-            self::shareDirectories($directory->directories, $userId);
+            self::shareDirectories($directory->directories, $userId, false);
         }
     }
 

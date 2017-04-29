@@ -14,10 +14,10 @@
 		<tbody>
 
 			@foreach ($directories as $directory)
-				@include('controls.directory-row', ['is_creator' => true])
+				@include('controls.directory-row', ['is_creator' => $is_creator])
 			@endforeach
 			@foreach ($files as $file)
-				@include('controls.file-row', ['is_creator' => true])
+				@include('controls.file-row', ['is_creator' => $is_creator])
 			@endforeach
 		</tbody>
 	</table>
@@ -26,5 +26,21 @@
     @include('controls.share-file')
     @include('controls.edit-file')
     @include('controls.edit-directory')
+@else
+
+
+<div class="container">
+	<div class="row">
+		<div class="col s12 center">
+			<h2>You don't have files</h2>
+			<a class='dropdown-button btn btn-thinner mob-no' href='#' data-activates='upload_drpdn_main_nav'>Add new</a>
+		    <ul id='upload_drpdn_main_nav' class='dropdown-content'>
+		        <li><a href="#create_directory" class="activate_modal"><i class="material-icons">create_new_folder</i>&nbsp;Create new folder</a></li>
+		        <li class="divider"></li>
+		        <li><a href="#upload_file" class="activate_modal"><i class="material-icons">file_upload</i>&nbsp;File upload</a></li>
+		    </ul>
+		</div>
+	</div>
+</div>
 @endif
 @endsection
