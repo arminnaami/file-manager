@@ -2,7 +2,7 @@
 <!-- Main Content -->
 @section('content')
 <center>
-<h3 class="">Please, login into your account</h3>
+<h3 class="">Please, enter your email address</h3>
 <div class="section"></div>
 <div class="container">
     <div class="z-depth-1 grey lighten-5 row main-form" id="email-holder">
