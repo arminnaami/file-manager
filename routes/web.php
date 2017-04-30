@@ -26,6 +26,7 @@ Route::get('/directory/{id?}', ['as' => 'directory', 'uses' => 'DirectoryControl
 Route::get('/directory/delete/{id}', 'DirectoryController@delete');
 Route::get('/directory/download/{id}', 'DirectoryController@download');
 Route::get('/directory/get/{id}', 'DirectoryController@downloadWithToken');
+Route::get('/directory/back/{id}', ['as' => 'back', 'uses' => 'DirectoryController@back']);
 Route::post('/directory/share', 'DirectoryController@share');
 Route::post('/directory/rename', 'DirectoryController@rename');
 Route::post('/directory/create', 'DirectoryController@store');

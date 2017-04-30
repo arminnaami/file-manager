@@ -34,4 +34,8 @@ class File extends Model
     {
         return $this->hasOne('App\Extension', 'id', 'extension');
     }
+    public function directory()
+    {
+        return $this->hasOne('App\Directory', 'id', 'directory_id');
+    }
 }

@@ -22,7 +22,7 @@
 				    @include('controls.file-row', ['file' => $file['file'], 'is_creator' => $file['is_creator']])
 				@endforeach
 			@endif
-			<tr class="avatar directory-row"id="back_row" data-dir-id="{{$mainDir->parent_id}}">
+			<tr class="avatar directory-row" id="back_row" data-dir-id="{{$mainDir->parent_id}}">
 				<td class="center" style="width: 32px;">
 					<i class="material-icons circle">replay</i>
 				</td>
@@ -55,7 +55,7 @@
 	});
 
 	$('#back_row').dblclick(function(){
-		window.history.back();
+		window.location.href="{{ route('back',$mainDir->id)}}";
 	});
 </script>
 @stop

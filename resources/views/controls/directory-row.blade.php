@@ -49,7 +49,7 @@
 		$(this).addClass('active');
 	});
 
-	$('.directory-row').dblclick(function(){
+	$('.directory-row').not('#back_row').dblclick(function(){
 		var dirId = $(this).data('dirId');
 		window.location="/directory/"+dirId;
 	});

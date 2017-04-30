@@ -14,7 +14,7 @@ class DirectoryController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['downloadWithToken']]);
     }
 
     public function index(Request $request)
@@ -215,6 +215,24 @@ class DirectoryController extends Controller
 
         $zipPath = DirectoryCls::Zip($dir);
         return response()->download($zipPath)->deleteFileAfterSend(true);
+    }
+
+    public function back($id)
+    {
+        $directory = Directory::find($id);
+        $parent    = $directory->parent;
+        $user      = Auth::user();
+
+        $isCreator = $directory->users()->find($user->id)->pivot->is_creator;
+        if ($parent && $parent->users()->find($user->id)) {
+            return redirect()->route("directory", ['id' => $parent->id]);
+        }
+
+        if ($isCreator) {
+            return redirect()->route('home');
+        }
+
+        return redirect()->route("sharedWithMe");
     }
 
 }
