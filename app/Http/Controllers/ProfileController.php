@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Classes\FileCls;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -23,12 +23,12 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('profile.index')->with('user', Auth::user());
+        return view('profile.index')->with('user', Auth::user())->with('is_creator', false);
     }
 
     public function edit()
     {
-        return view('profile.edit')->with('user', Auth::user());
+        return view('profile.edit')->with('user', Auth::user())->with('is_creator', false);
     }
 
     public function store(Request $request)
@@ -37,18 +37,18 @@ class ProfileController extends Controller
 
         $profilePic = null;
 
-        if($request->file('profile_picture')){
+        if ($request->file('profile_picture')) {
             $profilePic = $request->file('profile_picture');
 
             $valRes = FileCls::ImageValidator($profilePic);
 
-            if($valRes->fails()){
+            if ($valRes->fails()) {
                 $error = $valRes->errors()->getMessages();
                 $request->session()->flash('alert-error', $error['image'][0]);
                 return redirect()->route("profile_edit");
             }
         }
-        $user        = Auth::user();
+        $user = Auth::user();
         FileCls::ChangeProfilePicture($user, $profilePic);
 
         $user->name  = $request->name;
