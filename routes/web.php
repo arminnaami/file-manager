@@ -39,3 +39,8 @@ Route::post('/file/create/{id?}', 'FilesController@store');
 Route::post('/file/share', 'FilesController@share');
 Route::post('/file/get-file-token', 'FilesController@getFileToken');
 Route::post('/file/rename', 'FilesController@rename');
+
+
+
+
+Route::get('/admin', ['as' => 'admin', 'uses' => 'AdminController@index', 'roles' => ['admin']]);
