@@ -72,7 +72,7 @@ class User extends Authenticatable
         return $files;
     }
 
-    public function addFile(File $file, bool $isCreator = false){
+    public function addFile(File $file, $isCreator = false){
         $hasAccess = $this->files()->where('file_id', $file->id)->first();
         if($hasAccess == null){
             $this->files()->attach($file->id, ['is_creator' => $isCreator]);
@@ -84,7 +84,7 @@ class User extends Authenticatable
     }
 
 
-    public function addDirectory(Directory $directory, bool $isRoot = true){
+    public function addDirectory(Directory $directory, $isRoot = true){
         
         $hasAccess = $this->directories()->where('directory_id', $directory->id)->first();
         if($hasAccess == null){
