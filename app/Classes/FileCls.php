@@ -81,12 +81,9 @@ class FileCls
         $newFile->name         = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $newFile->private_name = pathinfo($fileName, PATHINFO_FILENAME);
         $newFile->extension    = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
-        $newFile->description  = 'TODO' . date('d-m-Y');
-        $newFile->is_crypted   = 0;
         $newFile->directory_id = $directory->id;
         $newFile->save();
-
-        $user->files()->attach($newFile->id, ['is_creator' => true]);
+        $user->addFile($newFile, true);
 
     }
 
@@ -94,11 +91,11 @@ class FileCls
     {
 
         if (!$file->users()->find($user->id)->pivot->is_creator) {
-            $file->users()->detach($user->id);
+            $user->removeFile($file);
             return;
         }
         foreach ($file->users as $v) {
-            $file->users()->detach($v->id);
+            $v->removeFile($file);
         }
 
         $path = FileCls::GetFilePath($file, $user);

@@ -31,6 +31,21 @@ class Directory extends Model
             ->withTimestamps();
     }
 
+    public function getParentsTree($directory = null, array &$parents = array()){
+        if($directory == null){
+            $directory = $this;
+        }
+        $parent = $directory->parent;
+        if (!empty($parent)) {
+            $parents[] = $parent;
+            $this->getParentsTree($parent, $parents);
+        }
+        return array_reverse($parents);
+    }
+
+
+
+
     protected static function boot()
     {
         parent::boot();

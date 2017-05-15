@@ -24,19 +24,19 @@ class DirectoryController extends Controller
 
             $user      = Auth::user();
             $directory = Directory::find($id);
+
             if (!$directory) {
                 $request->session()->flash('alert-error', 'Directory not found or removed by the creator!');
                 return redirect()->route('home');
             }
 
             $parents = array();
-            $parents = DirectoryCls::GetParentsTree($directory);
+            $parents = $directory->getParentsTree();
             foreach ($parents as $k => $parent) {
                 if (!$parent->users()->find($user->id)) {
                     unset($parents[$k]);
                 }
             }
-
             $arrDirectories = array();
             foreach ($directory->directories as $child) {
                 $relationData = $child->users()->find($user->id);
@@ -59,12 +59,12 @@ class DirectoryController extends Controller
                 }
             }
             //////////////////////////////////////////////////
-            $allowUpload = $directory->users()->find($user->id)->pivot->is_creator;
+            $isCreator = $directory->users()->find($user->id)->pivot->is_creator;
 
             return view('directory')->with([
                 'mainDir'        => $directory,
-                'allowUpload'    => $allowUpload,
-                'is_creator'     => $allowUpload,
+                'allowUpload'    => $isCreator,
+                'is_creator'     => $isCreator,
                 'parents'        => $parents,
                 'arrDirectories' => $arrDirectories,
                 'arrFiles'       => $arrFiles,
@@ -145,7 +145,8 @@ class DirectoryController extends Controller
 
             return \Response::json(array('message' => 'This folder is already shared with selected user'), 404);
         }
-        DirectoryCls::shareDirectories(array($directory), $user->id);
+
+        $user->addDirectory($directory);
         return \Response::json(array('success'), 201);
     }
 

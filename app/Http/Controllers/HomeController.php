@@ -23,8 +23,8 @@ class HomeController extends Controller
     public function index()
     {
         $user        = Auth::user();
-        $directories = $user->directories()->where('is_creator', true)->where('parent_id', null)->get();
-        $files       = $user->files()->where('is_creator', true)->where('directory_id', null)->get();
+        $directories = $user->getOwnedDirectories();
+        $files       = $user->getOwnedFiles();
 
         return view('home')->with([
             'directories' => $directories,
@@ -37,8 +37,8 @@ class HomeController extends Controller
     {
 
         $user        = Auth::user();
-        $directories = $user->directories()->where('is_creator', false)->where('is_root', true)->get();
-        $files       = $user->files()->where('is_creator', false)->where('directory_id', null)->get();
+        $directories = $user->getSharedWithMeDirectories();
+        $files       = $user->getSharedWIthMeFiles();
 
         return view('home')->with([
             'directories' => $directories,

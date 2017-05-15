@@ -18,8 +18,6 @@ class FilesTable extends Migration
             $table->text('name');
             $table->string('private_name');
             $table->string('extension');
-            $table->text('description');
-            $table->boolean('is_crypted');
             $table->timestamps();
         });
     }

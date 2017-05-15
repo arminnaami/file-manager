@@ -41,4 +41,96 @@ class User extends Authenticatable
             ->withPivot('created_at', 'is_creator')
             ->withTimestamps();
     }
+
+    public function getOwnedDirectories(){
+        $dirs = $this->directories()->where('is_creator', true)->where('parent_id', null)->get();
+        return $dirs;
+    }
+
+    public function getSharedWithMeDirectories(){
+        $dirs = $this->directories()->where('is_creator', false)->where('is_root', true)->get();
+        return $dirs;
+    }
+
+    public function getOwnedFiles(){
+        $files = $this->files()->where('is_creator', true)->where('directory_id', null)->get();
+        return $files;
+    }
+
+
+    public function getSharedWIthMeFiles(){
+        $files = $this->files()->where('is_creator', false)->get();
+        foreach($files as $k => $file){
+            if($file->directory_id != null){
+                $directory = $this->directories()->where('directory_id', $file->directory_id)->where('is_creator', false)->first();
+                if($directory){
+                    unset($files[$k]);
+                    
+                }
+            }
+        }
+        return $files;
+    }
+
+    public function addFile(File $file, bool $isCreator = false){
+        $hasAccess = $this->files()->where('file_id', $file->id)->first();
+        if($hasAccess == null){
+            $this->files()->attach($file->id, ['is_creator' => $isCreator]);
+        }
+    }
+
+    public function removeFile(File $file){
+        $this->files()->detach($file->id);
+    }
+
+
+    public function addDirectory(Directory $directory, bool $isRoot = true){
+        
+        $hasAccess = $this->directories()->where('directory_id', $directory->id)->first();
+        if($hasAccess == null){
+            $this->directories()->attach($directory->id, ['is_creator' => false, 'is_root' => $isRoot]);
+        }else{
+             $this->directories()->updateExistingPivot($directory->id, ['is_root' => $isRoot]);
+        }
+       
+        $files = $directory->files;
+        if(count($files) > 0){
+            foreach($files as $file){
+                $this->addFile($file);
+            }
+        }
+
+
+        $directories = $directory->directories;
+        if(count($directories) > 0){
+            foreach($directories as $dir){
+                $this->addDirectory($dir, false);
+            }
+        }
+    }
+
+
+
+
+    public function removeDirectory(Directory $directory){
+
+        $this->directories()->detach($directory->id);
+        $files = $directory->files;
+        if(count($files) > 0){
+            foreach($files as $file){
+                $this->removeFile($file);
+            }
+        }
+
+
+        $directories = $directory->directories;
+        if(count($directories) > 0){
+            foreach($directories as $dir){
+                $this->removeDirectory($dir);
+            }
+        }
+    }
+
+
+
 }

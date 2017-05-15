@@ -103,7 +103,7 @@ class FilesController extends Controller
             return \Response::json(array('message' => 'This file is already shared with selected user'), 404);
         }
 
-        $file->users()->attach($user->id);
+        $user->addFile($file);
         return \Response::json(array('success'), 201);
     }
 
