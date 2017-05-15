@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'profile_picture_id',
+        'name', 'email', 'password', 'profile_picture',
     ];
 
     /**
@@ -28,12 +28,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function profileImage()
-    {
-        return $this->hasOne('App\File', 'id', 'profile_picture_id');
-    }
-
+    
     public function files()
     {
         return $this->belongsToMany('App\File', 'access_rights', 'user_id', 'file_id')

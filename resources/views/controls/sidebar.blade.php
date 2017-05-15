@@ -5,10 +5,10 @@
                 <img src="{{URL::asset('/img/office.jpg')}}" />
             </div>
             <a href="{{ url('/profile') }}" id="user-profile-img">
-                @if($user->profileImage->id == 1)
-                    <img src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
+                @if($user->profile_picture == '')
+                    <img src="{{URL::asset('/img/profile_picture.png')}}" class="circle">
                 @else
-                    <img src="{{asset('storage/'.$user->id.'/'.$user->profileImage->private_name.'.'.$user->profileImage->extension)}}" class="circle">
+                    <img src="{{asset('storage/'.$user->id.'/'.$user->profile_picture)}}" class="circle">
                 @endif
             </a>
             <a href="{{ url('/profile') }}"><span class="white-text name">{{ $user->name }}</span></a>

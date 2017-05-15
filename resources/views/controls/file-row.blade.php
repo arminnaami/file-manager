@@ -2,8 +2,8 @@
 	<td class="center" style="width :32px;">
 		<svg class="icon"  style="width: 32px; height:32px;">
 			<use xlink:href="{{ URL::asset('/img/file_extensions.svg') }}
-			@if ($file->extensionIcon != null)
-				{{$file->extensionIcon->icon_id}}
+			@if ($file->extensionObj != null)
+				{{$file->extensionObj->icon_id}}
 			@else
 				#file
 			@endif

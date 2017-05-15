@@ -33,10 +33,10 @@
                 <a href="javascript:;" class='dropdown-button' id="profile_dropdown_btn" data-activates='profile_dropdown'>
 
 
-                    @if($user->profileImage->id == 1)
-                        <img src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
+                    @if($user->profile_picture == '')
+                        <img src="{{URL::asset('/img/profile_picture.png')}}" class="circle">
                     @else
-                        <img src="{{asset('storage/'.$user->id.'/'.$user->profileImage->private_name.'.'.$user->profileImage->extension)}}" class="circle">
+                        <img src="{{asset('storage/'.$user->id.'/'.$user->profile_picture)}}" class="circle">
                     @endif
 
 
@@ -47,10 +47,10 @@
                         <div id="profile_dropdown_card">
                             <div id="profile_dropdown_card_img_hldr">
 
-                                @if($user->profileImage->id == 1)
-                                    <img src="{{URL::asset('/img/'.$user->profileImage->name.'.'.$user->profileImage->extension)}}" class="circle">
+                                @if($user->profile_picture == '')
+                                    <img src="{{URL::asset('/img/profile_picture.png')}}" class="circle">
                                 @else
-                                    <img src="{{asset('storage/'.$user->id.'/'.$user->profileImage->private_name.'.'.$user->profileImage->extension)}}" class="circle">
+                                    <img src="{{asset('storage/'.$user->id.'/'.$user->profile_picture)}}" class="circle">
                                 @endif
                             </div>
                             <div id="profile_dropdown_card_account">

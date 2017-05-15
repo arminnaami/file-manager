@@ -46,27 +46,18 @@ class FileCls
     {
         if (!self::ImageValidator($profilePicture)->fails()) {
 
-            $oldPicture = File::find($user->profile_picture_id);
+            $oldPicture = $user->profile_picture;
 
             $fileName  = self::GetUniqueFileName($profilePicture);
             $extension = pathinfo($profilePicture->getClientOriginalName(), PATHINFO_EXTENSION);
             $path      = "public/{$user->id}";
             Storage::putFileAs($path, $profilePicture, $fileName . '.' . $extension);
 
-            $file               = new File();
-            $file->name         = pathinfo($profilePicture->getClientOriginalName(), PATHINFO_FILENAME);
-            $file->private_name = pathinfo($fileName, PATHINFO_FILENAME);
-            $file->extension    = $extension;
-            $file->description  = 'Profile picture from ' . date('d-m-Y');
-            $file->is_crypted   = 0;
-            $file->save();
-
-            $user->profile_picture_id = $file->id;
+            $user->profile_picture = $fileName . '.' . $extension;
             $user->save();
 
-            if ($oldPicture->id != 1) {
-                $oldPicture->delete();
-                $path = "public/{$user->id}/{$oldPicture->private_name}.{$oldPicture->extension}";
+            if ($oldPicture != '') {
+                $path = "{$path}/{$oldPicture}";
                 Storage::delete($path);
             }
 
