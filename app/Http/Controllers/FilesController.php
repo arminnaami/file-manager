@@ -20,6 +20,14 @@ class FilesController extends Controller
 
     public function store(Request $request)
     {
+
+        $user = Auth::user();
+
+        if ($user->getInodes() >= $user->package->max_inodes) {
+            $request->session()->flash('alert-error', 'Can not upload file! Inodes limit reached!');
+            return redirect()->back();
+        }
+
         if (!$request->file('file')) {
             $request->session()->flash('alert-error', 'Please select file');
             return redirect()->back();
@@ -30,7 +38,6 @@ class FilesController extends Controller
         if ($dirId != '') {
             $directory = Directory::find($dirId);
         }
-        $user = Auth::user();
         FileCls::SaveFile($user, $request->file('file'), $directory);
 
         $request->session()->flash('alert-success', 'File upload complete');

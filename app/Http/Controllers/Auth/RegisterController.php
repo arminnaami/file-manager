@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Package;
+use App\Role;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
@@ -64,10 +66,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => bcrypt($data['password']),
+        $role    = Role::where('code', 'USER')->first();
+        $package = Package::where('code', 'P_START')->first();
+        $user    = User::create([
+            'name'       => $data['name'],
+            'email'      => $data['email'],
+            'password'   => bcrypt($data['password']),
+            'role_id'    => $role->id,
+            'package_id' => $package->id,
         ]);
 
         Storage::makeDirectory($user->id);

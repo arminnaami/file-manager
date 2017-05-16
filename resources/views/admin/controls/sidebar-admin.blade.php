@@ -17,7 +17,7 @@
     </li>
     <li @if(Route::current()->getName() == 'admin') class="active" @endif ><a href="{{ route('admin') }}"><i class="material-icons">settings</i> Control Panel</a></li>
     <li @if(Route::current()->getName() == 'users') class="active" @endif ><a href="{{ route('users') }}"><i class="material-icons">people</i>Users</a></li>
-    @if(Auth::user()->hasRole('admin'))
+    @if(Auth::user()->hasRole('ADMIN'))
         <li @if(Route::current()->getName() == 'managers') class="active" @endif ><a href="{{ route('managers') }}"><i class="material-icons">people_outline</i>Managers</a></li>
     @endif
 </ul>

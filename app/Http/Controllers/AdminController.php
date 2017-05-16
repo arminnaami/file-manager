@@ -2,32 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\User;
 use App\Role;
+use App\User;
+use Illuminate\Http\Request;
+
 class AdminController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         return view('admin.index');
     }
-    
-    public function users(){
-        $users = Role::with('users')->where('code', '!=', 'admin')->get();
+
+    public function users()
+    {
+        $users = Role::with('users')->where('code', '!=', 'ADMIN')->get();
         $users = $users[0]->users()->paginate(50);
-        return view('admin.users')->with('users', $users);
+        return view('admin.users')->with('users', $users)->with('showManagers', false);
     }
 
-    public function managers(){
-        $users = Role::with('users')->where('code', 'manager')->get();
-        $users = $users[0]->users()->paginate(50);
-        return view('admin.users')->with('users', $users);
+    public function managers()
+    {
+        $users = Role::with('users')->where('code', 'MANAGER')->paginate(50);
+        return view('admin.users')->with('users', $users)->with('showManagers', true);
     }
 
-    public function blockUser($id, Request $request){
+    public function blockUser($id, Request $request)
+    {
         $user = User::find($id);
-        if($user == null){
+        if ($user == null) {
             $request->session()->flash('alert-error', 'User not found');
             return redirect()->back();
         }
@@ -39,9 +42,10 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function unblockUser($id, Request $request){
+    public function unblockUser($id, Request $request)
+    {
         $user = User::find($id);
-        if($user == null){
+        if ($user == null) {
             $request->session()->flash('alert-error', 'User not found');
             return redirect()->back();
         }
@@ -53,25 +57,27 @@ class AdminController extends Controller
         return redirect()->back();
 
     }
-    public function makeManager($id, Request $request){
+    public function makeManager($id, Request $request)
+    {
         $user = User::find($id);
-        if($user == null){
+        if ($user == null) {
             $request->session()->flash('alert-error', 'User not found');
             return redirect()->back();
         }
-        $role = Role::where('code', 'manager')->first();
+        $role = Role::where('code', 'MANAGER')->first();
         $user->addRole($role);
         $request->session()->flash('alert-success', 'User promoted');
         return redirect()->back();
 
     }
-    public function removeManager($id, Request $request){
+    public function removeManager($id, Request $request)
+    {
         $user = User::find($id);
-        if($user == null){
+        if ($user == null) {
             $request->session()->flash('alert-error', 'User not found');
             return redirect()->back();
         }
-        $role = Role::where('code', 'user')->first();
+        $role = Role::where('code', 'USER')->first();
         $user->addRole($role);
         $request->session()->flash('alert-success', 'Manager removed');
         return redirect()->back();

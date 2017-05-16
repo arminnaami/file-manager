@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class DirectoryAccessRights extends Migration
 {
@@ -13,18 +13,15 @@ class DirectoryAccessRights extends Migration
      */
     public function up()
     {
-        Schema::table('directories', function(Blueprint $table){
-            $table->dropForeign(['user_id']);
-            $table->dropColumn(['user_id']);
-        });
-
-        Schema::create('directories_accress_rights', function(Blueprint $table){
+        Schema::create('directories_accress_rights', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->integer('directory_id')->unsigned();
-            $table->foreign('directory_id')->references('id')->on('directories');
+            $table->foreign('directory_id')->references('id')->on('directories')->onDelete('cascade');;
             $table->boolean('is_creator')->nullable();
+            $table->boolean('is_root')->default(false);
+            $table->string('directory_access_token')->nullable();
             $table->timestamps();
         });
     }

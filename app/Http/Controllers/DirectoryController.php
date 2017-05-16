@@ -77,8 +77,13 @@ class DirectoryController extends Controller
     public function store(Request $request)
     {
         $this->validator($request->all())->validate();
-
         $user = Auth::user();
+
+        if ($user->getInodes() >= $user->package->max_inodes) {
+            $request->session()->flash('alert-error', 'Can not create folder! Inodes limit reached!');
+            return redirect()->back();
+        }
+
         $name = md5($request->directory_name . $user->id . time());
 
         $directory                = new Directory();

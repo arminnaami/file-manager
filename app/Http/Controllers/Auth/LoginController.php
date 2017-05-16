@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use App\User;
+
 class LoginController extends Controller
 {
     /*
@@ -56,14 +57,12 @@ class LoginController extends Controller
 
             return $this->sendLockoutResponse($request);
         }
-
-        $user = User::where('email', $request->email)->firstOrFail();
-        if ( $user && $user->is_blocked ) {
+        $user = User::where('email', $request->email)->first();
+        if ($user && $user->is_blocked) {
             return $this->sendLockedAccountResponse($request);
         }
-        
-        if ($this->attemptLogin($request)) {
 
+        if ($this->attemptLogin($request)) {
 
             return $this->sendLoginResponse($request);
         }
@@ -77,11 +76,11 @@ class LoginController extends Controller
     }
 
     /**
-    * Get the locked account response instance.
-    *
-    * @param \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
+     * Get the locked account response instance.
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     protected function sendLockedAccountResponse(Request $request)
     {
         return redirect()->back()

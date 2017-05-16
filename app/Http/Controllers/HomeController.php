@@ -22,7 +22,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user        = Auth::user();
+        $user = Auth::user();
+        $user->getInodes();
         $directories = $user->getOwnedDirectories();
         $files       = $user->getOwnedFiles();
 

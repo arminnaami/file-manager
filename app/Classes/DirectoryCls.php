@@ -141,4 +141,47 @@ class DirectoryCls
         $dirPath = implode(DIRECTORY_SEPARATOR, $arrDirPaths);
         return trim($dirPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
     }
+
+    public static function GetDirectorySize(Directory $directory, User $user)
+    {
+
+        $path        = DirectoryCls::GetDirectoryFullPath($directory, $user);
+        $storagePath = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+        $path        = str_replace('//', '/', $storagePath . $path);
+        $path        = rtrim(str_replace('\\', '/', $path), '/');
+
+        if (is_dir($path) === true) {
+            $totalSize = 0;
+            $os        = strtoupper(substr(PHP_OS, 0, 3));
+            // If on a Unix Host (Linux, Mac OS)
+            if ($os !== 'WIN') {
+                $io = popen('/usr/bin/du -sb ' . $path, 'r');
+                if ($io !== false) {
+                    $totalSize = intval(fgets($io, 80));
+                    pclose($io);
+                    return number_format($totalSize / (1024 * 1024), 2);
+                }
+            }
+            // If on a Windows Host (WIN32, WINNT, Windows)
+            if ($os === 'WIN' && extension_loaded('com_dotnet')) {
+                $obj = new \COM('scripting.filesystemobject');
+                if (is_object($obj)) {
+                    $ref       = $obj->getfolder($path);
+                    $totalSize = $ref->size;
+                    $obj       = null;
+                    return number_format($totalSize / (1024 * 1024), 2);
+                }
+            }
+            // If System calls did't work, use slower PHP 5
+            $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
+            foreach ($files as $file) {
+                $totalSize += $file->getSize();
+            }
+            return number_format($totalSize / (1024 * 1024), 2);
+        } else if (is_file($path) === true) {
+            return number_format(filesize($path) / (1024 * 1024), 2);
+        }
+
+    }
+
 }

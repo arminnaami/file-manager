@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Role;
 use App\User;
+use Illuminate\Database\Seeder;
+
 class RolesTableSeeder extends Seeder
 {
     /**
@@ -12,30 +13,31 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->truncate();
         Role::create([
-            'id'            => 1,
-            'code'          => 'admin',
-            'name'          => 'Administrator',
-            'description'   => 'Use this account with extreme caution. When using this account it is possible to cause irreversible damage to the system.'
+            'id'          => 1,
+            'code'        => 'ADMIN',
+            'name'        => 'Administrator',
+            'description' => 'Use this account with extreme caution. When using this account it is possible to cause irreversible damage to the system.',
         ]);
         Role::create([
-            'id'            => 2,
-            'code'          => 'user',
-            'name'          => 'User',
-            'description'   => 'A standard user that can upload and download files. No administrative features.'
+            'id'          => 2,
+            'code'        => 'USER',
+            'name'        => 'User',
+            'description' => 'A standard user that can upload and download files. No administrative features.',
         ]);
-         Role::create([
-            'id'            => 3,
-            'code'          => 'manager',
-            'name'          => 'Manager',
-            'description'   => 'Full access to change project settings'
+        Role::create([
+            'id'          => 3,
+            'code'        => 'MANGER',
+            'name'        => 'Manager',
+            'description' => 'Full access to change project settings',
         ]);
+
         User::create([
-            'name'          => 'Administrator',
-            'email'         => 'admin@filemanager.dev',
-            'password'      => bcrypt('welcomeToFilemanager'),
-            'role_id'       => 1
+            'name'       => 'Administrator',
+            'email'      => 'admin@filemanager.dev',
+            'password'   => bcrypt('welcomeToFilemanager'),
+            'role_id'    => 1,
+            'package_id' => 3,
         ]);
 
     }
