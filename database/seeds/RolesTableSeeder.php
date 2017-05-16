@@ -25,6 +25,12 @@ class RolesTableSeeder extends Seeder
             'name'          => 'User',
             'description'   => 'A standard user that can upload and download files. No administrative features.'
         ]);
+         Role::create([
+            'id'            => 3,
+            'code'          => 'manager',
+            'name'          => 'Manager',
+            'description'   => 'Full access to change project settings'
+        ]);
         User::create([
             'name'          => 'Administrator',
             'email'         => 'admin@filemanager.dev',

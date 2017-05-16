@@ -43,4 +43,16 @@ Route::post('/file/rename', 'FilesController@rename');
 
 
 
-Route::get('/admin', ['as' => 'admin', 'uses' => 'AdminController@index', 'roles' => ['admin']]);
+
+Route::group(['middleware' => ['auth', 'roles'], 'prefix' => 'admin'], function () {
+    Route::get('/managers', ['as' => 'managers', 'uses' => 'AdminController@managers', 'roles' => ['admin']]);
+    Route::get('/make-manager/{id}', ['as' => 'makeManager', 'uses' => 'AdminController@makeManager', 'roles' => ['admin']]);
+    Route::get('/remove-manager/{id}', ['as' => 'removeManager', 'uses' => 'AdminController@removeManager', 'roles' => ['admin']]);
+
+    
+    Route::get('/', ['as' => 'admin', 'uses' => 'AdminController@index', 'roles' => ['admin', 'manager']]);
+    Route::get('/users', ['as' => 'users', 'uses' => 'AdminController@users', 'roles' => ['admin', 'manager']]);
+    Route::get('/block-user/{id}', ['as' => 'blockUser', 'uses' => 'AdminController@blockUser', 'roles' => ['admin', 'manager']]);
+    Route::get('/unblock-user/{id}', ['as' => 'unblockUser', 'uses' => 'AdminController@unblockUser', 'roles' => ['admin', 'manager']]);
+
+});

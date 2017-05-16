@@ -164,4 +164,8 @@ class User extends Authenticatable
 		return (strtolower($need_role)==strtolower($this->haveRole->code)) ? true : false;
 	}
 
+    public function addRole(Role $role){
+        $this->role_id = $role->id;
+        $this->save();
+    }
 }
