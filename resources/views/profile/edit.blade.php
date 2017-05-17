@@ -19,7 +19,7 @@
 								 <input
 			                    type="text"
 			                    name="name"
-			                    id="text"
+			                    id="name"
 			                    value="{{ $user->name }}"
 			                    class="validate"
 			                    >
@@ -35,7 +35,7 @@
 								 <input
 			                    type="email"
 			                    name="email"
-			                    id="text"
+			                    id="email"
 			                    value="{{ $user->email }}"
 			                    class="validate"
 			                    >

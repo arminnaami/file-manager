@@ -29,7 +29,10 @@
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s12 right-align">
+						<div class="col s6">
+							<a href="{{ url('/profile/change-password') }}" class="btn waves-effect">Change password</a>
+						</div>
+						<div class="col s6 right-align">
 							<a href="{{ url('/profile/edit') }}" class="btn waves-effect">Edit</a>
 						</div>
 					</div>

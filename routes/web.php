@@ -20,6 +20,8 @@ Route::get('/shared-with-me', ['as' => 'sharedWithMe', 'uses' => 'HomeController
 
 Route::get('/profile', ['as' => 'profile', 'uses' => 'ProfileController@index']);
 Route::get('/profile/edit', ['as' => 'profile_edit', 'uses' => 'ProfileController@edit']);
+Route::get('/profile/change-password', ['as' => 'changePassword', 'uses' => 'ProfileController@changePassword']);
+Route::post('/profile/change-password', ['as' => 'changePasswordPost', 'uses' => 'ProfileController@changePasswordSubmit']);
 Route::post('/profile/edit', 'ProfileController@store');
 
 Route::get('/directory/{id?}', ['as' => 'directory', 'uses' => 'DirectoryController@index']);
