@@ -14,8 +14,8 @@ class PackageSeeder extends Seeder
     {
         Package::create([
             'id'             => 1,
-            'name'           => "Package Start",
-            'code'           => 'P_START',
+            'name'           => "Package Small",
+            'code'           => 'P_SMALL',
             'max_inodes'     => 10,
             'max_file_size'  => 3,
             'max_disk_space' => 50,
@@ -30,8 +30,8 @@ class PackageSeeder extends Seeder
         ]);
         Package::create([
             'id'             => 3,
-            'name'           => "Package Pro",
-            'code'           => 'P_PRO',
+            'name'           => "Package Big",
+            'code'           => 'P_BIG',
             'max_inodes'     => 100,
             'max_file_size'  => 20,
             'max_disk_space' => 500,

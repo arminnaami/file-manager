@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Package;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,13 @@ class AdminUsersController extends Controller
                 $q->where('code', 'USER');
             }
         )->paginate(50);
-        return view('admin.users.index')->with('users', $users)->with('showManagers', false);
+
+        $packages = Package::all();
+
+        return view('admin.users.index')
+            ->with('users', $users)
+            ->with('showManagers', false)
+            ->with('packages', $packages);
     }
 
     public function managers()
@@ -28,9 +35,50 @@ class AdminUsersController extends Controller
                 $q->where('code', 'MANAGER');
             }
         )->paginate(50);
-        return view('admin.users.index')->with('users', $users)->with('showManagers', true);
-    }
 
+        $packages = Package::all();
+
+        return view('admin.users.index')
+            ->with('users', $users)
+            ->with('showManagers', true)
+            ->with('packages', $packages);
+    }
+    /**
+     * @param Request $request
+     */
+    public function changePackage(Request $request)
+    {
+        if ($request->user_id == '')
+        {
+            return \Response::json(array('message' => 'User not found'), 404);
+        }
+
+        $user = User::find($request->user_id);
+        if (!$user)
+        {
+            return \Response::json(array('message' => 'User not found'), 404);
+        }
+
+        if ($request->user_package_id == '')
+        {
+            return \Response::json(array('message' => 'Please select package'), 404);
+        }
+
+        $package = Package::find($request->user_package_id);
+        if (!$package)
+        {
+            return \Response::json(array('message' => 'Package not found'), 404);
+        }
+
+        $user->package_id = $package->id;
+        $user->save();
+
+        return \Response::json(array('success'), 201);
+    }
+    /**
+     * @param $id
+     * @param Request $request
+     */
     public function blockUser($id, Request $request)
     {
         $user = User::find($id);
@@ -47,6 +95,10 @@ class AdminUsersController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     */
     public function unblockUser($id, Request $request)
     {
         $user = User::find($id);
@@ -64,6 +116,10 @@ class AdminUsersController extends Controller
 
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     */
     public function makeManager($id, Request $request)
     {
         $user = User::find($id);
@@ -78,6 +134,10 @@ class AdminUsersController extends Controller
         return redirect()->back();
 
     }
+    /**
+     * @param $id
+     * @param Request $request
+     */
     public function removeManager($id, Request $request)
     {
         $user = User::find($id);

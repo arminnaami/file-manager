@@ -67,7 +67,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $role    = Role::where('code', 'USER')->first();
-        $package = Package::where('code', 'P_START')->first();
+        $package = Package::where('code', 'P_SMALL')->first();
         $user    = User::create([
             'name'       => $data['name'],
             'email'      => $data['email'],

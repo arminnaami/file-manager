@@ -29,6 +29,8 @@
 					</span>
 					<p>
 						{{ $user->email }}
+						<br />
+						Package: <strong>{{ $user->package->name }}</strong> | Max disk space: <strong>{{ $user->package->max_disk_space }}MB</strong>
 					</p>
 					@if(Auth::user()->id != $user->id)
 						<div class="fixed-action-btn horizontal right click-to-toggle" style="bottom: 20px;">
@@ -63,6 +65,16 @@
 										</li>
 									@endif
 								@endif
+
+								<li>
+									<a href="#change_package"
+									class="activate_modal btn-floating yellow darken-4 change-package-btn"
+									data-user-id="{{ $user->id }}"
+									data-package-id="{{ $user->package->id }}"
+									title="Change package">
+										<i class="material-icons">swap_vert</i>
+									</a>
+								</li>
 							</ul>
 						</div>
 					@endif
@@ -70,6 +82,8 @@
 			@endforeach
 		</ul>
 	{{ $users->links('admin.controls.pagination') }}
+
+    @include('admin.controls.change-package-admin')
 	@else
 	<p class="center">No records found</p>
 	@endif
@@ -83,6 +97,11 @@
 		$('.user-row').not(this).removeClass('active');
 		$('.directory-row').not(this).removeClass('active');
 		$(this).addClass('active');
+	});
+
+	$('.change-package-btn').on('click', function(){
+		var userId = $(this).data('userId');
+		$('#change_package_form').find('#user_id').val(userId);
 	});
 	</script>
 @endsection

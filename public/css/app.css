@@ -31,7 +31,6 @@ p {
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 1000;
   background-color: white;
   text-align: center;
   display:none;
@@ -148,6 +147,7 @@ p {
   display: inline;
   vertical-align: bottom;
 }
+.admin-page-container,
 .home-page-container{
   margin-left: 300px;
   margin-top: -5px;
@@ -262,7 +262,7 @@ td{
     width: 100%;
     top: 0;
     background-color: rgba(255, 255, 255, 0.7);
-    z-index: 99999;
+    z-index: 1004;
 }
 #loading > div{
     font-size: 26px;
@@ -276,6 +276,11 @@ td{
 .file-icon{
   width: 32px; 
   height:32px;
+}
+.package_icon{
+  width: 24px; 
+  margin-right:32px; 
+  vertical-align:middle;
 }
 @media screen and (max-width: 990px) {
   .home-page-container{

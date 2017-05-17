@@ -103,6 +103,7 @@ class ProfileController extends Controller
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
         ]);
     }
+
     /**
      * Get a validator for an incoming change password request
      *
