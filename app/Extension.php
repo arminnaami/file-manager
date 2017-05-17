@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Extension extends Model
 {
     protected $primaryKey = 'id';
+    public $incrementing  = false;
 
     /**
      * The attributes that are mass assignable.

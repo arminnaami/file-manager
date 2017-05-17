@@ -49,7 +49,7 @@
 
 								</li>
 								@if(Auth::user()->hasRole('ADMIN'))
-									@if($user->hasRole('MANAGER'))
+									@if($showManagers)
 										<li>
 											<a class="btn-floating red darken-4" href="{{ route('removeManager', ['id' => $user->id]) }}" title="Remove manager">
 												<i class="material-icons">star</i>

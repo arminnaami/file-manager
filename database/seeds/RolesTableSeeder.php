@@ -27,7 +27,7 @@ class RolesTableSeeder extends Seeder
         ]);
         Role::create([
             'id'          => 3,
-            'code'        => 'MANGER',
+            'code'        => 'MANAGER',
             'name'        => 'Manager',
             'description' => 'Full access to change project settings',
         ]);

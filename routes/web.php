@@ -40,19 +40,21 @@ Route::post('/file/share', 'FilesController@share');
 Route::post('/file/get-file-token', 'FilesController@getFileToken');
 Route::post('/file/rename', 'FilesController@rename');
 
-
-
-
-
-Route::group(['middleware' => ['auth', 'roles'], 'prefix' => 'admin'], function () {
-    Route::get('/managers', ['as' => 'managers', 'uses' => 'AdminController@managers', 'roles' => ['admin']]);
-    Route::get('/make-manager/{id}', ['as' => 'makeManager', 'uses' => 'AdminController@makeManager', 'roles' => ['admin']]);
-    Route::get('/remove-manager/{id}', ['as' => 'removeManager', 'uses' => 'AdminController@removeManager', 'roles' => ['admin']]);
-
-    
+Route::group(['middleware' => ['auth', 'roles'], 'prefix' => 'admin'], function ()
+{
     Route::get('/', ['as' => 'admin', 'uses' => 'AdminController@index', 'roles' => ['admin', 'manager']]);
-    Route::get('/users', ['as' => 'users', 'uses' => 'AdminController@users', 'roles' => ['admin', 'manager']]);
-    Route::get('/block-user/{id}', ['as' => 'blockUser', 'uses' => 'AdminController@blockUser', 'roles' => ['admin', 'manager']]);
-    Route::get('/unblock-user/{id}', ['as' => 'unblockUser', 'uses' => 'AdminController@unblockUser', 'roles' => ['admin', 'manager']]);
+
+    Route::get('/managers', ['as' => 'managers', 'uses' => 'AdminUsersController@managers', 'roles' => ['admin']]);
+    Route::get('/make-manager/{id}', ['as' => 'makeManager', 'uses' => 'AdminUsersController@makeManager', 'roles' => ['admin']]);
+    Route::get('/remove-manager/{id}', ['as' => 'removeManager', 'uses' => 'AdminUsersController@removeManager', 'roles' => ['admin']]);
+    Route::get('/users', ['as' => 'users', 'uses' => 'AdminUsersController@index', 'roles' => ['admin', 'manager']]);
+    Route::get('/block-user/{id}', ['as' => 'blockUser', 'uses' => 'AdminUsersController@blockUser', 'roles' => ['admin', 'manager']]);
+    Route::get('/unblock-user/{id}', ['as' => 'unblockUser', 'uses' => 'AdminUsersController@unblockUser', 'roles' => ['admin', 'manager']]);
+
+    Route::get('/extensions', ['as' => 'extensions', 'uses' => 'AdminExtensionsController@index', 'roles' => ['admin', 'manager']]);
+    Route::get('/block-extension/{id}', ['as' => 'blockExtension', 'uses' => 'AdminExtensionsController@blockExtension', 'roles' => ['admin', 'manager']]);
+    Route::get('/unblock-extension/{id}', ['as' => 'unblockExtension', 'uses' => 'AdminExtensionsController@unblockExtension', 'roles' => ['admin', 'manager']]);
+    Route::post('/extensions', ['as' => 'extensions', 'uses' => 'AdminExtensionsController@index', 'roles' => ['admin', 'manager']]);
+    Route::post('/extensions/create', ['as' => 'addExtension', 'uses' => 'AdminExtensionsController@store', 'roles' => ['admin', 'manager']]);
 
 });

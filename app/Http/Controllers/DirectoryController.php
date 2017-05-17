@@ -20,27 +20,33 @@ class DirectoryController extends Controller
     public function index(Request $request)
     {
         $id = $request->id;
-        if ($id != '') {
+        if ($id != '')
+        {
 
             $user      = Auth::user();
             $directory = Directory::find($id);
 
-            if (!$directory) {
+            if (!$directory)
+            {
                 $request->session()->flash('alert-error', 'Directory not found or removed by the creator!');
                 return redirect()->route('home');
             }
 
             $parents = array();
             $parents = $directory->getParentsTree();
-            foreach ($parents as $k => $parent) {
-                if (!$parent->users()->find($user->id)) {
+            foreach ($parents as $k => $parent)
+            {
+                if (!$parent->users()->find($user->id))
+                {
                     unset($parents[$k]);
                 }
             }
             $arrDirectories = array();
-            foreach ($directory->directories as $child) {
+            foreach ($directory->directories as $child)
+            {
                 $relationData = $child->users()->find($user->id);
-                if ($relationData) {
+                if ($relationData)
+                {
                     $arrDirectories[] = array(
                         'dir'        => $child,
                         'is_creator' => $relationData->pivot->is_creator,
@@ -49,9 +55,11 @@ class DirectoryController extends Controller
             }
             //////////////////////////////////////////////////
             $arrFiles = array();
-            foreach ($directory->files as $file) {
+            foreach ($directory->files as $file)
+            {
                 $relationData = $file->users()->find($user->id);
-                if ($relationData) {
+                if ($relationData)
+                {
                     $arrFiles[] = array(
                         'file'       => $file,
                         'is_creator' => $relationData->pivot->is_creator,
@@ -69,7 +77,9 @@ class DirectoryController extends Controller
                 'arrDirectories' => $arrDirectories,
                 'arrFiles'       => $arrFiles,
             ]);
-        } else {
+        }
+        else
+        {
             return redirect()->route('home');
         }
     }
@@ -79,8 +89,15 @@ class DirectoryController extends Controller
         $this->validator($request->all())->validate();
         $user = Auth::user();
 
-        if ($user->getInodes() >= $user->package->max_inodes) {
+        if ($user->getInodes() >= $user->package->max_inodes)
+        {
             $request->session()->flash('alert-error', 'Can not create folder! Inodes limit reached!');
+            return redirect()->back();
+        }
+
+        if (floatval(DirectoryCls::GetUserDriveSize($user)) >= $user->package->max_disk_space)
+        {
+            $request->session()->flash('alert-error', 'Can not create folder! Maximum disk space limit reached!');
             return redirect()->back();
         }
 
@@ -94,7 +111,8 @@ class DirectoryController extends Controller
         DirectoryCls::CreateDirectory($directory, $user);
 
         $request->session()->flash('alert-success', 'Directory created!');
-        if ($request->parent_id != '') {
+        if ($request->parent_id != '')
+        {
             return redirect()->route("directory", ['id' => $request->parent_id]);
         }
         return redirect()->route("home");
@@ -111,11 +129,13 @@ class DirectoryController extends Controller
         DirectoryCls::DeleteDirectory($directory, $user);
         $request->session()->flash('alert-success', 'Directory deleted!');
 
-        if ($parent && $parent->users()->find($user->id)) {
+        if ($parent && $parent->users()->find($user->id))
+        {
             return redirect()->route("directory", ['id' => $parent->id]);
         }
 
-        if ($isCreatorDeleting) {
+        if ($isCreatorDeleting)
+        {
             return redirect()->route('home');
         }
 
@@ -124,29 +144,35 @@ class DirectoryController extends Controller
 
     public function share(Request $request)
     {
-        if ($request->user_email == '') {
+        if ($request->user_email == '')
+        {
             return \Response::json(array('message' => 'Please enter valid email address'), 404);
         }
 
-        if ($request->user_email == Auth::user()->email) {
+        if ($request->user_email == Auth::user()->email)
+        {
             return \Response::json(array('message' => "Can't share folder with yourself"), 404);
         }
 
         $user = User::where('email', $request->user_email)->first();
-        if (!$user) {
+        if (!$user)
+        {
             return \Response::json(array('message' => 'User not found'), 404);
         }
 
-        if ($request->directory_id == '') {
+        if ($request->directory_id == '')
+        {
             return \Response::json(array('message' => 'Please select folder to share'), 404);
         }
 
         $directory = Directory::find($request->directory_id);
-        if (!$directory) {
+        if (!$directory)
+        {
             return \Response::json(array('message' => 'Directory not found'), 404);
         }
 
-        if ($directory->users()->where('user_id', $user->id)->first()) {
+        if ($directory->users()->where('user_id', $user->id)->first())
+        {
 
             return \Response::json(array('message' => 'This folder is already shared with selected user'), 404);
         }
@@ -164,14 +190,17 @@ class DirectoryController extends Controller
     }
     public function rename(Request $request)
     {
-        if ($request->dir_name == '') {
+        if ($request->dir_name == '')
+        {
             return \Response::json(array('message' => 'Directory name is required!'), 404);
         }
-        if ($request->dir_id == '') {
+        if ($request->dir_id == '')
+        {
             return \Response::json(array('message' => 'Directory not found!'), 404);
         }
         $dir = Directory::find($request->dir_id);
-        if (!$dir) {
+        if (!$dir)
+        {
             return \Response::json(array('message' => 'Directory not found!'), 404);
         }
 
@@ -192,7 +221,8 @@ class DirectoryController extends Controller
         $user  = Auth::user();
         $dir   = $user->directories()->find($request->directory_id);
         $token = $dir->pivot->directory_access_token;
-        if ($token == '') {
+        if ($token == '')
+        {
             $token = sha1($dir->name . time() . $user->id);
 
             $user->directories()->updateExistingPivot($request->directory_id, ['directory_access_token' => $token]);
@@ -205,7 +235,8 @@ class DirectoryController extends Controller
     public function downloadWithToken($token)
     {
         $dir = \DB::table('directories_accress_rights')->where('directory_access_token', $token)->first();
-        if (!$dir) {
+        if (!$dir)
+        {
             $request->session()->flash('alert-error', 'Directory does not exists');
             return redirect()->to('/');
         }
@@ -214,7 +245,8 @@ class DirectoryController extends Controller
 
         $path = DirectoryCls::GetDirectoryFullPath($dir, $creator);
 
-        if (!\Storage::disk('local')->exists($path)) {
+        if (!\Storage::disk('local')->exists($path))
+        {
             $request->session()->flash('alert-error', 'Directory does not exists');
             return redirect()->to('/');
         }
@@ -230,11 +262,13 @@ class DirectoryController extends Controller
         $user      = Auth::user();
 
         $isCreator = $directory->users()->find($user->id)->pivot->is_creator;
-        if ($parent && $parent->users()->find($user->id)) {
+        if ($parent && $parent->users()->find($user->id))
+        {
             return redirect()->route("directory", ['id' => $parent->id]);
         }
 
-        if ($isCreator) {
+        if ($isCreator)
+        {
             return redirect()->route('home');
         }
 

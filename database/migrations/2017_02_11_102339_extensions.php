@@ -13,9 +13,12 @@ class Extensions extends Migration
      */
     public function up()
     {
-        Schema::create('extensions', function (Blueprint $table) {
+        Schema::create('extensions', function (Blueprint $table)
+        {
             $table->string('id')->primary();
-            $table->string('icon_id', 255);
+            $table->string('icon_id', 255)->nullable();
+            $table->boolean('is_blocked')->default(false);
+            $table->timestamps();
         });
     }
 

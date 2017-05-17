@@ -15,18 +15,22 @@ class DirectoryCls
 
         $path = '/' . $user->id;
 
-        if (!$parents) {
-            if ($directory->name == '') {
+        if (!$parents)
+        {
+            if ($directory->name == '')
+            {
                 return $path . '/';
             }
             return $path . '/' . $directory->name . '/';
         }
 
-        if (count($parents) > 0) {
+        if (count($parents) > 0)
+        {
             $path = $parents[0]->users()->where('is_creator', true)->get()[0]->id;
         }
         $path .= '/';
-        foreach ($parents as $parent) {
+        foreach ($parents as $parent)
+        {
             $path .= "{$parent->name}/";
         }
         $path = $path . $directory->name . '/';
@@ -44,7 +48,8 @@ class DirectoryCls
 
     public static function DeleteDirectory(Directory $directory, User $user)
     {
-        if (!$directory->users()->find($user->id)->pivot->is_creator) {
+        if (!$directory->users()->find($user->id)->pivot->is_creator)
+        {
             $user->removeDirectory($directory);
             return;
         }
@@ -81,12 +86,14 @@ class DirectoryCls
         $zip = new ZipArchive();
         $zip->open($zipPath, ZipArchive::CREATE);
 
-        if (!is_dir($dirName)) {
+        if (!is_dir($dirName))
+        {
             throw new Exception('Directory ' . $dirName . ' does not exist');
         }
 
         $dirName = realpath($dirName);
-        if (substr($dirName, -1) != '/') {
+        if (substr($dirName, -1) != '/')
+        {
             $dirName .= '/';
         }
 
@@ -94,19 +101,24 @@ class DirectoryCls
         //Find the index where the last dir starts
         $cutFrom = strrpos(substr($dirName, 0, -1), '/') + 1;
 
-        while (!empty($dirStack)) {
+        while (!empty($dirStack))
+        {
             $currentDir = array_pop($dirStack);
             $filesToAdd = array();
 
             $dir = dir($currentDir);
-            while (false !== ($node = $dir->read())) {
-                if (($node == '..') || ($node == '.')) {
+            while (false !== ($node = $dir->read()))
+            {
+                if (($node == '..') || ($node == '.'))
+                {
                     continue;
                 }
-                if (is_dir($currentDir . $node)) {
+                if (is_dir($currentDir . $node))
+                {
                     array_push($dirStack, $currentDir . $node . '/');
                 }
-                if (is_file($currentDir . $node)) {
+                if (is_file($currentDir . $node))
+                {
                     $filesToAdd[] = $node;
                 }
             }
@@ -115,9 +127,11 @@ class DirectoryCls
             $localDir = self::replacePrivateNameWithPublic($localDir, $creator);
             $zip->addEmptyDir($localDir);
 
-            foreach ($filesToAdd as $file) {
+            foreach ($filesToAdd as $file)
+            {
                 $fileObj = $creator->files()->where('private_name', $file)->get()[0];
-                if ($fileObj) {
+                if ($fileObj)
+                {
 
                     $zip->addFile($currentDir . $file, $localDir . $fileObj->name . '.' . $fileObj->extension);
                 }
@@ -130,10 +144,13 @@ class DirectoryCls
     private static function replacePrivateNameWithPublic($dirPath, User $user)
     {
         $arrDirPaths = explode(DIRECTORY_SEPARATOR, trim($dirPath, DIRECTORY_SEPARATOR));
-        foreach ($arrDirPaths as $key => $dirPath) {
-            if ($dirPath != '') {
+        foreach ($arrDirPaths as $key => $dirPath)
+        {
+            if ($dirPath != '')
+            {
                 $dir = $user->directories()->where('name', $dirPath)->get()[0];
-                if ($dir) {
+                if ($dir)
+                {
                     $arrDirPaths[$key] = $dir->original_name;
                 }
             }
@@ -149,39 +166,51 @@ class DirectoryCls
         $storagePath = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
         $path        = str_replace('//', '/', $storagePath . $path);
         $path        = rtrim(str_replace('\\', '/', $path), '/');
-
-        if (is_dir($path) === true) {
+        if (is_dir($path) === true)
+        {
             $totalSize = 0;
             $os        = strtoupper(substr(PHP_OS, 0, 3));
             // If on a Unix Host (Linux, Mac OS)
-            if ($os !== 'WIN') {
+            if ($os !== 'WIN')
+            {
                 $io = popen('/usr/bin/du -sb ' . $path, 'r');
-                if ($io !== false) {
+                if ($io !== false)
+                {
                     $totalSize = intval(fgets($io, 80));
                     pclose($io);
                     return number_format($totalSize / (1024 * 1024), 2);
                 }
             }
             // If on a Windows Host (WIN32, WINNT, Windows)
-            if ($os === 'WIN' && extension_loaded('com_dotnet')) {
+            if ($os === 'WIN' && extension_loaded('com_dotnet'))
+            {
                 $obj = new \COM('scripting.filesystemobject');
-                if (is_object($obj)) {
+                if (is_object($obj))
+                {
                     $ref       = $obj->getfolder($path);
                     $totalSize = $ref->size;
                     $obj       = null;
-                    return number_format($totalSize / (1024 * 1024), 2);
+                    return floatval($totalSize / (1024 * 1024));
                 }
             }
             // If System calls did't work, use slower PHP 5
             $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
-            foreach ($files as $file) {
+            foreach ($files as $file)
+            {
                 $totalSize += $file->getSize();
             }
-            return number_format($totalSize / (1024 * 1024), 2);
-        } else if (is_file($path) === true) {
-            return number_format(filesize($path) / (1024 * 1024), 2);
+            return floatval($totalSize / (1024 * 1024));
+        }
+        else if (is_file($path) === true)
+        {
+            return floatval(filesize($path) / (1024 * 1024));
         }
 
+    }
+
+    public static function GetUserDriveSize(User $user)
+    {
+        return self::GetDirectorySize(new Directory, $user);
     }
 
 }
