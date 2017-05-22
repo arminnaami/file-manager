@@ -13,13 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table)
+        {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
             $table->string('profile_picture', 255)->nullable();
-            $table->integer('role_id')->unsigned()->references('id')->on('roles')->onDelete('restrict');
+            $table->integer('role_id')->unsigned();
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('restrict');
             $table->boolean('is_blocked')->unsigned()->default(0);
             $table->integer('package_id')->unsigned();
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('restrict');
