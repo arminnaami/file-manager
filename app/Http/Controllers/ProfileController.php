@@ -23,17 +23,38 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('profile.index')->with('user', Auth::user())->with('is_creator', false);
+        $user               = Auth::user();
+        $allocatedDiskSpace = floatval(\App\Classes\DirectoryCls::GetUserDriveSize($user));
+        $allowedSpace       = $user->package->max_disk_space;
+        $freeSpace          = $allowedSpace - $allocatedDiskSpace;
+        return view('profile.index')->with([
+            'user'       => $user,
+            'is_creator' => false,
+            'freeSpace'  => $freeSpace]);
     }
 
     public function edit()
     {
-        return view('profile.edit')->with('user', Auth::user())->with('is_creator', false);
+        $user               = Auth::user();
+        $allocatedDiskSpace = floatval(\App\Classes\DirectoryCls::GetUserDriveSize($user));
+        $allowedSpace       = $user->package->max_disk_space;
+        $freeSpace          = $allowedSpace - $allocatedDiskSpace;
+        return view('profile.edit')->with([
+            'user'       => $user,
+            'is_creator' => false,
+            'freeSpace'  => $freeSpace]);
     }
 
     public function changePassword()
     {
-        return view('profile.change-password')->with('is_creator', false);
+        $user               = Auth::user();
+        $allocatedDiskSpace = floatval(\App\Classes\DirectoryCls::GetUserDriveSize($user));
+        $allowedSpace       = $user->package->max_disk_space;
+        $freeSpace          = $allowedSpace - $allocatedDiskSpace;
+        return view('profile.change-password')->with([
+            'user'       => $user,
+            'is_creator' => false,
+            'freeSpace'  => $freeSpace]);
     }
 
     /**

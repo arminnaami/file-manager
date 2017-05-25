@@ -17,6 +17,9 @@ class DirectoryController extends Controller
         $this->middleware('auth', ['except' => ['downloadWithToken']]);
     }
 
+    /**
+     * @param Request $request
+     */
     public function index(Request $request)
     {
         $id = $request->id;
@@ -69,6 +72,10 @@ class DirectoryController extends Controller
             //////////////////////////////////////////////////
             $isCreator = $directory->users()->find($user->id)->pivot->is_creator;
 
+            $allocatedDiskSpace = floatval(\App\Classes\DirectoryCls::GetUserDriveSize($user));
+            $allowedSpace       = $user->package->max_disk_space;
+            $freeSpace          = $allowedSpace - $allocatedDiskSpace;
+
             return view('directory')->with([
                 'mainDir'        => $directory,
                 'allowUpload'    => $isCreator,
@@ -76,6 +83,7 @@ class DirectoryController extends Controller
                 'parents'        => $parents,
                 'arrDirectories' => $arrDirectories,
                 'arrFiles'       => $arrFiles,
+                'freeSpace'      => $freeSpace,
             ]);
         }
         else
@@ -84,6 +92,9 @@ class DirectoryController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     */
     public function store(Request $request)
     {
         $this->validator($request->all())->validate();
@@ -118,6 +129,10 @@ class DirectoryController extends Controller
         return redirect()->route("home");
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     */
     public function delete($id, Request $request)
     {
 
@@ -142,6 +157,9 @@ class DirectoryController extends Controller
         return redirect()->route("sharedWithMe");
     }
 
+    /**
+     * @param Request $request
+     */
     public function share(Request $request)
     {
         if ($request->user_email == '')
@@ -181,6 +199,9 @@ class DirectoryController extends Controller
         return \Response::json(array('success'), 201);
     }
 
+    /**
+     * @param $dirId
+     */
     public function download($dirId)
     {
         $directory = Directory::find($dirId);
@@ -188,6 +209,9 @@ class DirectoryController extends Controller
         return response()->download($zipPath)->deleteFileAfterSend(true);
 
     }
+    /**
+     * @param Request $request
+     */
     public function rename(Request $request)
     {
         if ($request->dir_name == '')
@@ -209,6 +233,9 @@ class DirectoryController extends Controller
         return \Response::json(array('message' => 'Directory has been renmaed!'), 200);
     }
 
+    /**
+     * @param array $data
+     */
     private function validator(array $data)
     {
         return Validator::make($data, [
@@ -216,6 +243,9 @@ class DirectoryController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     */
     public function getDirToken(Request $request)
     {
         $user  = Auth::user();
@@ -232,6 +262,9 @@ class DirectoryController extends Controller
 
     }
 
+    /**
+     * @param $token
+     */
     public function downloadWithToken($token)
     {
         $dir = \DB::table('directories_accress_rights')->where('directory_access_token', $token)->first();
@@ -255,6 +288,9 @@ class DirectoryController extends Controller
         return response()->download($zipPath)->deleteFileAfterSend(true);
     }
 
+    /**
+     * @param $id
+     */
     public function back($id)
     {
         $directory = Directory::find($id);

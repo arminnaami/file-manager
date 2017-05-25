@@ -18,6 +18,9 @@ class FilesController extends Controller
         $this->middleware('auth', ['except' => ['downloadWithToken']]);
     }
 
+    /**
+     * @param Request $request
+     */
     public function store(Request $request)
     {
 
@@ -37,11 +40,6 @@ class FilesController extends Controller
             return redirect()->back();
         }
 
-        if (floatval(\App\Classes\DirectoryCls::GetUserDriveSize($user)) >= $user->package->max_disk_space)
-        {
-            $request->session()->flash('alert-error', 'Can not upload file! Maximum disk space limit reached!');
-            return redirect()->back();
-        }
         $fileSize = $request->file('file')->getClientSize();
         $fileSize = floatval($fileSize / (1024 * 1024));
 
@@ -50,7 +48,13 @@ class FilesController extends Controller
             $request->session()->flash('alert-error', 'Can not upload file! Maximum file size limit reached!');
             return redirect()->back();
         }
+        $allocatedDiskSpace = floatval(\App\Classes\DirectoryCls::GetUserDriveSize($user));
 
+        if ($allocatedDiskSpace + $fileSize >= $user->package->max_disk_space)
+        {
+            $request->session()->flash('alert-error', 'Can not upload file! Maximum disk space limit reached!');
+            return redirect()->back();
+        }
         $extension = \App\Extension::find(pathinfo($request->file('file')->getClientOriginalName(), PATHINFO_EXTENSION));
         if ($extension == null || $extension->is_blocked)
         {
@@ -71,6 +75,10 @@ class FilesController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     */
     public function download($id, Request $request)
     {
         $file = File::find($id);
@@ -96,6 +104,10 @@ class FilesController extends Controller
 
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     */
     public function delete($id, Request $request)
     {
         $file = File::find($id);
@@ -111,6 +123,9 @@ class FilesController extends Controller
         $request->session()->flash('alert-success', 'File deleted!');
         return redirect()->back();
     }
+    /**
+     * @param Request $request
+     */
     public function share(Request $request)
     {
         if ($request->user_email == '')
@@ -150,6 +165,9 @@ class FilesController extends Controller
         return \Response::json(array('success'), 201);
     }
 
+    /**
+     * @param Request $request
+     */
     public function rename(Request $request)
     {
         if ($request->file_name == '')
@@ -171,6 +189,9 @@ class FilesController extends Controller
         return \Response::json(array('message' => 'File has been renmaed!'), 200);
     }
 
+    /**
+     * @param Request $request
+     */
     public function getFileToken(Request $request)
     {
         $user  = Auth::user();
@@ -187,6 +208,9 @@ class FilesController extends Controller
 
     }
 
+    /**
+     * @param $token
+     */
     public function downloadWithToken($token)
     {
         $file = \DB::table('access_rights')->where('file_access_token', $token)->first();

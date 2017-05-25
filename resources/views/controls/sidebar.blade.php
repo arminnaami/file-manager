@@ -13,6 +13,23 @@
             </a>
             <a href="{{ url('/profile') }}"><span class="white-text name">{{ $user->name }}</span></a>
             <a href="{{ url('/profile') }}"><span class="white-text email">{{ $user->email }}</span></a>
+            <div class="row">
+                <div class="col">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title"><strong>{{$user->package->name}}</strong></span>
+                            <br />
+                            <p>
+                                Disk space: <strong>{{$freeSpace}} MB from {{ $user->package->max_disk_space }} MB</strong>
+                                <br>
+                                Max file size: <strong>{{$user->package->max_file_size}} MB</strong>
+                                <br>
+                                <span title="Maximum files and directories count">Max Inodes: <strong>{{$user->package->max_inodes}}</strong></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </li>
     <li @if(Route::current()->getName() == 'home') class="active" @endif ><a href="{{ url('/home') }}"><i class="material-icons">perm_media</i> My Drive</a></li>

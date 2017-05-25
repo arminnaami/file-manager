@@ -27,11 +27,16 @@ class HomeController extends Controller
         $directories = $user->getOwnedDirectories();
         $files       = $user->getOwnedFiles();
 
+        $allocatedDiskSpace = floatval(\App\Classes\DirectoryCls::GetUserDriveSize($user));
+        $allowedSpace       = $user->package->max_disk_space;
+        $freeSpace          = $allowedSpace - $allocatedDiskSpace;
+
         return view('home')->with([
             'directories' => $directories,
             'files'       => $files,
             'mainDir'     => null,
-            'is_creator'  => true]);
+            'is_creator'  => true,
+            'freeSpace'   => $freeSpace]);
     }
 
     public function sharedWithMe()
@@ -41,9 +46,14 @@ class HomeController extends Controller
         $directories = $user->getSharedWithMeDirectories();
         $files       = $user->getSharedWIthMeFiles();
 
+        $allocatedDiskSpace = floatval(\App\Classes\DirectoryCls::GetUserDriveSize($user));
+        $allowedSpace       = $user->package->max_disk_space;
+        $freeSpace          = $allowedSpace - $allocatedDiskSpace;
+
         return view('home')->with([
             'directories' => $directories,
             'files'       => $files,
-            'is_creator'  => false]);
+            'is_creator'  => false,
+            'freeSpace'   => $freeSpace]);
     }
 }
