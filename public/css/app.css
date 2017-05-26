@@ -138,10 +138,12 @@ p {
   line-height: 25px;
   height: 25px;
 }
+#upload_drpdn_new,
 #upload_drpdn_main_nav,
 #upload_drpdn{
   min-width: 200px;
 }
+#upload_drpdn_new i,
 #upload_drpdn_main_nav i,
 #upload_drpdn i{
   display: inline;
