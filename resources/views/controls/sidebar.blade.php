@@ -20,7 +20,7 @@
                             <span class="card-title"><strong>{{$user->package->name}}</strong></span>
                             <br />
                             <p>
-                                Disk space: <strong>{{$freeSpace}} MB from {{ $user->package->max_disk_space }} MB</strong>
+                                Disk space: <strong style="white-space: nowrap;">{{$freeSpace}} MB from {{ $user->package->max_disk_space }} MB</strong>
                                 <br>
                                 Max file size: <strong>{{$user->package->max_file_size}} MB</strong>
                                 <br>

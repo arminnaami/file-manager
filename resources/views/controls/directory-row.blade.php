@@ -10,29 +10,29 @@
 	</td>
 	<td style="position: relative;">
 		<div class="fixed-action-btn horizontal click-to-toggle right" style="position: static; padding-right: 20px;">
-			<a class="btn-floating btn-large">
+			<a class="btn-floating btn-large" titel="Menu">
 		      	<i class="material-icons">menu</i>
 		    </a>
 		    <ul style="top: 80%; right: 70px;">
 		      	<li>
-			      	<a class="btn-floating red" href="javascript:deleteDirectory('{{$directory->id}}');" data-dir-id="{{$directory->id}}">
+			      	<a class="btn-floating red" title="Delete" href="javascript:deleteDirectory('{{$directory->id}}');" data-dir-id="{{$directory->id}}">
 			      		<i class="material-icons">delete_forever</i>
 			      	</a>
 		      	</li>
 		      	@if(isset($is_creator) && $is_creator)
 			      	<li>
-				      	<a href="#rename_dir" class="activate_modal btn-floating yellow rename-directory-btn" data-dir-id="{{$directory->id}}">
+				      	<a href="#rename_dir" title="Edit" class="activate_modal btn-floating yellow rename-directory-btn" data-dir-id="{{$directory->id}}">
 				      		<i class="material-icons">edit</i>
 				      	</a>
 			      	</li>
 			      	<li>
-				      	<a href="#share_directory" class="activate_modal btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}">
+				      	<a href="#share_directory" title="Share" class="activate_modal btn-floating blue share-directory-btn" data-dir-id="{{$directory->id}}">
 				      		<i class="material-icons">share</i>
 				      	</a>
 			      	</li>
 		      	@endif
 		      	<li>
-			      	<a class="btn-floating green lighten-1 download-dir-btn" data-dir-id="{{$directory->id}}">
+			      	<a class="btn-floating green lighten-1 download-dir-btn" title="Download" data-dir-id="{{$directory->id}}">
 			      		<i class="material-icons">file_download</i>
 			      	</a>
 		      	</li>

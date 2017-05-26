@@ -18,29 +18,29 @@
 	</td>
 	<td style="position: relative;">
 		<div class="fixed-action-btn horizontal right click-to-toggle" style="position:static; padding-right: 20px;">
-			<a class="btn-floating btn-large">
+			<a class="btn-floating btn-large" title="Menu">
 		      	<i class="material-icons">menu</i>
 		    </a>
 		    <ul style="top: 80%; right: 70px;">
 		      	<li>
-			      	<a class="btn-floating red" href="javascript:deleteFile('{{$file->id}}');" data-file-id="{{$file->id}}">
+			      	<a class="btn-floating red" title="Delete" href="javascript:deleteFile('{{$file->id}}');" data-file-id="{{$file->id}}">
 			      		<i class="material-icons">delete_forever</i>
 			      	</a>
 		      	</li>
 		      	@if(isset($is_creator) && $is_creator)
 			      	<li>
-				      	<a href="#rename_file" class="activate_modal btn-floating yellow rename-file-btn" data-file-id="{{$file->id}}">
+				      	<a href="#rename_file" title="Edit" class="activate_modal btn-floating yellow rename-file-btn" data-file-id="{{$file->id}}">
 				      		<i class="material-icons">edit</i>
 				      	</a>
 			      	</li>
 			      	<li>
-				      	<a href="#share_file" class="activate_modal btn-floating blue share-file-btn" data-file-id="{{$file->id}}">
+				      	<a href="#share_file" title="Share" class="activate_modal btn-floating blue share-file-btn" data-file-id="{{$file->id}}">
 				      		<i class="material-icons">share</i>
 				      	</a>
 			      	</li>
 		      	@endif
 		    	<li>
-			    	<a class="btn-floating green lighten-1 download-file-btn" data-file-id="{{$file->id}}">
+			    	<a class="btn-floating green lighten-1 download-file-btn" title="Download" data-file-id="{{$file->id}}">
 			    		<i class="material-icons">file_download</i>
 			    	</a>
 		    	</li>

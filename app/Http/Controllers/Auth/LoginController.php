@@ -52,17 +52,20 @@ class LoginController extends Controller
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
-        if ($this->hasTooManyLoginAttempts($request)) {
+        if ($this->hasTooManyLoginAttempts($request))
+        {
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);
         }
         $user = User::where('email', $request->email)->first();
-        if ($user && $user->is_blocked) {
+        if ($user && $user->is_blocked)
+        {
             return $this->sendLockedAccountResponse($request);
         }
 
-        if ($this->attemptLogin($request)) {
+        if ($this->attemptLogin($request))
+        {
 
             return $this->sendLoginResponse($request);
         }
