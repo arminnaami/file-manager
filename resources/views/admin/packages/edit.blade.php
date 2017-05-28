@@ -44,8 +44,12 @@
 			                    name="code"
 			                    id="code"
 			                    value="{{ $package->code }}"
-			                    class="validate"
-			                    required
+			                    @if($package->id != '')
+			        	            disabled
+			                    @else
+									required
+									class="validate"
+					            @endif
 			                    >
 							</div>
 						</div>
