@@ -11,6 +11,10 @@ use Storage;
 
 class FileCls
 {
+    /**
+     * @param File $file
+     * @param User $user
+     */
     public static function GetFilePath(File $file, User $user)
     {
         $fileDir = ($file->directory == null) ? new Directory() : $file->directory;
@@ -18,6 +22,10 @@ class FileCls
         $path    = "{$path}{$file->private_name}";
         return $path;
     }
+    /**
+     * @param UploadedFile $file
+     * @return mixed
+     */
     public static function ImageValidator(UploadedFile $file)
     {
 
@@ -35,6 +43,9 @@ class FileCls
         return $validator;
     }
 
+    /**
+     * @param UploadedFile $file
+     */
     public static function GetUniqueFileName(UploadedFile $file)
     {
         $fileHash = sha1_file($file->path());
@@ -42,9 +53,14 @@ class FileCls
         return md5($fileHash . $uniqueId);
     }
 
+    /**
+     * @param User $user
+     * @param UploadedFile $profilePicture
+     */
     public static function ChangeProfilePicture(User $user, UploadedFile $profilePicture)
     {
-        if (!self::ImageValidator($profilePicture)->fails()) {
+        if (!self::ImageValidator($profilePicture)->fails())
+        {
 
             $oldPicture = $user->profile_picture;
 
@@ -56,7 +72,8 @@ class FileCls
             $user->profile_picture = $fileName . '.' . $extension;
             $user->save();
 
-            if ($oldPicture != '') {
+            if ($oldPicture != '')
+            {
                 $path = "{$path}/{$oldPicture}";
                 Storage::delete($path);
             }
@@ -64,10 +81,16 @@ class FileCls
         }
     }
 
+    /**
+     * @param User $user
+     * @param UploadedFile $file
+     * @param Directory $directory
+     */
     public static function SaveFile(User $user, UploadedFile $file, Directory $directory = null)
     {
 
-        if ($directory == null) {
+        if ($directory == null)
+        {
             $directory = new Directory();
         }
 
@@ -87,14 +110,21 @@ class FileCls
 
     }
 
+    /**
+     * @param File $file
+     * @param User $user
+     * @return null
+     */
     public static function DeleteFile(File $file, User $user)
     {
 
-        if (!$file->users()->find($user->id)->pivot->is_creator) {
+        if (!$file->users()->find($user->id)->pivot->is_creator)
+        {
             $user->removeFile($file);
             return;
         }
-        foreach ($file->users as $v) {
+        foreach ($file->users as $v)
+        {
             $v->removeFile($file);
         }
 

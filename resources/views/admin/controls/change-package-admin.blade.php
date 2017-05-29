@@ -26,7 +26,7 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Disagree</a>
-            <button type="button" name="change_package" id="change_package" class="modal-action waves-effect waves-green btn-flat">Agree</button>
+            <button type="button" name="change_package" id="change_package_btn" class="modal-action waves-effect waves-green btn-flat">Agree</button>
         </div>
     </div>
 </form>
@@ -34,21 +34,24 @@
 @parent
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#change_package').on('click', function(){
+        $('#change_package_btn').on('click', function(){
             $('<div id="loading"><div>Loading...</div></div>').appendTo('body');
             $.post(
                 '/admin/users/change-package',
                 $('#change_package_form').serialize())
             .done(function(response) {
+                $('#loading').remove();
                 Materialize.toast('User package has been changed!', 4000, 'green darken-4');
                 setTimeout(function(){
                     location = ''
                },2000)
+                return;
             })
             .fail(function(xhr, status, error) {
-                $('#loading').hide();
+                $('#loading').remove();
                 var errorMsg = JSON.parse(xhr.responseText);
                 Materialize.toast(errorMsg.message, 4000, 'red darken-4');
+                return;
             });
         });
         $('select').material_select();

@@ -8,6 +8,11 @@ use ZipArchive;
 
 class DirectoryCls
 {
+    /**
+     * @param Directory $directory
+     * @param User $user
+     * @return mixed
+     */
     public static function GetDirectoryFullPath(Directory $directory, User $user)
     {
 
@@ -36,6 +41,10 @@ class DirectoryCls
         $path = $path . $directory->name . '/';
         return $path;
     }
+    /**
+     * @param Directory $directory
+     * @param User $user
+     */
     public static function CreateDirectory(Directory $directory, User $user)
     {
 
@@ -46,6 +55,11 @@ class DirectoryCls
         $user->directories()->attach($directory->id, ['is_creator' => true]);
     }
 
+    /**
+     * @param Directory $directory
+     * @param User $user
+     * @return null
+     */
     public static function DeleteDirectory(Directory $directory, User $user)
     {
         if (!$directory->users()->find($user->id)->pivot->is_creator)
@@ -59,6 +73,9 @@ class DirectoryCls
         $directory->delete();
     }
 
+    /**
+     * @param Directory $directory
+     */
     public static function Zip(Directory $directory)
     {
 
@@ -141,6 +158,10 @@ class DirectoryCls
         return $zipPath;
     }
 
+    /**
+     * @param $dirPath
+     * @param User $user
+     */
     private static function replacePrivateNameWithPublic($dirPath, User $user)
     {
         $arrDirPaths = explode(DIRECTORY_SEPARATOR, trim($dirPath, DIRECTORY_SEPARATOR));
@@ -159,6 +180,10 @@ class DirectoryCls
         return trim($dirPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
     }
 
+    /**
+     * @param Directory $directory
+     * @param User $user
+     */
     public static function GetDirectorySize(Directory $directory, User $user)
     {
 
@@ -208,6 +233,9 @@ class DirectoryCls
 
     }
 
+    /**
+     * @param User $user
+     */
     public static function GetUserDriveSize(User $user)
     {
         return self::GetDirectorySize(new Directory, $user);
