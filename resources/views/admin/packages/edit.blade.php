@@ -45,7 +45,7 @@
 			                    id="code"
 			                    value="{{ $package->code }}"
 			                    @if($package->id != '')
-			        	            disabled
+			        	            readonly
 			                    @else
 									required
 									class="validate"
