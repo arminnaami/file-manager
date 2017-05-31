@@ -46,6 +46,7 @@
 			                    value="{{ $package->code }}"
 			                    @if($package->id != '')
 			        	            readonly
+						    class="grey-text"
 			                    @else
 									required
 									class="validate"
