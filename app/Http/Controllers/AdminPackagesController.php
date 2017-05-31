@@ -14,10 +14,7 @@ class AdminPackagesController extends Controller
         return view('admin.packages.index')->with('packages', $packages);
     }
 
-    /**
-     * @param integer $id
-     */
-    public function edit(int $id)
+    public function edit($id)
     {
 
         $package = Package::find($id);
@@ -35,10 +32,10 @@ class AdminPackagesController extends Controller
         return view('admin.packages.edit')->with('package', new Package());
     }
     /**
-     * @param int $id
+     * @param $id
      * @param Request $request
      */
-    public function save(int $id, Request $request)
+    public function save($id, Request $request)
     {
 
         $package = Package::find($id);
