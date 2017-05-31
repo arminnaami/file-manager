@@ -83,7 +83,7 @@ class DirectoryController extends Controller
                 'parents'        => $parents,
                 'arrDirectories' => $arrDirectories,
                 'arrFiles'       => $arrFiles,
-                'freeSpace'      => $freeSpace,
+                'freeSpace'      => round($freeSpace),
             ]);
         }
         else
