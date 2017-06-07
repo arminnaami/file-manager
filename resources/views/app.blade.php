@@ -27,20 +27,20 @@
 </head>
 <body>
     <div id="app">
-        @include('controls.main-nav')
+        @include('client.controls.main-nav')
         @if (!Auth::guest())
-            @include('controls.sidebar')
+            @include('client.controls.sidebar')
             <!-- Modal Structure -->
-            @include('controls.create-folder')
+            @include('client.controls.create-folder')
             @if(isset($mainDir))
-                @include('controls.upload-file', ['directory' => $mainDir])
+                @include('client.controls.upload-file', ['directory' => $mainDir])
             @else
-                @include('controls.upload-file', ['directory' => null])
+                @include('client.controls.upload-file', ['directory' => null])
             @endif
             <div class="home-page-container">
                 @yield('content')
             </div>
-             @include('controls.mobile-add-new')
+             @include('client.controls.mobile-add-new')
         @else
         @yield('content')
         @endif

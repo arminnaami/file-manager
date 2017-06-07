@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
 <center>
 <h3 class="">Please, login into your account</h3>

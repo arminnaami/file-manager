@@ -76,7 +76,7 @@ class DirectoryController extends Controller
             $allowedSpace       = $user->package->max_disk_space;
             $freeSpace          = $allowedSpace - $allocatedDiskSpace;
 
-            return view('directory')->with([
+            return view('client.directory')->with([
                 'mainDir'        => $directory,
                 'allowUpload'    => $isCreator,
                 'is_creator'     => $isCreator,

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
 
 <form id="change_password_form" class="col s12" role="form" method="POST" action="{{ url('/profile/change-password') }}" enctype="multipart/form-data">

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
-@include('controls.breadcrumb')
+@include('client.controls.breadcrumb')
 <table class="responsive">
 		<thead>
 			<tr>
@@ -14,12 +14,12 @@
 		<tbody>
 			@if(count($arrDirectories) > 0)
 				@foreach ($arrDirectories as $subDir)
-				    @include('controls.directory-row', ['directory' => $subDir['dir'], 'is_creator' => $subDir['is_creator']])
+				    @include('client.controls.directory-row', ['directory' => $subDir['dir'], 'is_creator' => $subDir['is_creator']])
 				@endforeach
 			@endif
 			@if(count($arrFiles) > 0)
 				@foreach ($arrFiles as $file)
-				    @include('controls.file-row', ['file' => $file['file'], 'is_creator' => $file['is_creator']])
+				    @include('client.controls.file-row', ['file' => $file['file'], 'is_creator' => $file['is_creator']])
 				@endforeach
 			@endif
 			<tr class="avatar directory-row" id="back_row" data-dir-id="{{$mainDir->parent_id}}">
@@ -34,10 +34,10 @@
 			</tr>
 		</tbody>
 	</table>
-@include('controls.share-folder')
-@include('controls.share-file')
-@include('controls.edit-file')
-@include('controls.edit-directory')
+@include('client.controls.share-folder')
+@include('client.controls.share-file')
+@include('client.controls.edit-file')
+@include('client.controls.edit-directory')
 @endsection
 
 @section('scripts')

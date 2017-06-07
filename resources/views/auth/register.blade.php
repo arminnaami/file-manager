@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
 
@@ -14,11 +14,11 @@
                 </div>
                 <div class="row left-align">
                     <div class="input-field col s12">
-                        <input 
-                        id="name" 
-                        type="text" 
-                        class="validate" 
-                        name="name" 
+                        <input
+                        id="name"
+                        type="text"
+                        class="validate"
+                        name="name"
                         value="{{ old('name') }}"
                          required
                         autofocus>
@@ -27,34 +27,34 @@
                 </div>
                 <div class="row left-align">
                     <div class="input-field col s12">
-                        <input 
-                        id="email" 
-                        type="email" 
-                        class="validate" 
-                        name="email" 
-                        value="{{ old('email') }}" 
+                        <input
+                        id="email"
+                        type="email"
+                        class="validate"
+                        name="email"
+                        value="{{ old('email') }}"
                         required>
                        <label for="email">E-Mail Address</label>
                     </div>
                 </div>
                 <div class="row left-align">
                     <div class="input-field col s12">
-                         <input 
-                         id="password" 
-                         type="password" 
-                         class="validate" 
-                         name="password" 
+                         <input
+                         id="password"
+                         type="password"
+                         class="validate"
+                         name="password"
                          required>
                        <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="row left-align">
                     <div class="input-field col s12">
-                        <input 
-                        id="password-confirm" 
-                        type="password" 
-                        class="validate" 
-                        name="password_confirmation" 
+                        <input
+                        id="password-confirm"
+                        type="password"
+                        class="validate"
+                        name="password_confirmation"
                         required>
                         <label for="password-confirm" >Confirm Password</label>
                     </div>

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('admin.admin')
 @section('content')
 @if($package->id != '')
 <form class="col s12" role="form" method="POST" action="{{ route('savePackage', ['id' => $package->id]) }}">

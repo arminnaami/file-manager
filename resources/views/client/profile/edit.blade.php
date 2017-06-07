@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
 
 <form class="col s12" role="form" method="POST" action="{{ url('/profile/edit') }}" enctype="multipart/form-data">

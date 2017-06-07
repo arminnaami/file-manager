@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
 @if(count($directories) > 0 || count($files) > 0)
@@ -14,18 +14,18 @@
 		<tbody>
 
 			@foreach ($directories as $directory)
-				@include('controls.directory-row', ['is_creator' => $is_creator])
+				@include('client.controls.directory-row', ['is_creator' => $is_creator])
 			@endforeach
 			@foreach ($files as $file)
-				@include('controls.file-row', ['is_creator' => $is_creator])
+				@include('client.controls.file-row', ['is_creator' => $is_creator])
 			@endforeach
 		</tbody>
 	</table>
 
-    @include('controls.share-folder')
-    @include('controls.share-file')
-    @include('controls.edit-file')
-    @include('controls.edit-directory')
+    @include('client.controls.share-folder')
+    @include('client.controls.share-file')
+    @include('client.controls.edit-file')
+    @include('client.controls.edit-directory')
 @else
 
 	@if($is_creator)
