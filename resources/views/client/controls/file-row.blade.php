@@ -29,7 +29,7 @@
 		      	</li>
 		      	@if(isset($is_creator) && $is_creator)
 			      	<li>
-				      	<a href="#rename_file" title="Edit" class="activate_modal btn-floating yellow rename-file-btn" data-file-id="{{$file->id}}">
+				      	<a href="#rename_file" title="Rename" class="activate_modal btn-floating yellow rename-file-btn" data-file-id="{{$file->id}}">
 				      		<i class="material-icons">edit</i>
 				      	</a>
 			      	</li>

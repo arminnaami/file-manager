@@ -21,7 +21,7 @@
 		      	</li>
 		      	@if(isset($is_creator) && $is_creator)
 			      	<li>
-				      	<a href="#rename_dir" title="Edit" class="activate_modal btn-floating yellow rename-directory-btn" data-dir-id="{{$directory->id}}">
+				      	<a href="#rename_dir" title="Rename" class="activate_modal btn-floating yellow rename-directory-btn" data-dir-id="{{$directory->id}}">
 				      		<i class="material-icons">edit</i>
 				      	</a>
 			      	</li>

@@ -78,7 +78,6 @@ class DirectoryCls
      */
     public static function Zip(Directory $directory)
     {
-
         $creator = $directory->users()->where('is_creator', true)->get()[0];
 
         $dirPath       = DirectoryCls::GetDirectoryFullPath($directory, $creator);
@@ -115,8 +114,6 @@ class DirectoryCls
         }
 
         $dirStack = array($dirName);
-        //Find the index where the last dir starts
-        $cutFrom = strrpos(substr($dirName, 0, -1), '/') + 1;
 
         while (!empty($dirStack))
         {
@@ -124,7 +121,7 @@ class DirectoryCls
             $filesToAdd = array();
 
             $dir = dir($currentDir);
-            while (false !== ($node = $dir->read()))
+            while (false != ($node = $dir->read()))
             {
                 if (($node == '..') || ($node == '.'))
                 {
@@ -140,7 +137,8 @@ class DirectoryCls
                 }
             }
 
-            $localDir = substr($currentDir, $cutFrom);
+            $localDir = str_replace(dirname($currentDir) . DIRECTORY_SEPARATOR, '', $currentDir);
+            $localDir = trim(trim($localDir, '/'), '\\');
             $localDir = self::replacePrivateNameWithPublic($localDir, $creator);
             $zip->addEmptyDir($localDir);
 

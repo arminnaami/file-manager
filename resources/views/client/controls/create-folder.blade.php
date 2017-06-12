@@ -19,8 +19,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Disagree</a>
-            <button type="submit" name="create_directory" class="modal-action waves-effect waves-green btn-flat">Agree</button>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+            <button type="submit" name="create_directory" class="modal-action waves-effect waves-green btn-flat">Create</button>
         </div>
     </div>
 </form>

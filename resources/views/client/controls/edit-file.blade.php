@@ -24,8 +24,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Disagree</a>
-            <button type="button" name="rename_file" id="rename_file_modal_btn" class="modal-action waves-effect waves-green btn-flat">Agree</button>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+            <button type="button" name="rename_file" id="rename_file_modal_btn" class="modal-action waves-effect waves-green btn-flat">Save</button>
         </div>
     </div>
 </form>
