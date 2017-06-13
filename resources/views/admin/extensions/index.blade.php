@@ -31,7 +31,7 @@
 					<div class="col s2">
 						<input type="hidden" name="is_blocked" value="0">
 						<input type="hidden" name="do_search" value="1">
-						<button type="submit" name="btn_search" class="btn waves-effect"><i class="material-icons">search</i></button>
+						<button type="submit" name="btn_search" class="btn waves-effect" title="Search"><i class="material-icons">search</i></button>
 					</div>
 				</div>
 			</form>
@@ -53,7 +53,7 @@
 								</a>
 								<ul>
 									<li>
-										<a class="btn-floating red lighten-1" href="{{ route('blockExtension', ['id' => $extension->id]) }}" title="Unblock">
+										<a class="btn-floating red lighten-1" href="{{ route('blockExtension', ['id' => $extension->id]) }}" title="Block">
 											<i class="material-icons">lock</i>
 										</a>
 
@@ -81,7 +81,7 @@
 					<div class="col s2">
 						<input type="hidden" name="is_blocked" value="1">
 						<input type="hidden" name="do_search" value="1">
-						<button type="submit" name="btn_search" class="btn waves-effect"><i class="material-icons">search</i></button>
+						<button type="submit" name="btn_search" class="btn waves-effect" title="Search"><i class="material-icons">search</i></button>
 					</div>
 				</div>
 			</form>

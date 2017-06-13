@@ -34,7 +34,7 @@
 					</p>
 					@if(Auth::user()->id != $user->id)
 						<div class="fixed-action-btn horizontal right click-to-toggle" style="bottom: 20px;">
-							<a class="btn-floating btn-large">
+							<a class="btn-floating btn-large" title="Menu">
 								<i class="material-icons">menu</i>
 							</a>
 							<ul>

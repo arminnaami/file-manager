@@ -7,13 +7,13 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <div class="input-field col s12">
-                        <select name="user_package_id" id="user_package_id">
+                        <select name="user_package_id" id="user_package_id" required="required">
                           <option value="" disabled selected>Choose package</option>
                           @foreach($packages as $package)
                             <option value="{{ $package->id }}">{{ $package->name }} | Disk space {{ $package->max_disk_space }} MB | File size {{ $package->max_file_size }} MB</option>
                           @endforeach
                         </select>
-                        <label>Materialize Select</label>
+                        <label>Select package</label>
                       </div>
 
                         <input
@@ -25,8 +25,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Disagree</a>
-            <button type="button" name="change_package" id="change_package_btn" class="modal-action waves-effect waves-green btn-flat">Agree</button>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+            <button type="button" name="change_package" id="change_package_btn" class="modal-action waves-effect waves-green btn-flat">Change</button>
         </div>
     </div>
 </form>

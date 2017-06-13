@@ -8,7 +8,7 @@
                     <div class="input-field col s12">
                         <input
                         type="text"
-                        name="dir_name"
+                        name="directory_name"
                         id="dir_name"
                         class="validate"
                         required

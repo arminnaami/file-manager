@@ -8,7 +8,7 @@
                     <div class="input-field col s12">
                         <input
                         type="text"
-                        name="extension_id"
+                        name="extension"
                         id="extension_id"
                         required
                         autofocus>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Disagree</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
             <button type="submit" name="btn_add_extension" class="modal-action waves-effect waves-green btn-flat">Add</button>
         </div>
     </div>

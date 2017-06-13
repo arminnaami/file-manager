@@ -66,7 +66,7 @@
 		window.location="/file/"+fileId;
 	});
 	function deleteFile(fileId){
-		if(confirm('Are you shure?')){
+		if(confirm('Are you sure you want to delete this file?')){
 			window.location="/file/delete/"+fileId;
 		}
 	}

@@ -54,7 +54,7 @@
 		window.location="/directory/"+dirId;
 	});
 	function deleteDirectory(dirId){
-		if(confirm('Are you shure?')){
+		if(confirm('Are you sure you want to delete this directory?')){
 			window.location="/directory/delete/"+dirId;
 		}
 	}

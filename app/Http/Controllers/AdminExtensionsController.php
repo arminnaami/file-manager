@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Extension;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AdminExtensionsController extends Controller
 {
@@ -83,7 +84,18 @@ class AdminExtensionsController extends Controller
 
     public function store(Request $request)
     {
-        $extension = strtolower(preg_replace('/\s+/', '', trim($request->extension_id, '.')));
+        $errors  =$this->validator($request->all())->errors();
+        if (!$errors->isEmpty())
+        {
+            foreach ($errors->all() as $error)
+            {
+                $request->session()->flash('alert-error', $error);
+            }
+            return redirect()->back();
+        }
+
+        
+        $extension = strtolower(preg_replace('/\s+/', '', trim($request->extension, '.')));
         if ($extension == '')
         {
 
@@ -106,5 +118,12 @@ class AdminExtensionsController extends Controller
 
         $request->session()->flash('alert-success', 'Extension created');
         return redirect()->back();
+    }
+
+      private function validator(array $data)
+    {
+        return Validator::make($data, [
+            'extension' => 'required|max:255',
+        ]);
     }
 }

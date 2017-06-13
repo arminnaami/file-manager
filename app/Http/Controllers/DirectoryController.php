@@ -214,10 +214,10 @@ class DirectoryController extends Controller
      */
     public function rename(Request $request)
     {
-        if ($request->dir_name == '')
+        if($this->validator($request->all())->errors()->first() != '')
         {
-            return \Response::json(array('message' => 'Directory name is required!'), 404);
-        }
+            return \Response::json(array('message' =>$this->validator($request->all())->errors()->first()), 404);
+        }        
         if ($request->dir_id == '')
         {
             return \Response::json(array('message' => 'Directory not found!'), 404);
@@ -228,7 +228,7 @@ class DirectoryController extends Controller
             return \Response::json(array('message' => 'Directory not found!'), 404);
         }
 
-        $dir->original_name = htmlspecialchars(trim($request->dir_name));
+        $dir->original_name = htmlspecialchars(trim($request->directory_name));
         $dir->save();
         return \Response::json(array('message' => 'Directory has been renmaed!'), 200);
     }
