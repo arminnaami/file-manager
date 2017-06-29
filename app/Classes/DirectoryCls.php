@@ -114,7 +114,7 @@ class DirectoryCls
         }
 
         $dirStack = array($dirName);
-
+        $cutFrom  = strrpos(substr($dirName, 0, -1), '/') + 1;
         while (!empty($dirStack))
         {
             $currentDir = array_pop($dirStack);
@@ -137,8 +137,7 @@ class DirectoryCls
                 }
             }
 
-            $localDir = str_replace(dirname($currentDir) . DIRECTORY_SEPARATOR, '', $currentDir);
-            $localDir = trim(trim($localDir, '/'), '\\');
+            $localDir = substr($currentDir, $cutFrom);
             $localDir = self::replacePrivateNameWithPublic($localDir, $creator);
             $zip->addEmptyDir($localDir);
 
